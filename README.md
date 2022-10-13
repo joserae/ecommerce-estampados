@@ -14,6 +14,7 @@ Estas páginas son de empresas de estampados, por lo cual son referentes directo
 
 Esta página tiene un diseño muy amigable y ameno para el usuario:
 -https://www.pressed.com/
+-https://mac-center.com/
 
 Estas páginas son referentes como ecommerce, y también para los pasos de orden de producto:
 -https://www.amazon.com/
