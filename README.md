@@ -7,6 +7,7 @@ _Panamérica Estampados_ es un sitio web que ofrece la creación de estampados e
 
 - **Yeidy Sorany Aguirre:** Soy Colombiana, vivo en el departamento de Caldas; me gusta viajar, estar en familia, ver el atardecer, la luna y la lluvia.
 - **Jose Pablo Restrepo Aponte:** Soy de Medellín, Colombia. Tengo 23, me apasionan los aviones, los simuladores de vuelo y la música indie.
+- **Luis Enrique Canales Oliveros:** Soy de Querétaro, México. Tengo 25, me apasionan la programación, conciertos y viajar.
 
 ## Las páginas web que tomaremos como referencia son las siguientes:
 
