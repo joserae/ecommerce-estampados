@@ -1,15 +1,7 @@
 *{
     box-sizing: border-box;
-}
-
-p{
     font-family: 'Source Sans Pro', sans-serif;
 }
-
-a{
-    font-family: 'Source Sans Pro', sans-serif;
-}
-
 /*------Header-------*/
 
 header{
@@ -44,6 +36,50 @@ header ul li a {
 
 .fa, .fas/*hamburger menu image*/{
     margin: auto;
+}
+
+
+/*------------Imagen principal-------------------*/
+.main-image-div{
+    border: dotted 5px; 
+}
+
+.main-image{
+    border: dotted 5px;
+    text-align: center;
+}
+
+/*------------------main------------------*/
+.main-message{
+    text-align: center;
+}
+
+.button-div{
+    border: dotted 4px;
+    text-align: center;
+}
+
+.myButton {
+    
+    text-align:center;
+	background:linear-gradient(to bottom, #2ec1f7 5%, #2ec1f7 100%);
+	background-color:#2ec1f7;
+	border-radius:5px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	padding:14px 37px;
+	text-decoration:none;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #2ec1f7 5%, #2ec1f7 100%);
+	background-color:#2ec1f7;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
 }
 
 /*-----------------Footer------------------*/
