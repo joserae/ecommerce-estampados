@@ -1,0 +1,59 @@
+*{
+    box-sizing: border-box;
+}
+
+p{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+a{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+/*------Header-------*/
+
+header{
+    background-color: #585b56;
+}
+
+header ul li {
+    list-style-type: none;
+    margin: 0; 
+    padding: 0;
+    display: none;
+}
+
+header ul li a {
+    text-decoration: none;
+    color:black;
+}
+
+.logo-login-reg{
+    display: flex;
+    margin: auto;
+    justify-content: space-around;
+    width: 95%;
+}
+.logo {
+    margin-left: 0px;
+}
+
+.img{
+   width: 30%; 
+}
+
+.fa, .fas/*hamburger menu image*/{
+    margin: auto;
+}
+
+/*-----------------Footer------------------*/
+footer{
+    background-color: #585b56;
+    display: flex;
+    justify-content: space-around;
+}
+
+footer div p{
+    font-size: 11px;
+    color: white;
+}
