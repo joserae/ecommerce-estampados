@@ -5,7 +5,7 @@
 /*------Header-------*/
 
 header{
-    background-color: #585b56;
+    background-color: #E1EFE6;
 }
 
 header ul li {
@@ -40,8 +40,10 @@ header ul li a {
 
 
 /*------------Imagen principal-------------------*/
+
 .main-image-div{
     border: dotted 5px; 
+    display: none;
 }
 
 .main-image{
@@ -55,15 +57,14 @@ header ul li a {
 }
 
 .button-div{
-    border: dotted 4px;
     text-align: center;
 }
 
 .myButton {
     
     text-align:center;
-	background:linear-gradient(to bottom, #2ec1f7 5%, #2ec1f7 100%);
-	background-color:#2ec1f7;
+	background:linear-gradient(to bottom, #160C28 5%, #160C28 100%);
+	background-color:#160C28;
 	border-radius:5px;
 	display:inline-block;
 	cursor:pointer;
@@ -74,22 +75,60 @@ header ul li a {
 	text-decoration:none;
 }
 .myButton:hover {
-	background:linear-gradient(to bottom, #2ec1f7 5%, #2ec1f7 100%);
-	background-color:#2ec1f7;
+	background:linear-gradient(to bottom, #160C28 5%, #160C28 100%);
+	background-color:#160C28;
 }
 .myButton:active {
 	position:relative;
 	top:1px;
 }
 
+/*----------------article-----------------*/
+
+section article{
+    
+    margin: 10px auto;
+    width: 95%;
+    background-color: #dadfdd;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.images{
+    margin-top: 5px;
+    width: 90%;
+    border-radius: 5px;
+}
+
 /*-----------------Footer------------------*/
 footer{
-    background-color: #585b56;
+    background-color: #E1EFE6;
     display: flex;
     justify-content: space-around;
 }
 
 footer div p{
     font-size: 11px;
-    color: white;
+    color: black;
+}
+
+/*-----------media queries-------------*/
+
+@media(min-width: 426px){
+    .products{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media(min-width: 769px){
+
+    .fa, .fas/*hamburger menu image*/{
+        display: none;
+    }
+
+    .products{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
 }
