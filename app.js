@@ -17,3 +17,11 @@ app.get('/', (req, res) => {
 app.get('/registro', (req, res) => {
 	res.sendFile(path.join(__dirname,"/views/registro.html"))
 });
+
+app.get('/subirImagen', (req, res) => {
+	res.sendFile(path.join(__dirname,"/views/subir-imagen.html"))
+});
+
+app.get('/estamparArticulo', (req, res) => {
+	res.sendFile(path.join(__dirname,"/views/estampar-articulo.html"))
+});
