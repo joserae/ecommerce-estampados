@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panamérica Estampados - ¡Estampa tu producto en sencillos pasos!</title>
+    <link rel="icon" href="/img/logo-cock.png">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/estampar-articulo.css">
+</head>
+<body>
+    <header>
+        <section class="logo-login-reg">
+            <div class="logo">
+                <a href="home"><img src="/img/logo.png" alt="Logo" class="img"></a>
+            </div>
+            <div class="hamburger-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </section>
+        <nav class="navbar">
+            <ul class="list">
+                <li>Estampa tu artículo</li>
+                <li>Productos</li>
+                <li>Quienes somos</li>
+                <li>Contacto</li>
+            </ul>
+        </nav>
+    </header>
+    <section class="instrucciones">
+        <ol>
+            <li>Seleccione la área de estampado</li>
+            <li>Click en enviar</li>
+        </ol>
+    </section>
+    <main class="form">
+        <form action="">
+        <!--Bootstrap para posicionamiento class container, row, col-12.. -->
+        <div class="container">
+            <div class="row">
+                <!-- col-12 es que ocupe todo el espacio y es por que mobile first-->
+                <!--col-md apartir de esta medida va a ocupar 4, ya que son 3 div 3*4 = 12 -->
+                <div class="col-12 col-md-4">
+                    <article class="footer-data">
+                        <div class="form-group">
+                            <input type="checkbox" value="1" name="playera">
+                            <label for="terms"><strong>Playera</strong></label>
+                            <br>
+                            <input type="checkbox" value="2" name="BrazoIzquierdo">
+                            <label for="terms">Brazo Izquierdo</label>
+                            <br>
+                            <input type="checkbox" value="3" name="BrazoDerecho">
+                            <label for="terms">Brazo derecho</label>
+                            <br>
+                            <input type="checkbox" value="4" name="superiorIzquierda">
+                            <label for="terms">Parte superior izquierda</label>
+                            <br>
+                            <input type="checkbox" value="5" name="playera">
+                            <label for="terms">Parte superior derecha</label>
+                            <br>
+                            <input type="checkbox" value="6" name="ParteCentral">
+                            <label for="terms">Parte central</label>
+                         </div>
+                    </article>
+                </div>
+                <div class="col-12 col-md-4">
+                    <article class="footer-data">
+                        <div class="form-group">
+                            <input type="checkbox" value="7" name="Sueter">
+                            <label for="terms"><strong>Sueter</strong> </label>
+                            <br>
+                            <input type="checkbox" value="8" name="SueterBrazoIzquierdo">
+                            <label for="terms">Brazo Izquierdo</label>
+                            <br>
+                            <input type="checkbox" value="9" name="SueterBrazoDerecho">
+                            <label for="terms">Brazo derecho</label>
+                            <br>
+                            <input type="checkbox" value="10" name="SuetersuperiorIzquierda">
+                            <label for="terms">Parte superior izquierda</label>
+                            <br>
+                            <input type="checkbox" value="11" name="SueteParteSuperiorDerecha">
+                            <label for="terms">Parte superior derecha</label>
+                            <br>
+                            <input type="checkbox" value="12" name="SueterParteCentral">
+                            <label for="terms">Parte central</label>
+                         </div>
+                    </article>
+
+                </div>
+                <!--col-12 col-md-4 POSICIONAMIENTO-->
+                <div class="col-12 col-md-4">
+                    <article class="footer-data">
+                        <div class="form-group">
+                            <input type="checkbox" value="13" name="gorra">
+                            <label for="terms"><strong>Gorra</strong></label>
+                         </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+        <div class="btn-class" >
+            <button id="siguiente-btn" type="submit">Enviar</button>
+        </div>
+        </form>
+    </main>
+    
+</body>
+</html>

@@ -11,10 +11,30 @@ app.listen(port, () => {
 });
 
 app.get('/', (req, res) => {
- res.sendFile(path.join(__dirname,"/views/home.html"))
- });
+	res.sendFile(path.join(__dirname,"/views/home.html"))
+});
 
-app.get('/', (req, res) => {
+app.get('/home', (req, res) => {
+	res.sendFile(path.join(__dirname,"/views/home.html"))
+});
+
+app.get('/iniciar-sesion', (req, res) => {
 	res.sendFile(path.join(__dirname,"/views/iniciar-sesion.html"))
+});
+
+app.get('/registro', (req, res) => {
+	res.sendFile(path.join(__dirname,"/views/registro.html"))
+});
+
+app.get('/subirImagen', (req, res) => {
+	res.sendFile(path.join(__dirname,"/views/subir-imagen.html"))
+});
+
+app.get('/estamparArticulo', (req, res) => {
+	res.sendFile(path.join(__dirname,"/views/estampar-articulo.html"))
+});
+
+app.get('/carrito', (req, res) => {
+	res.sendFile(path.join(__dirname,"/views/carrito-de-compras.html"))
 });
 
