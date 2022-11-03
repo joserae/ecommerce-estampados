@@ -11,5 +11,10 @@ app.listen(port, () => {
 });
 
 app.get('/', (req, res) => {
-	res.sendFile(path.join(__dirname,"/views/home.html"))
+ res.sendFile(path.join(__dirname,"/views/home.html"))
+ });
+
+app.get('/', (req, res) => {
+	res.sendFile(path.join(__dirname,"/views/iniciar-sesion.html"))
 });
+
