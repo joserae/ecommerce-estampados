@@ -230,8 +230,12 @@ footer div p{
         display: none;
     }
 
+    .hamburger-menu{
+        margin: 0;
+    }
+
     .login-register-menu{
-        margin: auto 10%;
+        margin: auto 0%;
     }
 
     .login-ul{
