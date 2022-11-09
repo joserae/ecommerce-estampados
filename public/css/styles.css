@@ -24,10 +24,13 @@ header ul li a {
     display: flex;
     margin: auto;
     justify-content: space-around;
+    align-items: center;
     width: 95%;
 }
+
 .logo {
     margin-left: 0px;
+    width: 100%;
 }
 
 .img{
@@ -36,10 +39,7 @@ header ul li a {
 
 .hamburger-menu{
     margin: auto;
-}
-
-.fa, .fas/*hamburger menu image*/{
-    margin: auto;
+    font-size: 20px;
 }
 
 .navbar{
@@ -55,6 +55,12 @@ header ul li a {
     text-align: center;
     vertical-align: middle;
     line-height: 50px;
+}
+
+.shopping-cart-menu i{
+    color:#000;
+    margin: 0 10px;
+    font-size: 20px;
 }
 
 
@@ -226,32 +232,33 @@ footer div p{
 
     /*Header*/
 
-    .fa, .fas/*hamburger menu image*/{
+    .hamburger-menu {
         display: none;
-    }
-
-    .hamburger-menu{
         margin: 0;
     }
 
     .login-register-menu{
-        margin: auto 0%;
+        margin: auto;
+        width: 100%;
+
     }
 
     .login-ul{
-        width: 100px;
-        padding: 0px 0px;
+        display: flex;
+        justify-content: right;
+        align-items: center;
+        width: 100%;
     }
 
-    header ul li {
+    .login-ul li {
+        display: block;
+        margin: 0 20px;
+    }
+
+    header ul li{
         display: block;
     }
-
-    .products{
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-
+    
     .navbar{
         display: block;
     }
