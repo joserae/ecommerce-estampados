@@ -93,7 +93,7 @@ outline: none;
    background: linear-gradient(#AEB7B3, #AEB7B3);
 }
 
-
+<<<<<<<< HEAD:public/css/style-login.css
 footer {
     background-color: #E1EFE6;
     display: flex;
@@ -109,8 +109,8 @@ footer div p {
     bottom: 0;
     width: 100%;
     height: 40px;
-}
 
+========
 .p{
    width: 100px;
   color: #fff;
@@ -132,5 +132,5 @@ footer div p {
 .form-body a {
    text-decoration: none;
    color: #fff;
-
+>>>>>>>> dd3bdb1fb0a77bc763aa657f88cb2c9b15293f93:public/css/styles-login.css
 }
