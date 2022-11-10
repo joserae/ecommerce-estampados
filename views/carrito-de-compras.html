@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de compras</title>
+    <link rel="icon" href="/img/logo-cock.png">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/cart-styles.css">
+</head>
+<body>
+    <header>
+        <section class="logo-login-reg">
+            <div class="logo">
+                <a href="home"><img src="/img/logo.png" alt="Logo" class="img"></a>
+            </div>
+            <div class="login-register-menu">
+                <ul class="login-ul">
+                    <li><a href="/iniciar-sesion">Iniciar sesión</a></li>
+                    <li><a href="/registro">Regístrate</a></li>
+                </ul>
+            </div>
+            <div class="shopping-cart-menu">
+                <a href="/carrito"><i class="fas fa-shopping-cart"></i></a>
+            </div>
+            <div class="hamburger-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </section>
+        <nav class="navbar">
+            <ul class="list">
+                <li>Estampa tu artículo</li>
+                <li>Productos</li>
+                <li>Quienes somos</li>
+                <li>Contacto</li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-shop-cart">
+
+        <section class="main-tracking-guide">
+            <span class="cart-title">Mi carrito de compras</span>
+            <div class="tracking-guide">
+                <hr>
+                <ul class="traking-status-horizontal">
+                    <li> 
+                        <div class="track-status-icon-default">
+                            <hr>
+                        </div>
+                        <p>Carrito</p>
+                    </li>
+                    <li>
+                        <div class="track-status-icon-other">
+                            <hr>
+                        </div>
+                        <p> Verificar</p>
+                    </li>
+                    <li>
+                        <div class="track-status-icon-other">
+                            <hr>
+                        </div>
+                        <p>Pagar</p>
+
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="shopping-cart"> 
+
+            <div class="shopping-cart-list">
+                <div class="cart-items">
+                    <div class="product-image-box">
+                        <img src="img/Camiseta-1.jpeg">
+                    </div>
+                    <div class="cart-product-description">
+                        <p class="product-name">Camiseta</p>
+                        <p class="product-aditional-info">Talla XL</p>
+                        <p class="product-price">$50.000</p>
+                    </div>
+                    <div class="quantity-delete">
+                        <div class="counter">
+                            <div class="btn">+</div>
+                            <div class="count">1</div>
+                            <div class="btn">-</div>
+                        </div>
+                        <div class="delete-product">
+                            <button type="button" class="delete-cart-product">Eliminar</button>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="cart-items">
+                    <div class="product-image-box">
+                        <img src="img/mug-1.jpeg">
+                    </div>
+                    <div class="cart-product-description">
+                        <p class="product-name">Mug</p>
+                        <p class="product-aditional-info">48 oz</p>
+                        <p class="product-price">$20.000</p>
+                    </div>
+                    <div class="quantity-delete">
+                        <div class="counter">
+                            <div class="btn">+</div>
+                            <div class="count">2</div>
+                            <div class="btn">-</div>
+                        </div>
+                        <div class="delete-product">
+                            <button type="button" class="delete-cart-product">Eliminar</button>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        
+            <div class="shopping-cart-resume">
+                <div class="resume-tittle">
+                    <p>Resumen</p>
+                </div>
+                <div class="values-resume">
+                    <p>Subtotal</p>
+                    <p>$90.000</p>
+                </div>
+                <div class="values-resume">
+                    <p>Total (IVA incluído)</p>
+                    <p>$90.000</p>
+                </div>
+                <div class="buy-btn">
+                    <button type="button" class="buy-cart-product">Comprar</button>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+    <footer>
+        <div>
+            <p>Ⓒ2022 Grupo 2</p>
+        </div>
+        <div>
+            <p>Términos de uso</p>
+        </div>
+        <div>
+            <p>Política de datos</p>
+        </div>
+    </footer>
+</body>
+</html>
