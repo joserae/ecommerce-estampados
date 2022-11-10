@@ -24,3 +24,9 @@ _Esta página tiene un diseño muy amigable y ameno para el usuario:_
 _Estas páginas son referentes como ecommerce, y también para los pasos de orden de producto:_
 - https://www.amazon.com/
 - https://www.mercadolibre.com/
+
+## Vistas en Figma:
+
+![Screenshot (462)](https://user-images.githubusercontent.com/114521915/201156995-32c63582-e257-4a9c-b456-1196a2a8c1ac.png)
+![Screenshot (463)](https://user-images.githubusercontent.com/114521915/201157000-386904ef-1680-4913-862c-4ca0e65063d2.png)
+![Screenshot (464)](https://user-images.githubusercontent.com/114521915/201157003-971b79cd-a8c9-4fa0-b251-c8919968f870.png)
