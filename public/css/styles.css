@@ -258,6 +258,11 @@ footer div p{
     header ul li{
         display: block;
     }
+
+    .products{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
     
     .navbar{
         display: block;
