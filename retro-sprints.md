@@ -1,4 +1,5 @@
-# Retrospectiva:
+# Retrospectiva de sprints
+# Sprint 1
 
 ## Que hicimos bien:
 - Buena comunicación para la primera entrega.
@@ -15,3 +16,23 @@ que problema tenemos, y como nos ayudamos.
 
 ### ¿qué dejar de hacer?
 - debemos ser más organizados con las reuniones, y no planearlas de un momento a otro.
+
+
+# Sprint 2
+
+- Que dejar de hacer: <br>
+Tener cuidado en los cambios que se hacen en cada archivo, después de modificar algo de algún compañero.
+
+- Que hacer menos: <br>
+Hacer push al repositorio sin comunicación alguna con los compañeros de equipo.
+
+- Que seguir haciendo: <br>
+Continuar con la comunicación con el grupo. <br>
+Seguir haciendo las reuniones de coordinación que ya venimos realizando. <br>
+Cuando exista una duda, tomamos captura de pantalla, y mandamos una descripción del error.
+
+- Que hacer más: <br>
+Seguir realizando las weekly meetings.
+
+- Que empezar a hacer: <br>
+Mayor intensidad al proyecto, para obtener mejores resultados.
