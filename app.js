@@ -8,6 +8,10 @@ const mainRouter = require('./routers/mainRouter');
 //Middlewire
 app.use(express.static(publicPath))
 
+//Template EJS
+app.set('views', path.resolve(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
 app.listen(port, () => {
 	console.log("server running ok in port " + port)
 });

@@ -3,27 +3,27 @@ const path = require('path');
 const mainController = {
 
     index: (req, res) => {
-        res.sendFile(path.join(__dirname,"../views/home.html"))
+        res.render('home')
     }, 
 
     iniciarSesion: (req, res) => {
-        res.sendFile(path.join(__dirname,"../views/iniciar-sesion.html"))
+        res.render('iniciar-sesion')
     },
 
     registro: (req, res) => {
-        res.sendFile(path.join(__dirname,"../views/registro.html"))
+        res.render('registro')
     },
 
     subirImagen: (req, res) => {
-        res.sendFile(path.join(__dirname,"../views/subir-imagen.html"))
+        res.render('subir-imagen')
     },
 
     estampaArticulo: (req, res) => {
-        res.sendFile(path.join(__dirname,"../views/estampar-articulo.html"))
+        res.render('estampar-articulo')
     },
 
     carrito: (req, res) => {
-        res.sendFile(path.join(__dirname,"../views/carrito-de-compras.html"))
+        res.render('carrito-de-compras')
     }
 }
 
