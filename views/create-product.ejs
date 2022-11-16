@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head') %> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/crear-producto.css">
+</head>
+<body>
+    <%- include('./partials/header') %> 
+    <body>
+        <main>
+            <h1 class="reg-title">Crear producto</h1>
+            <p class="reg-description">Registra un nuevo producto.</p>
+            <form action="/" class="form">
+                <div>
+                    <label for="nombre">Nombre:</label><br>
+                    <input type="text" name="nombre" id="nombre" required>
+                </div>
+                <div>
+                    <label for="descripcion">Descripción:</label><br>
+                    <input type="text" name="descripcion" id="descripcion" required>
+                </div>
+                <div>
+                    <label for="categoria">Categoria:</label><br>
+                    <input type="text" name="categoria" id="categoria" required>
+                </div>
+                <div>
+                    <label for="precio">Precio:</label><br>
+                    <input type="precio" name="precio" id="precio" required>
+                </div>
+            
+                <div class="container">
+                    <div class="wrapper">
+                       <div class="image">
+                          <img src="" alt="">
+                       </div>
+                       <div class="content">
+                          <div class="icon">
+                             <i class="fas fa-cloud-upload-alt"></i>
+                          </div>
+                          <div class="text">
+                             Seleccionar archivo
+                          </div>
+                       </div>
+                       <div id="cancel-btn">
+                          <i class="fas fa-times"></i>
+                       </div>
+                       <div class="file-name">
+                          File name here
+                       </div>
+                    </div>
+                    <div class="butons-img">
+                        <button id="custom-btn">Agregar archivo</button>
+                    </div>
+                    <input id="default-btn" type="file" hidden>
+                    <div class="button-div">
+                        <input href="/"  type="submit" name="register-submition" value="Crear" class="reg-button">
+                    </div>
+                 </div>
+            
+                
+            </form>
+        </main>
+    </body>
+    
+</body>
+</html>

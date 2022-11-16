@@ -24,7 +24,11 @@ const mainController = {
 
     carrito: (req, res) => {
         res.render('carrito-de-compras')
-    }
+    },
+
+    crearProducto: (req, res) => {
+        res.render('create-product')
+    },
 }
 
 module.exports = mainController

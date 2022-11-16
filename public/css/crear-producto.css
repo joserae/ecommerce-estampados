@@ -1,0 +1,432 @@
+*{
+    box-sizing: border-box;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+/*------Header-------*/
+
+header{
+    background-color: #E1EFE6;
+}
+
+header ul li {
+    list-style-type: none;
+    margin-bottom: 5px;
+    padding: 0;
+    display: none;
+}
+
+header ul li a {
+    text-decoration: none;
+    color:black;
+}
+
+.logo-login-reg{
+    display: flex;
+    margin: auto;
+    justify-content: space-around;
+    align-items: center;
+    width: 95%;
+}
+
+.logo {
+    margin-left: 0px;
+    width: 100%;
+}
+
+.img{
+   width: 30%; 
+}
+
+.hamburger-menu{
+    margin: auto;
+    font-size: 20px;
+}
+
+.navbar{
+    background-color: #AEB7B3;
+    display: none;
+    height: 50px;
+    text-align: center;
+}
+
+.list{
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
+}
+
+.shopping-cart-menu i{
+    color:#000;
+    margin: 0 10px;
+    font-size: 20px;
+}
+
+.upload-image{
+    margin: 20px;
+    display: grid;
+    height: 100%;
+    place-items: center;
+    text-align: center;
+  
+}
+
+
+.upload-image{
+    margin: 20px;
+    display: grid;
+    height: 100%;
+    place-items: center;
+    text-align: center;
+  
+}
+
+.container{
+height: 350px;
+width: 430px;
+position: relative;
+}
+.container .wrapper{
+position: relative;
+height: 300px;
+width: 100%;
+border-radius: 10px;
+background: #fff;
+border: 2px dashed #c2cdda;
+display: flex;
+align-items: center;
+justify-content: center;
+overflow: hidden;
+}
+.wrapper.active{
+border: none;
+}
+.wrapper .image{
+position: absolute;
+height: 100%;
+width: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.wrapper img{
+height: 100%;
+width: 100%;
+object-fit: cover;
+}
+.wrapper .icon{
+font-size: 100px;
+color: #9658fe;
+}
+.wrapper .text{
+font-size: 20px;
+font-weight: 500;
+color: #5B5B7B;
+}
+.wrapper #cancel-btn i{
+position: absolute;
+font-size: 20px;
+right: 15px;
+top: 15px;
+color: #9658fe;
+cursor: pointer;
+display: none;
+}
+.wrapper.active:hover #cancel-btn i{
+display: block;
+}
+.wrapper #cancel-btn i:hover{
+color: #e74c3c;
+}
+.wrapper .file-name{
+position: absolute;
+bottom: 0px;
+width: 100%;
+padding: 8px 0;
+font-size: 18px;
+color: #fff;
+display: none;
+background: linear-gradient(135deg,#3a8ffe 0%,#9658fe 100%);
+}
+.wrapper.active:hover .file-name{
+display: block;
+}
+.container #custom-btn{
+margin-top: 30px;
+display: block;
+width: 100%;
+height: 50px;
+border: none;
+outline: none;
+border-radius: 25px;
+color: #fff;
+font-size: 18px;
+font-weight: 500;
+letter-spacing: 1px;
+text-transform: uppercase;
+cursor: pointer;
+background: linear-gradient(135deg,#3a8ffe 0%,#9658fe 100%);
+}
+
+.container #siguiente-btn{
+margin-top: 30px;
+display: block;
+width: 100%;
+height: 50px;
+border: none;
+outline: none;
+border-radius: 25px;
+color: #fff;
+font-size: 18px;
+font-weight: 500;
+letter-spacing: 1px;
+text-transform: uppercase;
+cursor: pointer;
+background: linear-gradient(135deg,#63c9a0 0%,#aee636 100%);
+}
+
+.container #custom-btn{
+    margin-top: 30px;
+    outline: none;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    background: linear-gradient(135deg,#3a8ffe 0%,#9658fe 100%);
+  }
+/*------------Imagen principal-------------------*/
+
+.main-image-div{
+    border: dotted 5px; 
+    display: none;
+}
+
+.main-image{
+    border: dotted 5px;
+    text-align: center;
+}
+
+/*------------------main------------------*/
+.main-message{
+    text-align: center;
+}
+
+.button-div{
+    text-align: center;
+}
+
+.myButton {
+    
+    text-align:center;
+	background:linear-gradient(to bottom, #160C28 5%, #160C28 100%);
+	background-color:#160C28;
+	border-radius:5px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	padding:14px 37px;
+	text-decoration:none;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #160C28 5%, #160C28 100%);
+	background-color:#160C28;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+/*----------------article-----------------*/
+
+section article{
+    
+    margin: 10px auto;
+    width: 95%;
+    background-color: #dadfdd;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.images{
+    margin-top: 5px;
+    width: 90%;
+    border-radius: 5px;
+}
+
+/*----------Registro.html-------------------*/
+
+.reg-title{
+    text-align: center;
+}
+
+.reg-description{
+    text-align: center;
+}
+
+main form div{
+    margin-bottom: 10px;
+}
+
+main form div label{
+    margin: 30px;
+}
+
+form div input{
+    width: 85%;
+    margin: 6px 30px;
+    
+}
+
+.politica-datos-div{
+   margin: auto auto 10px auto; 
+}
+
+.politica-datos{
+    width: 30px;
+    margin: auto 5px auto 20px;
+}
+
+.reg-button {
+    
+    text-align:center;
+	background:linear-gradient(to bottom, #160C28 5%, #160C28 100%);
+	background-color:#160C28;
+	border-radius:5px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	padding:14px 37px;
+	text-decoration:none;
+    width: 50%;
+}
+.reg-button:hover {
+	background:linear-gradient(to bottom, #160C28 5%, #160C28 100%);
+	background-color:#160C28;
+}
+.reg-button:active {
+	position:relative;
+	top:1px;
+}
+/*-----------------Footer------------------*/
+footer{
+    background-color: #E1EFE6;
+    display: flex;
+    justify-content: space-around;
+}
+
+footer div p{
+    font-size: 11px;
+    color: black;
+}
+
+/*-----------media queries-------------*/
+
+@media(min-width: 426px){
+    /*main page*/
+    .products{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /*registro.html*/
+
+    form div input{
+        width: 70%;
+        margin: 6px 15%;
+        
+    }
+
+    main form div label{
+        margin: 15%;
+    }
+
+    .politica-datos-div{
+        margin: auto 0px 10px 11%; 
+    }
+     
+    .politica-datos{
+         width: 30px;
+         margin: auto 8px auto 20px;
+    }
+
+    .button-div{
+        text-align: center;
+    }
+}
+
+@media(min-width: 769px){
+
+    /*Header*/
+
+    .hamburger-menu {
+        display: none;
+        margin: 0;
+    }
+
+    .login-register-menu{
+        margin: auto;
+        width: 100%;
+
+    }
+
+    .login-ul{
+        display: flex;
+        justify-content: right;
+        align-items: center;
+        width: 100%;
+    }
+
+    .login-ul li {
+        display: block;
+        margin: 0 20px;
+    }
+
+    header ul li{
+        display: block;
+    }
+
+    .products{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    
+    .navbar{
+        display: block;
+    }
+
+    /*registro.html*/
+
+    .form{
+        display: block;
+        width: 55%;
+        margin: auto;
+    }
+
+    form div input{
+        display: block;
+        width: 98%; 
+        margin: 6px auto;
+        text-align: center;
+    }
+
+    main form div label{
+        margin: 0%;
+    }
+
+    .politica-datos-div{
+        display: flex;
+    }
+     
+    .politica-datos[type=checkbox]{
+        width: 10px;
+        margin: 0px 10px;
+    }
+}

@@ -16,4 +16,6 @@ router.get('/estamparArticulo', mainController.estampaArticulo);
 
 router.get('/carrito', mainController.carrito);
 
+router.get('/crearProducto', mainController.crearProducto);
+
 module.exports = router;
