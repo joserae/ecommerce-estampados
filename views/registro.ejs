@@ -1,46 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panamérica Estampados - ¡Estampa tu producto en sencillos pasos!</title>
-    <link rel="icon" href="/img/logo-cock.png">
-    <link rel="stylesheet" href="/css/normalize.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+<%- include("partials/head.ejs") %>
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-    <header>
-        <section class="logo-login-reg">
-            <div class="logo">
-                <a href="home"><img src="/img/logo.png" alt="Logo" class="img"></a>
-            </div>
-            <div class="login-register-menu">
-                <ul class="login-ul">
-                    <li><a href="/iniciar-sesion">Iniciar sesión</a></li>
-                    <li><a href="/registro">Regístrate</a></li>
-                </ul>
-            </div>
-            <div class="shopping-cart-menu">
-                <a href="/carrito"><i class="fas fa-shopping-cart"></i></a>
-            </div>
-            <div class="hamburger-menu">
-                <i class="fas fa-bars"></i>
-            </div>
-        </section>
-        <nav class="navbar">
-            <ul class="list">
-                <li>Estampa tu artículo</li>
-                <li>Productos</li>
-                <li>Quienes somos</li>
-                <li>Contacto</li>
-            </ul>
-        </nav>
-    </header>
+    <%- include("partials/header.ejs") %>
+
     <main>
         <h1 class="reg-title">Registro</h1>
         <p class="reg-description">Regístrate para ordenar tus estampados, ver tus ordenes y ajustar tus datos.</p>
@@ -89,16 +54,7 @@
             </div>
         </form>
     </main>
-    <footer>
-        <div>
-            <p>Ⓒ2022 Grupo 2</p>
-        </div>
-        <div>
-            <p>Términos de uso</p>
-        </div>
-        <div>
-            <p>Política de datos</p>
-        </div>
-    </footer>
+    
+    <%- include("partials/footer.ejs") %>
 </body>
 </html>

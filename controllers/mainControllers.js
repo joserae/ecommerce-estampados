@@ -2,7 +2,7 @@ const path = require('path');
 
 const mainController = {
 
-    index: (req, res) => {
+    home: (req, res) => {
         res.render('home')
     }, 
 

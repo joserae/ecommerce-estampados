@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("partials/head.ejs") %>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <%- include("partials/header.ejs") %>
+
+    <section>
+        <div class="main-image-div">
+            <p class="main-image">reservado para la imágen principal</p>
+        </div>
+    </section>
+
+    <main>
+        <div>
+            <h1 class="main-message">¡Estampa tu artículo en 4 pasos!</h1>
+            
+        </div>
+        <div class="button-div">
+            <a href="estamparArticulo" class="myButton">Empezar</a>
+        </div>
+
+        <section class="products">
+            <article>
+                <img class="images" src="/img/camiseta-1.jpeg" alt="camiseta 1">
+                <h3>Camisetas</h3>
+            </article>
+            <article>
+                <img class="images" src="/img/mug-1.jpeg" alt="Mug 1">
+                <h3>Mugs</h3>
+            </article>
+            <article>
+                <img class="images" src="/img/sweater-1.jpeg" alt="Mug 1">
+                <h3>Sweaters</h3>
+            </article>
+        </section>
+
+    </main>
+
+    <%- include("partials/footer.ejs") %>
+</body>
+</html>

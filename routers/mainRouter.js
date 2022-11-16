@@ -2,9 +2,9 @@ const express = require('express');
 const router = express.Router();
 const mainController = require('../controllers/mainControllers')
 
-router.get('/', mainController.index);
+router.get('/', mainController.home);
 
-router.get('/home', mainController.index);
+router.get('/home', mainController.home);
 
 router.get('/iniciar-sesion', mainController.iniciarSesion);
 
