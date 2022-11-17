@@ -18,4 +18,6 @@ router.get('/carrito', mainController.carrito);
 
 router.get('/crearProducto', mainController.crearProducto);
 
+router.get('/editarProducto', mainController.EditarProducto);
+
 module.exports = router;

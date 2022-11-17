@@ -29,6 +29,10 @@ const mainController = {
     crearProducto: (req, res) => {
         res.render('create-product')
     },
+
+    EditarProducto: (req, res) => {
+        res.render('edit-product')
+    },
 }
 
 module.exports = mainController
