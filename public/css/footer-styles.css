@@ -1,0 +1,13 @@
+/*-----------------Footer------------------*/
+
+footer{
+    background-color: var(--gris-oscuro);
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+footer div p{
+    font-size: 11px;
+    color: white;
+}

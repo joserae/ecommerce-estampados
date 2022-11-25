@@ -1,68 +1,7 @@
-*{
+/* *{
     box-sizing: border-box;
     font-family: 'Source Sans Pro', sans-serif;
-}
-/*------Header-------*/
-
-header{
-    background-color: #E1EFE6;
-}
-
-header ul li {
-    list-style-type: none;
-    margin-bottom: 5px;
-    padding: 0;
-    display: none;
-}
-
-header ul li a {
-    text-decoration: none;
-    color:black;
-}
-
-.logo-login-reg{
-    display: flex;
-    margin: auto;
-    justify-content: space-around;
-    align-items: center;
-    width: 95%;
-}
-
-.logo {
-    margin-left: 0px;
-    width: 100%;
-}
-
-.img{
-   width: 30%; 
-}
-
-.hamburger-menu{
-    margin: auto;
-    font-size: 20px;
-}
-
-.navbar{
-    background-color: #AEB7B3;
-    display: none;
-    height: 50px;
-    text-align: center;
-}
-
-.list{
-    display: flex;
-    justify-content: space-around;
-    text-align: center;
-    vertical-align: middle;
-    line-height: 50px;
-}
-
-.shopping-cart-menu i{
-    color:#000;
-    margin: 0 10px;
-    font-size: 20px;
-}
-
+} */
 
 /*------------Imagen principal-------------------*/
 
@@ -181,17 +120,6 @@ form div input{
 	position:relative;
 	top:1px;
 }
-/*-----------------Footer------------------*/
-footer{
-    background-color: #E1EFE6;
-    display: flex;
-    justify-content: space-around;
-}
-
-footer div p{
-    font-size: 11px;
-    color: black;
-}
 
 /*-----------media queries-------------*/
 
@@ -230,44 +158,11 @@ footer div p{
 
 @media(min-width: 769px){
 
-    /*Header*/
-
-    .hamburger-menu {
-        display: none;
-        margin: 0;
-    }
-
-    .login-register-menu{
-        margin: auto;
-        width: 100%;
-
-    }
-
-    .login-ul{
-        display: flex;
-        justify-content: right;
-        align-items: center;
-        width: 100%;
-    }
-
-    .login-ul li {
-        display: block;
-        margin: 0 20px;
-    }
-
-    header ul li{
-        display: block;
-    }
-
     .products{
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
     }
     
-    .navbar{
-        display: block;
-    }
-
     /*registro.html*/
 
     .form{
