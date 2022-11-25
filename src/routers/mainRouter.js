@@ -14,4 +14,8 @@ router.get('/crearProducto', mainController.crearProducto);
 
 router.get('/editarProducto', mainController.EditarProducto);
 
+router.get('/termsAndConditions', mainController.termsAndConditions);
+
+router.get('/quienesSomos', mainController.quienesSomos);
+
 module.exports = router;

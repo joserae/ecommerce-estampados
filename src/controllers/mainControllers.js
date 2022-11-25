@@ -33,6 +33,13 @@ const mainController = {
     EditarProducto: (req, res) => {
         res.render('edit-product')
     },
+
+    termsAndConditions: (req, res) =>{
+        res.render("terms-and-conditions")
+    },
+    quienesSomos: (req, res) =>{
+        res.render("quienes-somos-contacto")
+    }
 }
 
 module.exports = mainController
