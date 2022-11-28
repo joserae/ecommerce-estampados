@@ -9,23 +9,29 @@
     <main>
         <h1>Adidas Superstar</h1>
         <h3>Tenis masculino</h3>
-        <img class="images" src="/img/adidas-superstar.jpg" alt="Adidas Superstar">
-        <label for="">Talla:</label>
-        <select name="size">
-            <option value="37" selected>37</option>
-            <option value="38">38</option>
-            <option value="39">39</option>
-            <option value="40">40</option>
-            <option value="41">41</option>
-            <option value="42">42</option>
-        </select><br>
-        <summary>
-            <p class="stock"><strong>Si hay stock.</strong></p><br>
-            <p><strong>$224.000</strong> + envío</p><br>
-            <div class="button-div">
-                <button class="myButton">Comprar ahora</button>
-            </div>
-        </summary>
+
+        <article class="article">
+            <img class="images" src="/img/adidas-superstar.jpg" alt="Adidas Superstar">
+
+            <summary>
+                <label for="">Talla:</label>
+                <select name="size">
+                    <option value="37" selected>37</option>
+                    <option value="38">38</option>
+                    <option value="39">39</option>
+                    <option value="40">40</option>
+                    <option value="41">41</option>
+                    <option value="42">42</option>
+                </select><br>
+                
+                    <p class="stock"><strong>Si hay stock.</strong></p><br>
+                    <p><strong>$224.000</strong> + envío</p><br>
+                    <div class="button-div">
+                        <button class="myButton">Comprar ahora</button>
+                    </div>
+            </summary>
+        </article>
+        
     </main>
 
     <%- include("partials/footer.ejs") %>

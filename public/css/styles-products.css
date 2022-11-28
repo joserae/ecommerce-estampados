@@ -1,3 +1,4 @@
+/*--------products.ejs-------*/
 h1{
     text-align: center;
 }
@@ -14,7 +15,7 @@ main article h3 a:visited{
     color: black;
 }
 
-.images{
+.product-images{
     margin-top: 5px;
     width: 90%;
     border-radius: 5px;
@@ -27,6 +28,14 @@ main article h3 a:visited{
 
 main h3{
     text-align: center;
+}
+
+.images{
+    margin-top: 5px;
+    width: 90%;
+    border-radius: 5px;
+    width: 90%;
+    margin-left: 5%;
 }
 
 main summary p, main label{
@@ -66,15 +75,34 @@ main summary p, main label{
 	top:1px;
 }
 
+/*------------media queries------------*/
+
 @media(min-width: 426px){
+    /*---details.ejs---*/
     summary{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: left;
+        margin-left: 15px;
+    }
+
+    .images{
+        width: 40%;
+        margin: 10px 0;
+    }
+
+    .article{
         display: flex;
         flex-direction: row;
         justify-content: space-around;
-        align-items: center;
+        width: 95%;
+        margin: auto;
     }
 
-    main article summary{
+
+    /*---productos.ejs----*/
+    .description{
         display: flex;
         flex-direction: row;
         justify-content: space-around;
