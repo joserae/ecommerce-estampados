@@ -18,4 +18,8 @@ router.get('/termsAndConditions', mainController.termsAndConditions);
 
 router.get('/quienesSomos', mainController.quienesSomos);
 
+router.get("/productos", mainController.productos);
+
+router.get("/detalle", mainController.detalle);
+
 module.exports = router;

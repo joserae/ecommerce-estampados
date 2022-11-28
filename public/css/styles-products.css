@@ -1,0 +1,83 @@
+h1{
+    text-align: center;
+}
+
+main article{
+    background-color: #dadfdd;
+}
+
+main article h3 a{
+    text-decoration: none;
+}
+
+main article h3 a:visited{
+    color: black;
+}
+
+.images{
+    margin-top: 5px;
+    width: 90%;
+    border-radius: 5px;
+    width: 90%;
+    margin-left: 5%;
+}
+
+
+/*-------------detalle.ejs-------------*/
+
+main h3{
+    text-align: center;
+}
+
+main summary p, main label{
+    margin-left: 5%;
+}
+
+.stock{
+    color: rgb(215, 215, 5);
+    margin-left: 5%;
+}
+
+.button-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.myButton {
+    margin: 5px, 10%;
+	background:linear-gradient(to bottom, #160C28 5%, #160C28 100%);
+	background-color:#160C28;
+	border-radius:5px;
+	display:flex;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	padding:14px 37px;
+	text-decoration:none;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #160C28 5%, #160C28 100%);
+	background-color:#160C28;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+@media(min-width: 426px){
+    summary{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    main article summary{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+    }
+}

@@ -30,12 +30,26 @@ video{
     text-align: center;
 }
 
+
+
+.search-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.search{
+    text-align: center;
+}
+
 .button-div{
     text-align: center;
 }
 
 .myButton {
-    
+    margin-top: 5px;
     text-align:center;
 	background:linear-gradient(to bottom, #160C28 5%, #160C28 100%);
 	background-color:#160C28;
@@ -72,6 +86,14 @@ section article{
     margin-top: 5px;
     width: 90%;
     border-radius: 5px;
+}
+
+article h3 a{
+    text-decoration: none;
+}
+
+article h3 a:visited{
+    color: black;
 }
 
 /*----------Registro.html-------------------*/
@@ -138,6 +160,10 @@ form div input{
     .products{
         display: grid;
         grid-template-columns: 1fr 1fr;
+    }
+
+    .search{
+        width: 40%;
     }
 
     /*registro.html*/

@@ -37,8 +37,17 @@ const mainController = {
     termsAndConditions: (req, res) =>{
         res.render("terms-and-conditions")
     },
+
     quienesSomos: (req, res) =>{
         res.render("quienes-somos-contacto")
+    },
+
+    productos: (req, res) =>{
+        res.render("productos")
+    },
+
+    detalle: (req, res) =>{
+        res.render("detalle")
     }
 }
 
