@@ -29,39 +29,34 @@
                     <input type="precio" name="precio" id="precio" required>
                 </div>
             
-                <div class="container">
-                    <div class="wrapper">
-                       <div class="image">
+                <article class="container">
+                    <h2 class="wrapper">
+                       <figure class="image">
                           <img src="" alt="">
-                       </div>
+                       </figure>
                        <div class="content">
-                          <div class="icon">
+                          <h3 class="icon">
                              <i class="fas fa-cloud-upload-alt"></i>
-                          </div>
-                          <div class="text">
+                          </h3>
+                          <p class="text">
                              Seleccionar archivo
-                          </div>
+                          </p>
                        </div>
-                       <div id="cancel-btn">
-                          <i class="fas fa-times"></i>
-                       </div>
-                       <div class="file-name">
-                          File name here
-                       </div>
-                    </div>
-                    <div class="butons-img">
-                        <button id="custom-btn">Agregar archivo</button>
-                    </div>
-                    <input id="default-btn" type="file" hidden>
-                    <div class="button-div">
-                        <input href="/"  type="submit" name="register-submition" value="Crear" class="reg-button">
-                    </div>
-                 </div>
-            
-                
+                    
+                    </h2>
+                    <section class="butons-img">
+                        <button id="custom-btn">Agregar imagen</button>
+                    </section>
+                    <nav class="form-group">
+                        <button class="btn btn-success">Guardar</button>
+                        <a href="/productos" class="btn btn-primary">Volver</a>
+                    </nav>
+                   
+                </article>
             </form>
         </main>
-    </body>
+
+        <%- include('./partials/footer') %> 
     
-</body>
-</html>
+    </body>
+    </html>

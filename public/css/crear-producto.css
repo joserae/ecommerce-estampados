@@ -1,3 +1,7 @@
+/* *{
+    box-sizing: border-box;
+    font-family: 'Source Sans Pro', sans-serif;
+} */
 
 .upload-image{
     margin: 20px;
@@ -7,7 +11,6 @@
     text-align: center;
   
 }
-
 
 .upload-image{
     margin: 20px;
@@ -19,7 +22,7 @@
 }
 
 .container{
-height: 350px;
+height: 500px;
 width: 430px;
 position: relative;
 }
@@ -251,6 +254,18 @@ form div input{
 	position:relative;
 	top:1px;
 }
+.form-group{
+    text-align: center;
+    border-radius: 5px;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 15px;
+    padding: 14px 37px;
+    text-decoration: none;
+    width: 100%;
+}
 
 /*-----------media queries-------------*/
 
@@ -289,11 +304,44 @@ form div input{
 
 @media(min-width: 769px){
 
+    /*Header*/
+
+    .hamburger-menu {
+        display: none;
+        margin: 0;
+    }
+
+    .login-register-menu{
+        margin: auto;
+        width: 100%;
+
+    }
+
+    .login-ul{
+        display: flex;
+        justify-content: right;
+        align-items: center;
+        width: 100%;
+    }
+
+    .login-ul li {
+        display: block;
+        margin: 0 20px;
+    }
+
+    header ul li{
+        display: block;
+    }
+
     .products{
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
     }
     
+    .navbar{
+        display: block;
+    }
+
     /*registro.html*/
 
     .form{
@@ -322,3 +370,4 @@ form div input{
         margin: 0px 10px;
     }
 }
+/*
