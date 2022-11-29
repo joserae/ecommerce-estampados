@@ -1,6 +1,6 @@
 /*-------Body-------*/
 body {
-    background-color: var(--gris-claro2);
+    background-color: var(--gris-claro);
 }
 
 /* Carrito de compras */
@@ -83,7 +83,7 @@ body {
 .shopping-cart-list{
     width: 90%;
     background-color: #ffffff;
-    border-radius: 20px;
+    border-radius: 10px;
     /* box-shadow: 0px 25px 40px var(--azul); */
     margin: 10px auto;
 }
@@ -115,7 +115,6 @@ body {
 
 .cart-product-description p{
     margin-bottom: 10px;
-    line-height: 10px;
     width: 100%;
     text-align: center;
 }
@@ -187,7 +186,7 @@ body {
     background-color: white;
     margin: auto;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .resume-tittle{
