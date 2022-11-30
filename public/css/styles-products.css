@@ -3,15 +3,19 @@ h1{
     text-align: center;
 }
 
-main article{
+main section article{
     background-color: #dadfdd;
+    margin: 15px auto;
+    width: 95%;
+    border-radius: 5px;
 }
 
-main article h3 a{
+main section article h3 a{
     text-decoration: none;
+    color: black;
 }
 
-main article h3 a:visited{
+main section article h3 a:visited{
     color: black;
 }
 
@@ -101,11 +105,29 @@ main summary p, main label{
     }
 
 
-    /*---productos.ejs----*/
+    /*---products.ejs----*/
     .description{
         display: flex;
         flex-direction: row;
         justify-content: space-around;
         align-items: center;
+    }
+
+    main section article{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        width: 93%;
+        height: 300px;
+        margin: 8px auto;
+    }
+    .product-images{
+        width: 80%;
+    }
+}
+
+@media(min-width: 769px){
+    .product-images{
+        width: 60%;
     }
 }

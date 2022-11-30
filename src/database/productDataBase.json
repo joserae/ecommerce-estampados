@@ -6,7 +6,8 @@
 		"price": 350000,
 		"category": "Runners",
 		"description": " bla bla bla ",
-		"image": "nike-air-max90.jpeg"
+		"image": "nike-air-max90.jpeg",
+		"stock": true
 	},
 	{
 		"id": 2,
@@ -15,7 +16,8 @@
 		"price": 420000,
 		"category": "Lifestyle",
 		"description": "Descripcion bla bla",
-		"image": "adidas-yeezy.jpeg"
+		"image": "adidas-yeezy.jpeg",
+		"stock": true
 	},
 	{
 		"id": 3,
@@ -24,7 +26,8 @@
 		"price": 224000,
 		"category": "Tenis",
 		"description": "Descripcion bla bla 2lkjaskd",
-		"image": "adidas-superstar.jpg"
+		"image": "adidas-superstar.jpg",
+		"stock": true
 	},
 	{
 		"id": 4,
@@ -33,7 +36,8 @@
 		"price": 304000,
 		"category": "Lifestyle",
 		"description": "Descripcion bla bla 2lkjaskd",
-		"image": "vans-old-skool.jpeg"
+		"image": "vans-old-skool.jpeg",
+		"stock": true
 	},
 	{
 		"id": 5,
@@ -42,6 +46,7 @@
 		"price": 420000,
 		"category": "Runners",
 		"description": "Descripcion bla bla 2lkjaskd",
-		"image": "puma-rsx.jpeg"
+		"image": "puma-rsx.jpeg",
+		"stock": true
 	}
 ]

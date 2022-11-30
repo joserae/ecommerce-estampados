@@ -31,17 +31,18 @@
                 <option value="new balance">New Balance</option>
             </select>
         </form>
-
+            <section class="product-section-laptop-view">
             <% products.forEach(product => { %>
                 <article>
                     <a href="/products/productDetails/<%= product.id %>"><img class="product-images" src="/img/<%=product.image%>" alt="<%=products.name%>"></a>
                     <summary class="description">
                         <h3><a href="/products/productDetails/<%= product.id %>"><%= product.name %></a></h3>
                         <p>Estilo: <%= product.category %> </p>
-                        <p><strong><%= product.price %></strong></p>
+                        <p><strong>$COP <%= product.price %></strong></p>
                     </summary>
                 </article>
               <% }) %>
+            </section>
 
     </main>
 
