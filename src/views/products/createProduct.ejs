@@ -11,22 +11,31 @@
         <main>
             <h1 class="reg-title">Crear producto</h1>
             <p class="reg-description">Registra un nuevo producto.</p>
-            <form action="/" class="form">
+            <form method="POST" action="../products/createProduct" class="form">
                 <div>
                     <label for="nombre">Nombre:</label><br>
-                    <input type="text" name="nombre" id="nombre" required>
+                    <input type="text" name="name" id="nombre" required>
                 </div>
                 <div>
                     <label for="descripcion">Descripción:</label><br>
-                    <input type="text" name="descripcion" id="descripcion" required>
+                    <input type="text" name="description" id="descripcion" required>
                 </div>
                 <div>
-                    <label for="categoria">Categoria:</label><br>
-                    <input type="text" name="categoria" id="categoria" required>
+                    <label for="descripcion">Talla:</label><br>
+                    <input type="text" name="size" id="size" required>
+                </div>
+                <div>
+                    <label for="categoria">Estilo:</label><br>
+                    <select name="category">
+                        <option value="select" selected>Seleccione</option>
+                        <option value="tenis">Tenis</option>
+                        <option value="runners">Runners</option>
+                        <option value="lifestyle">lifestyle</option>
+                    </select><br>
                 </div>
                 <div>
                     <label for="precio">Precio:</label><br>
-                    <input type="precio" name="precio" id="precio" required>
+                    <input type="precio" name="price" id="precio" required>
                 </div>
             
                 <article class="container">

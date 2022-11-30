@@ -4,7 +4,7 @@ h1{
 }
 
 main section article{
-    background-color: #dadfdd;
+    background-color: #F7F7F7;
     margin: 15px auto;
     width: 95%;
     border-radius: 5px;
@@ -129,5 +129,23 @@ main summary p, main label{
 @media(min-width: 769px){
     .product-images{
         width: 60%;
+    }
+}
+
+@media(min-width: 1025px){
+    .product-images{
+        width: 34%;
+    }
+}
+
+@media(min-width: 1800px){
+    .product-images{
+        width: 29%;
+    }
+}
+
+@media(min-width: 2100px){
+    .product-images{
+        width: 23%;
     }
 }

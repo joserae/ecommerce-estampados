@@ -5,8 +5,11 @@ const path = require('path');
 const publicPath = path.resolve(__dirname, "../public");
 const mainRouter = require('./routers/mainRouter');
 
-//Middlewire
+//Middleware
 app.use(express.static(publicPath))
+//Middleware para capturar la información por POST y convertirlo a JSON
+app.use(express.urlencoded({ extended: false}));
+app.use(express.json());
 
 //Template EJS
 app.set('views', path.resolve(__dirname, 'views'));
