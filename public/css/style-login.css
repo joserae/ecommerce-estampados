@@ -1,0 +1,142 @@
+/* *{
+   margin:0;
+   padding:0;
+   box-sizing: border-box;
+} */
+
+body{
+   /* display:flex; */
+   justify-content: center;
+   height: 100vh;
+   font-family:Arial, Helvetica, sans-serif;
+   /* background: linear-gradient(27deg, #AEB7B3 50%, #AEB7B3 50%); */
+   background-color: var(--gris-claro);
+   color: black;
+}
+
+.form-body{
+width: 400px;
+min-width:300px;
+border-radius:10px;
+border-top-left-radius: 10px;
+border-bottom-right-radius:50px;
+margin:10px;
+text-align: center;
+margin: auto;
+}
+
+.form-body img{
+   width: 150px;
+   display:block;
+   margin:20px auto;
+}
+
+.nav-logo-base{
+   float: left;
+    text-indent: -500px;
+    padding: 10px 40px 0 20px;
+    background-position: -10px -50px;
+    width: 80px;
+    height: 27px;
+}
+
+.text{
+   text-align: center;
+   font-size: 30px;
+   font-weight:600;
+   color:#000;
+   margin-bottom:25px;
+}
+
+.form-body input{
+display:block;
+margin:auto;
+height:40px;
+width:75%;
+padding-left: 10px;
+color: #000;
+border:1px solid #fff;
+border-radius:2px;
+font-family:Verdana, Geneva, Tahoma, sans-serif;
+background-color: transparent;
+border-top-left-radius: 18px;
+font-size:16px;
+outline: none;
+}
+
+.form-body input[type="password"]{
+   margin-top:20px;
+}
+
+::placeholder{
+   font-size: 16px;
+   color: rgba(40, 34, 34, 0.596);
+}
+
+.form-body button{
+   display:block;
+   margin:auto;
+   margin-top:25px;
+   margin-bottom: 30px;
+   height: 40px;
+   width: 78%;
+   background: transparent;
+   color:#000;
+   border-radius:2px;
+   cursor:pointer;
+   outline: none;
+   border: 2px solid #2980b9;
+   transition: all 0.5 ease;
+}
+
+.form-body button:hover{
+   color:#000;
+   border:2px solid #3498db;
+   background: linear-gradient(#AEB7B3, #AEB7B3);
+}
+
+
+/* footer {
+    background-color: #E1EFE6;
+    display: flex;
+    justify-content: space-around;
+    background-color:gray;
+    flex-direction:row;
+    position: absolute;
+    margin-top: 20px;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    }
+
+footer div p {
+    font-size: 11px;
+    color: black;
+    position: absolute;
+    bottom: 0;
+    background-color: gray;
+} */
+
+.p{
+   width: 100px;
+  color: #fff;
+}
+
+.check-acount{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   padding-bottom: 10px;
+}
+
+.form-body input[type="checkbox"]{
+   width: 10px;
+   height: 10px;
+   margin: 0 5px;
+}
+
+.form-body a {
+   text-decoration: none;
+   color: #000;
+
+}

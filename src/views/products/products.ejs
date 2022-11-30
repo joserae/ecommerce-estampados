@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("../partials/head.ejs") %>
+    <link rel="stylesheet" href="/css/styles-products.css">
+</head>
+<body>
+    <%- include("../partials/header.ejs") %>
+
+    <main>
+        <h1>Productos</h1>
+        <h3>Filtrar</h3>
+        <form action="" method="get">
+            <label for="">Por género:</label>
+            <select name="gender">
+                <option value="all" selected>Todos</option>
+                <option value="male">Masculino</option>
+                <option value="female">Femenino</option>
+            </select><br>
+            <label for="">Por estilo:</label>
+            <select name="style">
+                <option value="select" selected>Seleccione</option>
+                <option value="tenis">Tenis</option>
+                <option value="runners">Runners</option>
+                <option value="lifestyle">lifestyle</option>
+            </select><br>
+            <label for="">Por marca:</label>
+            <select name="brand">
+                <option value="select" selected>Seleccione</option>
+                <option value="adidas">Adidas</option>
+                <option value="nike">Nike</option>
+                <option value="new balance">New Balance</option>
+            </select>
+        </form>
+            <section class="product-section-laptop-view">
+            <% products.forEach(product => { %>
+                <article>
+                    <a href="/products/productDetails/<%= product.id %>"><img class="product-images" src="/img/<%=product.image%>" alt="<%=products.name%>"></a>
+                    <summary class="description">
+                        <h3><a href="/products/productDetails/<%= product.id %>"><%= product.name %></a></h3>
+                        <p>Estilo: <%= product.category %> </p>
+                        <p><strong>$COP <%= product.price %></strong></p>
+                    </summary>
+                </article>
+              <% }) %>
+            </section>
+
+    </main>
+
+    <%- include("../partials/footer.ejs") %>
+</body>
+</html>
