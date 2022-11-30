@@ -1,0 +1,47 @@
+[
+	{
+		"id": 1,
+		"name": "Air Max 90",
+		"size": "US42",
+		"price": 350000,
+		"category": "Runners",
+		"description": " bla bla bla ",
+		"image": "nike-air-max90.jpeg"
+	},
+	{
+		"id": 2,
+		"name": "Adidas Yeezy",
+		"size": "US39",
+		"price": 420000,
+		"category": "Lifestyle",
+		"description": "Descripcion bla bla",
+		"image": "adidas-yeezy.jpeg"
+	},
+	{
+		"id": 3,
+		"name": "Adidas Superstar",
+		"size": "US37",
+		"price": 224000,
+		"category": "Tenis",
+		"description": "Descripcion bla bla 2lkjaskd",
+		"image": "adidas-superstar.jpg"
+	},
+	{
+		"id": 4,
+		"name": "Vans Old Skool",
+		"size": "US38",
+		"price": 304000,
+		"category": "Lifestyle",
+		"description": "Descripcion bla bla 2lkjaskd",
+		"image": "vans-old-skool.jpeg"
+	},
+	{
+		"id": 5,
+		"name": "Puma RS-X",
+		"size": "US41",
+		"price": 420000,
+		"category": "Runners",
+		"description": "Descripcion bla bla 2lkjaskd",
+		"image": "puma-rsx.jpeg"
+	}
+]

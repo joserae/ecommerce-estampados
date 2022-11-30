@@ -1,25 +1,23 @@
 const path = require('path');
+const products = require('../database/productDataBase.json')
 
 const productController = {
-    
-    carrito: (req, res) => {
-        res.render('carrito-de-compras')
+
+    createProduct: (req, res) => {
+        res.render('products/create-product')
     },
 
-    crearProducto: (req, res) => {
-        res.render('create-product')
+    editProduct: (req, res) => {
+        res.render('products/edit-product')
     },
 
-    EditarProducto: (req, res) => {
-        res.render('edit-product')
+    products: (req, res) =>{
+        res.render('products/products', {products})
     },
 
-    productos: (req, res) =>{
-        res.render('productos')
-    },
-
-    detalle: (req, res) =>{
-        res.render('detalle')
+    productDetails: (req, res) =>{
+        id = req.params['id'] - 1
+        res.render('products/productDetails', {products,id})
     }
 }
 

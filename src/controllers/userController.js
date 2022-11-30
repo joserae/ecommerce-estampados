@@ -2,12 +2,12 @@ const path = require('path');
 
 const userController = {
 
-    iniciarSesion: (req, res) => {
-        res.render('iniciar-sesion')
+    login: (req, res) => {
+        res.render('users/login')
     },
 
-    registro: (req, res) => {
-        res.render('registro')
+    register: (req, res) => {
+        res.render('users/register')
     }
 }
 

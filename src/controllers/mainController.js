@@ -1,17 +1,18 @@
 const path = require('path');
+const products = require('../database/productDataBase.json')
 
 const mainController = {
 
     home: (req, res) => {
-        res.render('home')
+        res.render('main/home')
     }, 
 
     termsAndConditions: (req, res) =>{
-        res.render("terms-and-conditions")
+        res.render('main/terms-and-conditions')
     },
 
-    quienesSomos: (req, res) =>{
-        res.render("quienes-somos-contacto")
+    aboutUs: (req, res) =>{
+        res.render('main/about-us')
     }
 }
 

@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include("partials/head.ejs") %>
+<%- include("../partials/head.ejs") %>
     <link rel="stylesheet" href="/css/styles-products.css">
 </head>
 <body>
-    <%- include("partials/header.ejs") %>
+    <%- include("../partials/header.ejs") %>
 
     <main>
-        <h1>Adidas Superstar</h1>
-        <h3>Tenis masculino</h3>
+        <h1> <%= products[id].name %> </h1>
+        <h3> <%= products[id].category %> </h3>
 
         <article class="article">
-            <img class="images" src="/img/adidas-superstar.jpg" alt="Adidas Superstar">
+            <img class="images" src="/img/<%= products[id].image %>" alt="<%= products[id].name %>">
 
             <summary>
                 <label for="">Talla:</label>
@@ -25,7 +25,7 @@
                 </select><br>
                 
                     <p class="stock"><strong>Si hay stock.</strong></p><br>
-                    <p><strong>$224.000</strong> + envío</p><br>
+                    <p><strong><%= products[id].price %></strong> + envío</p><br>
                     <div class="button-div">
                         <button class="myButton">Comprar ahora</button>
                     </div>
@@ -34,6 +34,6 @@
         
     </main>
 
-    <%- include("partials/footer.ejs") %>
+    <%- include("../partials/footer.ejs") %>
 </body>
 </html>
