@@ -3,8 +3,8 @@ const products = require('../database/productDataBase.json')
 
 const mainController = {
 
-    shoppingCart: (req, res) => {
-        res.render('cart/shopping-cart', {products})
+    cart: (req, res) => {
+        res.render('cart/cart', {products})
     }
 
 }

@@ -8,11 +8,11 @@ const mainController = {
     }, 
 
     termsAndConditions: (req, res) =>{
-        res.render('main/terms-and-conditions')
+        res.render('main/termsAndConditions')
     },
 
     aboutUs: (req, res) =>{
-        res.render('main/about-us')
+        res.render('main/aboutUs')
     }
 }
 
