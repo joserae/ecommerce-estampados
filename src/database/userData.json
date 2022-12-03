@@ -1,43 +1,38 @@
           [
             {
             "id": 1,
-            "firstname": "Juan",
+            "name": "Juan",
             "lastName": "Lopez",
 			"email": "juanl@gmail.com",
             "password":1234, 
-            "category":"Admin",
-            "image":"images/avatars/jala.jpg", 
-            "stock": true
+            "image":"images/avatars/jala.jpg" 
         },
 
         {
             "id": 2,
-            "firstname": "Ana",
+            "name": "Ana",
             "lastName": "Gutierrez",
 			"email": "guana1@gmail.com",
             "password":1234,
-            "category": "consultant",
-            "image":"images/avatars/pletzale",
-            "stock": true
+            "image":"images/avatars/pletzale"
+           
         },
         {
             "id": 3,
-            "firstname": "Roberto",
+            "name": "Roberto",
             "lastName": "Sanchez",
 			"email": "sanchezro@gmail.com",
             "password": 1234,
-            "category": "accountant",
-            "image":"images/avatars/kipa.jpg",
-            "stock": true
+            "image":"images/avatars/kipa.jpg"
+           
         },
         {
             "id": 4,
-            "firstname": "Esteban",
+            "name": "Esteban",
             "lastName": "Quintero",
 			"email": "esteban2019@gmail.com",
             "password": 1234,
-            "category": "Customer",
-            "image":"images/avatars/polloCorazon.jpg",
-            "stock": true
+            "image":"images/avatars/polloCorazon.jpg"
+          
         }
           ]  
