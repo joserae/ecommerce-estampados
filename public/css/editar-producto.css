@@ -340,6 +340,7 @@ form div input{
     
     .navbar{
         display: block;
+        padding: 0;
     }
 
     /*registro.html*/
