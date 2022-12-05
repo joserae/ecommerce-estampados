@@ -3,27 +3,28 @@
     font-family: 'Source Sans Pro', sans-serif;
 } */
 
-.upload-image{
-    margin: 20px;
-    display: grid;
-    height: 100%;
-    place-items: center;
-    text-align: center;
-  
+.navbar{
+    display: none;
 }
 
-.upload-image{
-    margin: 20px;
-    display: grid;
-    height: 100%;
-    place-items: center;
-    text-align: center;
-  
+input{
+    border: 1px solid #b2b2b2;
+    padding: 8px;
+    border-radius: 10px;
 }
 
-.container{
+::-webkit-input-placeholder {
+    color:transparent;
+ }
+
+ .obligatory-label{
+    display: block;
+    margin: auto;
+ }
+
+/* .container{
 height: 500px;
-width: 430px;
+width: 90%;
 position: relative;
 }
 .container .wrapper{
@@ -37,6 +38,10 @@ display: flex;
 align-items: center;
 justify-content: center;
 overflow: hidden;
+} */
+
+/* .wrapper{
+    width: 90%;
 }
 .wrapper.active{
 border: none;
@@ -90,8 +95,8 @@ background: linear-gradient(135deg,#3a8ffe 0%,#9658fe 100%);
 }
 .wrapper.active:hover .file-name{
 display: block;
-}
-.container #custom-btn{
+} */
+/* .container #custom-btn{
 margin-top: 30px;
 display: block;
 width: 100%;
@@ -136,75 +141,13 @@ background: linear-gradient(135deg,#63c9a0 0%,#aee636 100%);
     text-transform: uppercase;
     cursor: pointer;
     background: linear-gradient(135deg,#3a8ffe 0%,#9658fe 100%);
-  }
-/*------------Imagen principal-------------------*/
+  } */
 
-.main-image-div{
-    border: dotted 5px; 
-    display: none;
-}
-
-.main-image{
-    border: dotted 5px;
+.reg-title, .reg-description{
     text-align: center;
 }
 
-/*------------------main------------------*/
-.main-message{
-    text-align: center;
-}
-
-.button-div{
-    text-align: center;
-}
-
-.myButton {
-    
-    text-align:center;
-	background:linear-gradient(to bottom, #160C28 5%, #160C28 100%);
-	background-color:#160C28;
-	border-radius:5px;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:15px;
-	padding:14px 37px;
-	text-decoration:none;
-}
-.myButton:hover {
-	background:linear-gradient(to bottom, #160C28 5%, #160C28 100%);
-	background-color:#160C28;
-}
-.myButton:active {
-	position:relative;
-	top:1px;
-}
-
-/*----------------article-----------------*/
-
-section article{
-    
-    margin: 10px auto;
-    width: 95%;
-    background-color: #dadfdd;
-    text-align: center;
-    border-radius: 5px;
-}
-
-.images{
-    margin-top: 5px;
-    width: 90%;
-    border-radius: 5px;
-}
-
-/*----------Registro.html-------------------*/
-
-.reg-title{
-    text-align: center;
-}
-
-.reg-description{
+main form{
     text-align: center;
 }
 
@@ -212,48 +155,19 @@ main form div{
     margin-bottom: 10px;
 }
 
-main form div label{
-    margin: 30px;
-}
-
-form div input{
+form section input{
     width: 85%;
-    margin: 6px 30px;
-    
+    margin: 6px auto;  
 }
 
-.politica-datos-div{
-   margin: auto auto 10px auto; 
+.option-div{
+    margin-bottom: 15px;
 }
 
-.politica-datos{
-    width: 30px;
-    margin: auto 5px auto 20px;
+select{
+    margin: auto;
 }
 
-.reg-button {
-    
-    text-align:center;
-	background:linear-gradient(to bottom, #160C28 5%, #160C28 100%);
-	background-color:#160C28;
-	border-radius:5px;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:15px;
-	padding:14px 37px;
-	text-decoration:none;
-    width: 50%;
-}
-.reg-button:hover {
-	background:linear-gradient(to bottom, #160C28 5%, #160C28 100%);
-	background-color:#160C28;
-}
-.reg-button:active {
-	position:relative;
-	top:1px;
-}
 .form-group{
     text-align: center;
     border-radius: 5px;
@@ -267,107 +181,75 @@ form div input{
     width: 100%;
 }
 
+/*--------Footer stepping------------*/
+
+footer{
+    background-color: var(--gris-oscuro);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-top: 10px;
+    text-align: center;
+    color: white;
+}
+
 /*-----------media queries-------------*/
 
 @media(min-width: 426px){
-    /*main page*/
-    .products{
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+    ::-webkit-input-placeholder {
+        color:gray;
+     }
+
+    label{
+        display: none;
     }
 
-    /*registro.html*/
-
-    form div input{
-        width: 70%;
-        margin: 6px 15%;
-        
+    .option-div{
+        width: 200px;
+        margin: 25px 50% 25px auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
     }
 
-    main form div label{
-        margin: 15%;
+    .container{
+        width: 400px;
     }
 
-    .politica-datos-div{
-        margin: auto 0px 10px 11%; 
-    }
-     
-    .politica-datos{
-         width: 30px;
-         margin: auto 8px auto 20px;
-    }
-
-    .button-div{
-        text-align: center;
+    footer{
+        flex-direction: row;
     }
 }
 
 @media(min-width: 769px){
-
-    /*Header*/
-
-    .hamburger-menu {
-        display: none;
-        margin: 0;
-    }
-
-    .login-register-menu{
-        margin: auto;
-        width: 100%;
-
-    }
-
-    .login-ul{
-        display: flex;
-        justify-content: right;
-        align-items: center;
-        width: 100%;
-    }
-
-    .login-ul li {
-        display: block;
-        margin: 0 20px;
-    }
-
-    header ul li{
-        display: block;
-    }
-
-    .products{
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-    }
     
     .navbar{
         display: block;
     }
 
-    /*registro.html*/
-
     .form{
         display: block;
-        width: 55%;
+        width: 80%;
         margin: auto;
     }
 
     form div input{
-        display: block;
-        width: 98%; 
+        width: 100%;
         margin: 6px auto;
-        text-align: center;
     }
 
     main form div label{
-        margin: 0%;
+        margin: 0% 90% 0% auto;
     }
 
-    .politica-datos-div{
-        display: flex;
-    }
-     
-    .politica-datos[type=checkbox]{
-        width: 10px;
-        margin: 0px 10px;
+    .option-div{
+        text-align: left;
     }
 }
-/*
+
+@media(min-width: 1025px){
+    main form div label{
+        margin: 0% 95% 0% auto;
+    }
+}

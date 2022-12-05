@@ -1,3 +1,4 @@
+const { join } = require('path');
 const path = require('path');
 const products = require('../database/productDataBase.json')
 
@@ -17,18 +18,17 @@ const productController = {
     },
 
     storeProduct: (req, res) =>{
-        let newProduct = {
-			name: req.body.name,
-            size: req.body.size,
-            price: req.body.price,
-			category: req.body.category,
-            description: req.body.description,
-            image: "adidas-superstar.jpg",
-            stock: true
-		}
+        //proceso de multer
+        let newImage
+        if(req.file == undefined){
+            newImage="default-shoes.jpg"
+        }else{
+            newImage=req.file.filename
+        }
+        //finaliza proceso de multer
 
-        //proceso de escritura a productDataBase.json:
         const fs = require("fs");
+
         let productDataBaseJSONImport = fs.readFileSync(path.join(__dirname, '../database/productDataBase.json'), {encoding: "utf-8"});
 
         let oldProductsJSON;
@@ -38,11 +38,30 @@ const productController = {
 	        oldProductsJSON = JSON.parse(productDataBaseJSONImport);
         }
 
-        let productDataUpdated = oldProductsJSON.push(newProduct);
+        let newProduct = {
+            id: oldProductsJSON[oldProductsJSON.length - 1].id + 1,
+			name: req.body.name,
+            size: req.body.size,
+            price: req.body.price,
+			category: req.body.category,
+            description: req.body.description,
+            image: newImage,
+            stock: true
+		}
 
-        let productDataUpdatedJSON = JSON.stringify(productDataUpdated);
+        //newProduct está llegando bien
 
-        fs.writeFileSync("productDataBase.json", productDataUpdatedJSON);
+        //proceso de escritura a productDataBase.json:
+
+        //oldProductsJSON está llegando bien
+
+        oldProductsJSON.push(newProduct);
+
+        //oldProductsJSON está añadiendo a newProduct correctamente
+
+        let productDataUpdatedJSON = JSON.stringify(oldProductsJSON);
+
+        fs.writeFileSync(path.join(__dirname, '../database/productDataBase.json'), productDataUpdatedJSON);
         //fin del proceso de escritura
 
         res.redirect("/products/createProduct")
