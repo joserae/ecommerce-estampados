@@ -84,9 +84,32 @@ const productController = {
         fs.writeFileSync(productsFilePath, JSON.stringify(productDelete, null, '\t'));
 	
 		res.redirect('/')
+        },
 
+        update: (req, res)=>{
+            let product= products.find(product=>product.id == req.params.id);
         
+            let newProduct ={
+                "id": productEdit.id,
+                "name": req.body.name,
+                "size": req.body.size,
+                "price": req.body.price,
+                "category": req.body.category,
+                "description": req.body.description,
+                "image": req.body.image,
+            };
+
+  let productEdit= products.map(product =>{
+    if(newProduct.id == product.id){
+        return product = newProduct
+    }
+    return product
+  })
+  fs.writeFileSync(productsFilePath, JSON.stringify(productEdit, null, '\t'));
+
+  res.redirect("/")
+        }
 	}
-}
+
 
 module.exports = productController

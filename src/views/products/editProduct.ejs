@@ -10,7 +10,7 @@
     <body>
         <main>
             <h1 class="reg-title">Editar <%= products[id].name %> </h1>
-            <form method="POST" action="../products/editProduct/<%= products[id].id %>/update" class="form" enctype="multipart/form-data">
+            <form action="../editProduct/<%= products[id].id%>/update?_method=PUT" method="POST">
                 <section>
                     <label for="nombre">Nombre:</label><br>
                     <input type="text" name="name" id="nombre" value="<%= products[id].name %>" placeholder="Nombre del producto" >
