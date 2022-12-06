@@ -9,24 +9,16 @@
   <%-include("../partials/header") %> 
 
   <main>
-    <article class="form-body">
-      <!-- <div class="nav-logo-base"></div> -->
+    <h1 class="login-title">Inicia sesión</h1>
+    <figure>
       <a href="/"><img src="../img/user.png" alt="back_home"></a>
-      <p class="text">Inicia sesión</p>
-      <section class="Login-form">
-        <form action="/action" method="post">
-        <input type="text"placeholder="Email o nombre de usuario">
-        <input type="password"placeholder="Contraseña">
-          <button>Ingresar</button>
-        <div class="check-acount">
-          <input type="checkbox" name="Recordarme">
-          <label for="Recordarme">Recordarme</label>
-        </div>
-        <a href="#">¿Olvidé mi Contraseña?</a>
-      </section>
-      </form>
-    </article>
-  
+    </figure>
+    <form action="/action" method="post">
+      <input type="text"placeholder="Correo electrónico" required>
+      <input type="password"placeholder="Contraseña" required>
+      <input type="button" class="login-button" value="Ingresar">
+      <p><a href="#">¿Olvidé mi Contraseña?</a></p>
+    </form>  
   </main>
 
   <%- include("../partials/footer")%>

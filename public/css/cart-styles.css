@@ -90,13 +90,30 @@ body {
 
 .buy-cart-product {
     border: none;
+    text-align:center;
+    background-color: var(--gris-oscuro);
+    border-radius:5px;
+    cursor:pointer;
+    color: white;
+    font-size:15px;
+    padding:14px 37px;
+    text-decoration: none;
+    width: 50%;
+    margin: 8px 0;
+    
+    /* border: none;
     border-radius: 5px;
     background-color: var(--azul);
     padding: 10px;
     font-weight: bold;
     width: 50%;
     margin: 10px;
-    cursor: pointer;
+    cursor: pointer; */
+}
+
+.buy-cart-product:hover{
+    background:var(--azul);
+    color: var(--gris-oscuro);
 }
 
 .cart-items{

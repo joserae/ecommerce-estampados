@@ -5,6 +5,9 @@
     --gris-oscuro: #3C4048;
     --gris-medio: #B2B2B2;
     --gris-claro: #F7F7F7;
+    --azul-medio: #155472;
+    --rojo: #E10C0C;
+    --rojo-medio: #8D0505;
 }
 
 *{
@@ -13,10 +16,15 @@
     font-family: 'Exo', sans-serif;
 }
 
+a {
+    text-decoration: none;
+}
+
 /*------Header-------*/
 
 header{
     background-color: var(--gris-claro);
+    margin-bottom: 10px;
 }
 
 header ul li {
