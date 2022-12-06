@@ -1,6 +1,7 @@
 const { join } = require('path');
 const path = require('path');
 const products = require('../database/productDataBase.json')
+const productsFilePath = path.join(__dirname, '../database/productDataBase.json')
 const fs = require('fs');
 
 const productController = {
@@ -30,7 +31,7 @@ const productController = {
 
         const fs = require("fs");
 
-        let productDataBaseJSONImport = fs.readFileSync(path.join(__dirname, '../database/productDataBase.json'), {encoding: "utf-8"});
+        let productDataBaseJSONImport = fs.readFileSync(productsFilePath, {encoding: "utf-8"});
 
         let oldProductsJSON;
         if(productDataBaseJSONImport == ""){
@@ -50,19 +51,13 @@ const productController = {
             stock: true
 		}
 
-        //newProduct está llegando bien
-
         //proceso de escritura a productDataBase.json:
-
-        //oldProductsJSON está llegando bien
 
         oldProductsJSON.push(newProduct);
 
-        //oldProductsJSON está añadiendo a newProduct correctamente
-
         let productDataUpdatedJSON = JSON.stringify(oldProductsJSON);
 
-        fs.writeFileSync(path.join(__dirname, '../database/productDataBase.json'), productDataUpdatedJSON);
+        fs.writeFileSync(productsFilePath, productDataUpdatedJSON);
         //fin del proceso de escritura
 
         res.redirect("/products/createProduct")
@@ -75,7 +70,6 @@ const productController = {
 
     // Delete - Delete one product from DB
 	destroy : (req, res) => {
-        let productsFilePath = path.join(__dirname, '../database/productDataBase.json');
         let products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
         let id = req.params.id;
@@ -83,33 +77,34 @@ const productController = {
 
         fs.writeFileSync(productsFilePath, JSON.stringify(productDelete, null, '\t'));
 	
-		res.redirect('/')
-        },
+		res.redirect('/products/products')
+    },
 
-        update: (req, res)=>{
-            let product= products.find(product=>product.id == req.params.id);
+    update: (req, res)=>{
+        let product= products.find(product=>product.id == req.params.id);
         
-            let newProduct ={
-                "id": productEdit.id,
-                "name": req.body.name,
-                "size": req.body.size,
-                "price": req.body.price,
-                "category": req.body.category,
-                "description": req.body.description,
-                "image": req.body.image,
-            };
+        let newProduct ={
+            id: product.id,
+            name: req.body.name,
+            size: req.body.size,
+            price: req.body.price,
+            category: req.body.category,
+            description: req.body.description,
+            image: req.body.image,
+        };
 
-  let productEdit= products.map(product =>{
-    if(newProduct.id == product.id){
-        return product = newProduct
+        let updatedJSON = products.map(product =>{
+            if(newProduct.id == product.id){
+                return product = newProduct;
+            }
+            return product;
+        })
+
+        fs.writeFileSync(productsFilePath, JSON.stringify(updatedJSON, null, '\t'));
+
+        res.redirect('/products/products')
     }
-    return product
-  })
-  fs.writeFileSync(productsFilePath, JSON.stringify(productEdit, null, '\t'));
-
-  res.redirect("/")
-        }
-	}
+}
 
 
 module.exports = productController
