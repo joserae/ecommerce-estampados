@@ -28,7 +28,7 @@ router.get('/productDetails/:id', productController.productDetails);
 router.get('/createProduct', productController.createProduct);
 router.post("/createProduct",fileUpload.single("productImage"), productController.storeProduct);
 
-router.get('/editProduct', productController.editProduct);
+router.get('/editProduct/:id', productController.editProduct);
 
 router.post('/delete/:id', productController.destroy); 
 

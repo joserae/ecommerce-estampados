@@ -69,7 +69,8 @@ const productController = {
     },
 
     editProduct: (req, res) => {
-        res.render('products/editProduct')
+        id = req.params['id'] - 1
+        res.render('products/editProduct', {products, id})
     },
 
     // Delete - Delete one product from DB

@@ -29,6 +29,9 @@
                     <div class="button-div">
                         <button class="myButton">Comprar ahora</button>
                     </div>
+                    <form action="/products/editProduct/<%= products[id].id %>" method="GET" >
+                        <button type="submit" class="action-button delete">EDITAR</button>
+                    </form>
                     <form action="/products/delete/<%= products[id].id %>" method="POST" >
                         <button type="submit" class="action-button delete">ELIMINAR</button>
                     </form>

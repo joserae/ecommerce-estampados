@@ -9,22 +9,21 @@
     <%- include('../partials/header') %> 
     <body>
         <main>
-            <h1 class="reg-title">Editar producto</h1>
-            <p class="reg-description">Registra un nuevo producto.</p>
-            <form method="POST" action="../products/editProduct" class="form" enctype="multipart/form-data">
+            <h1 class="reg-title">Editar <%= products[id].name %> </h1>
+            <form method="POST" action="../products/editProduct/<%= products[id].id %>/update" class="form" enctype="multipart/form-data">
                 <section>
                     <label for="nombre">Nombre:</label><br>
-                    <input type="text" name="name" id="nombre" placeholder="Nombre del producto" required>
+                    <input type="text" name="name" id="nombre" value="<%= products[id].name %>" placeholder="Nombre del producto" >
                 </section>
 
                 <section>
                     <label for="descripcion">Descripción:</label><br>
-                    <input type="text" name="description" placeholder="Descripción" id="descripcion" required>
+                    <input type="text" name="description" placeholder="Descripción" value=" <%= products[id].description %> " id="descripcion">
                 </section>
 
                 <section>
                     <label for="descripcion">Talla:</label><br>
-                    <input type="text" name="size" placeholder="Talla" id="size" required>
+                    <input type="text" name="size" placeholder="Talla" value=" <%= products[id].size %> " id="size">
                 </section>
 
                 <section class="option-div">
@@ -39,12 +38,12 @@
 
                 <section>
                     <label for="precio">Precio:</label><br>
-                    <input type="precio" name="price" placeholder="Precio" id="precio" required>
+                    <input type="precio" name="price" placeholder="Precio" value=" <%= products[0].price %> " id="precio">
                 </section>
 
                 <section>
                     <label class="obligatory-label" for="productImage">Imagen del producto:</label>
-                    <input type="file" name="productImage" required></input>
+                    <input type="file" name="productImage"></input>
                 </section>
                     <nav class="form-group">
                         <button class="btn btn-success">Guardar</button>
