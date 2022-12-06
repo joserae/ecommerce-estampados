@@ -1,6 +1,7 @@
 const { join } = require('path');
 const path = require('path');
 const products = require('../database/productDataBase.json')
+const fs = require('fs');
 
 const productController = {
 
@@ -69,7 +70,22 @@ const productController = {
 
     editProduct: (req, res) => {
         res.render('products/editProduct')
-    }
+    },
+
+    // Delete - Delete one product from DB
+	destroy : (req, res) => {
+        let productsFilePath = path.join(__dirname, '../database/productDataBase.json');
+        let products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+
+        let id = req.params.id;
+        let productDelete = products.filter(product => product.id != id);
+
+        fs.writeFileSync(productsFilePath, JSON.stringify(productDelete, null, '\t'));
+	
+		res.redirect('/')
+
+        
+	}
 }
 
 module.exports = productController
