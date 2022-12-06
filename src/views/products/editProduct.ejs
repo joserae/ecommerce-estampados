@@ -11,50 +11,51 @@
         <main>
             <h1 class="reg-title">Editar producto</h1>
             <p class="reg-description">Registra un nuevo producto.</p>
-            <form action="/" class="form">
-                <div>
+            <form method="POST" action="../products/editProduct" class="form" enctype="multipart/form-data">
+                <section>
                     <label for="nombre">Nombre:</label><br>
-                    <input type="text" name="nombre" id="nombre" required>
-                </div>
-                <div>
+                    <input type="text" name="name" id="nombre" placeholder="Nombre del producto" required>
+                </section>
+
+                <section>
                     <label for="descripcion">Descripción:</label><br>
-                    <input type="text" name="descripcion" id="descripcion" required>
-                </div>
-                <div>
-                    <label for="categoria">Categoria:</label><br>
-                    <input type="text" name="categoria" id="categoria" required>
-                </div>
-                <div>
+                    <input type="text" name="description" placeholder="Descripción" id="descripcion" required>
+                </section>
+
+                <section>
+                    <label for="descripcion">Talla:</label><br>
+                    <input type="text" name="size" placeholder="Talla" id="size" required>
+                </section>
+
+                <section class="option-div">
+                    <label class="obligatory-label" for="categoria">Estilo:</label><br>
+                    <select name="category">
+                        <option value="select" selected>Seleccione</option>
+                        <option value="tenis">Tenis</option>
+                        <option value="runners">Runners</option>
+                        <option value="lifestyle">lifestyle</option>
+                    </select>
+                </section>
+
+                <section>
                     <label for="precio">Precio:</label><br>
-                    <input type="precio" name="precio" id="precio" required>
-                </div>
-            
-                <article class="container">
-                    <h2 class="wrapper">
-                       <figure class="image">
-                          <img src="" alt="">
-                       </figure>
-                       <div class="content">
-                          <h3 class="icon">
-                             <i class="fas fa-cloud-upload-alt"></i>
-                          </h3>
-                          <p class="text">
-                             Seleccionar archivo
-                          </p>
-                       </div>
-                    
-                    </h2>
-                    <section class="butons-img">
-                        <button id="custom-btn">Agregar imagen</button>
-                    </section>
+                    <input type="precio" name="price" placeholder="Precio" id="precio" required>
+                </section>
+
+                <section>
+                    <label class="obligatory-label" for="productImage">Imagen del producto:</label>
+                    <input type="file" name="productImage" required></input>
+                </section>
                     <nav class="form-group">
                         <button class="btn btn-success">Guardar</button>
                         <a href="/productos" class="btn btn-primary">Volver</a>
                     </nav>
-                    <!-- <%- include("../partials/footer")%> -->
                 </article>
             </form>
         </main>
+
+        <%- include("../partials/footer")%>
+
     </body>
     
 </body>
