@@ -7,7 +7,7 @@
 		"category": "Runners",
 		"description": " bla bla bla ",
 		"image": "nike-air-max90.jpeg",
-		"stock": true
+		"stock": "available-stock"
 	},
 	{
 		"id": 2,
@@ -17,7 +17,7 @@
 		"category": "Lifestyle",
 		"description": "Descripcion bla bla",
 		"image": "adidas-yeezy.jpeg",
-		"stock": true
+		"stock": "available-stock"
 	},
 	{
 		"id": 3,
@@ -27,7 +27,7 @@
 		"category": "Tenis",
 		"description": "Descripcion bla bla 2lkjaskd",
 		"image": "adidas-superstar.jpg",
-		"stock": true
+		"stock": "available-stock"
 	},
 	{
 		"id": 4,
@@ -37,7 +37,7 @@
 		"category": "Lifestyle",
 		"description": "Descripcion bla bla 2lkjaskd",
 		"image": "vans-old-skool.jpeg",
-		"stock": true
+		"stock": "available-stock"
 	},
 	{
 		"id": 5,
@@ -47,7 +47,7 @@
 		"category": "Runners",
 		"description": "Descripcion bla bla 2lkjaskd",
 		"image": "puma-rsx.jpeg",
-		"stock": true
+		"stock": "available-stock"
 	},
 	{
 		"id": 6,
@@ -57,7 +57,7 @@
 		"category": "lifestyle",
 		"description": "123",
 		"image": "1670258439651.jpeg",
-		"stock": true
+		"stock": "available-stock"
 	},
 	{
 		"id": 7,
@@ -67,6 +67,6 @@
 		"category": "lifestyle",
 		"description": "123",
 		"image": "1670276343252.jpg",
-		"stock": true
+		"stock": "unavailable-stock"
 	}
 ]

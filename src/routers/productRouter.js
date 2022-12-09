@@ -4,7 +4,6 @@ const productController = require('../controllers/productController')
 const multer = require("multer");
 const path = require("path");
 
-
 /*Multer*/
 const storage = multer.diskStorage({
 	destination: (req, file, callback) =>{
@@ -29,7 +28,7 @@ router.get('/createProduct', productController.createProduct);
 router.post("/createProduct",fileUpload.single("productImage"), productController.storeProduct);
 
 router.get('/editProduct/:id', productController.editProduct);
-router.put('/editProduct/:id', productController.update);
+router.put('/editProduct/:id',fileUpload.single("productImage"), productController.update);
 
 router.post('/delete/:id', productController.destroy); 
 

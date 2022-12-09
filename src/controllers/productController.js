@@ -48,7 +48,7 @@ const productController = {
 			category: req.body.category,
             description: req.body.description,
             image: newImage,
-            stock: true
+            stock: "available-stock"
 		}
 
         //proceso de escritura a productDataBase.json:
@@ -82,20 +82,43 @@ const productController = {
 
     update: (req, res)=>{
         let product= products.find(product=>product.id == req.params.id);
-        
-        let newProduct ={
+        let newImage,newCategory,newStock;
+
+        //validate if the user change the product image
+        if(req.file){
+            newImage = req.file.filename;
+        } else{
+            newImage = product.image;
+        }
+
+        //validate if the user change the category
+        if(req.body.category != "select"){
+            newCategory = req.body.category;
+        } else{
+            newCategory = product.category;
+        }
+
+        //validate if the user change the stock condition
+        if(req.body.stock != "select"){
+            newStock = req.body.stock;
+        } else{
+            newStock = product.stock;
+        }
+
+        let updatedProduct ={
             id: product.id,
             name: req.body.name,
             size: req.body.size,
             price: req.body.price,
-            category: req.body.category,
+            category: newCategory,
             description: req.body.description,
-            image: req.body.image,
+            image: newImage,
+            stock: newStock
         };
 
         let updatedJSON = products.map(product =>{
-            if(newProduct.id == product.id){
-                return product = newProduct;
+            if(updatedProduct.id == product.id){
+                return product = updatedProduct;
             }
             return product;
         })

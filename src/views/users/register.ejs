@@ -11,12 +11,12 @@
         <p class="reg-description">Regístrate para ordenar tu calzado, ver tus ordenes y ajustar tus datos.</p>
 
         <form action="/users/register" method="POST" enctype="multipart/form-data">
-            <input type="text" name="name" id="nombre" placeholder="Nombre" required>
-            <input type="text" name="lastName" id="apellido" placeholder="Apellido" required>
-            <input type="email" name="email" id="correo" placeholder="Correo electrónico" required>
+            <input type="text" name="name" id="name" placeholder="Nombre" required>
+            <input type="text" name="lastName" id="lastName" placeholder="Apellido" required>
+            <input type="email" name="email" id="email" placeholder="Correo electrónico" required>
             <input type="password" name="password" id="password" minlength="5" placeholder="Contraseña" required>
             <label for="userAvatar">Selecciona tu avatar (Opcional)</label>
-            <input type="file" name="userAvatar">
+            <input type="file" name="userAvatar" id="userAvatar">
             <input type="submit" value="Registrarme" class="reg-button">
             <p>*Al registrarte aceptas nuestos <a href="/termsAndConditions">Términos de uso</a></p>
             <p>Ya tienes cuenta? <a href="/users/login">Inicia sesión</a> </p>
