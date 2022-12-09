@@ -12,9 +12,9 @@ _One Step Premium Footwear_ es una comercializadora virtual de zapatos que hace 
 
 ## Las páginas web que tomaremos como referencia son las siguientes:
 
-_Estas páginas son de empresas de estampados, por lo cual son referentes directos._
-- https://www.estampadosdivitex.com/
-- https://www.elpuntodelestampado.com/
+_Estas páginas son referentes directos._
+- https://www.adidas.co/
+- https://www.vans.com/en-us
 
 _Esta página tiene un diseño muy amigable y ameno para el usuario:_
 - https://www.pressed.com/
@@ -31,5 +31,12 @@ _Estas páginas son referentes como ecommerce, y también para los pasos de orde
 ![Screenshot (463)](https://user-images.githubusercontent.com/114521915/201157000-386904ef-1680-4913-862c-4ca0e65063d2.png)
 ![Screenshot (464)](https://user-images.githubusercontent.com/114521915/201157003-971b79cd-a8c9-4fa0-b251-c8919968f870.png)
 
+## Logo:
+![Logo2](https://user-images.githubusercontent.com/114540634/206611058-bb70ae97-953b-4af0-8b76-93d71ffabf9a.png)
+
 ## Paleta de colores:
-![Screenshot (450)](https://user-images.githubusercontent.com/114521915/201158780-e3d6f032-105f-403a-aa9b-77ca9dbe0a1b.png)
+![paleta-proyecto](https://user-images.githubusercontent.com/114540634/206610182-f23595df-4799-4948-942b-22c90f9be390.png)
+
+## Tipografía
+Fuente Exo
+<img width="1380" alt="exo-tipografia" src="https://user-images.githubusercontent.com/114540634/206610576-d33b4153-817b-4166-ba8e-88c4a7709d53.png">
