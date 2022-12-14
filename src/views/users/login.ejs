@@ -14,9 +14,13 @@
       <a href="/"><img src="../img/loginUser.png" alt="back_home"></a>
     </figure>
     <form action="/action" method="post">
-      <input type="text"placeholder="Correo electrónico" required>
-      <input type="password"placeholder="Contraseña" required>
+      <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
+      <input type="password" id="password" name="password" placeholder="Contraseña" required>
       <input type="button" class="login-button" value="Ingresar">
+      <section class="remember-user">
+        <input type="checkbox" id="check-remember-user" name="check-remember-user">
+        <label for="check-remember-user">Recordarme</label>
+      </section>
       <p><a href="#">¿Olvidé mi Contraseña?</a></p>
     </form>  
   </main>
