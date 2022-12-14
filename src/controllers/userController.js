@@ -1,6 +1,7 @@
 const path = require('path');
 const fs = require('fs');
-const users = require('../database/userData.json')
+const users = require('../database/userData.json');
+const bcrypt = require('bcryptjs');
 
 const userController = {
 
@@ -23,22 +24,23 @@ const userController = {
 
         //save the new user
         let usersDataFile = fs.readFileSync(path.join(__dirname,'../database/userData.json'), {encoding: 'utf-8'});
-        let oldUsersJSON;
-        let id;
-        if (usersDataFile == ""){
+        let oldUsersJSON, id;
+        let passEncriptada = bcrypt.hashSync(req.body.password, 10);
+
+        if (usersDataFile == "" || usersDataFile == "[]"){
             oldUsersJSON = [];
-            id = oldUsersJSON[oldUsersJSON.length - 1].id
+            id = 1;
         } else{
             oldUsersJSON = JSON.parse(usersDataFile);
-            id = 1;
+            id = oldUsersJSON[oldUsersJSON.length - 1].id + 1
         }
 
         let newUser = {
-            id: id + 1,
+            id: id,
             name: req.body.name,
             lastName: req.body.lastName,
             email: req.body.email,
-            password: req.body.password,
+            password: passEncriptada,
             image: newImage
         }
 
