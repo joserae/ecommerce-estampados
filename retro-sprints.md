@@ -51,3 +51,17 @@ hubo un avance a como estabamos antes. Aprendimos mejor comunicación y nos guia
 
 - Que hacer más: <br>
 Más reuniones con los profesores (Gian en nuestro caso) para ver como vamos, resolver dudas y corregir errores.
+
+# Sprint 4
+
+- Que dejar de hacer: <br>
+Se distribuyeron las consignas de una forma, y en el proceso de cumplirlas nos dimos cuenta de que necesitabamos una mejor redistribución, la cual fue mucho más desordenada y creó momentos de confusión en el equipo.
+
+- Que hacer menos: <br>
+Ser conscientes de nuestro propio código. Está bien referenciarnos de otros ejercicios, pero debemos adaptarlo con lo que se tiene en el proyecto para no generar conflictos ni confusión en el futuro.
+
+- Que seguir haciendo: <br>
+Mantener la buena comunicación cada vez que tenemos un problema, planeamos avanzar, y antes de subir cambios al repositorio. 
+
+- Que hacer más: <br>
+Una distribución más acertada frente a lo que piden las consignas, para tener cargas acordes a nuestras disponibilidades, y que cumplan con lo pedido en el documento.
