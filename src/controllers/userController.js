@@ -9,6 +9,31 @@ const userController = {
         res.render('users/login')
     },
 
+    loginProcess: (req, res) =>{
+        //buscar el usuario
+        let userToLogin = users.find( user => user['email'] == req.body.email)
+    
+        if(userToLogin){
+            let isOkPassword = bcrypt.compareSync(req.body.password, userToLogin.password)
+            if(isOkPassword){
+                return res.render('users/userList', {users})
+            }
+            
+        }
+
+        return res.render('users/login')
+
+        /*return res.render('users/login', {
+            errors:{
+                email: {
+                    msg: 'Email o contraseña incorrecta'
+                }
+            }
+        })*/
+        
+
+    },
+
     register: (req, res) => {
         res.render('users/register')
     },

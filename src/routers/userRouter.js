@@ -20,7 +20,7 @@ const storage = multer.diskStorage({
 const fileUpload = multer({ storage: storage });
 
 router.get('/login', userController.login);
-
+router.post('/login', userController.loginProcess);
 //formulario de registro
 router.get('/register', userController.register);
 //guardar el nuevo usuario
