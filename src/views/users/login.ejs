@@ -8,6 +8,17 @@
 <body>
   <%-include("../partials/header") %> 
 
+  <% if (typeof errors != "undefined") { %>
+    <p style="color: red">Error</p>
+    <ul>
+      <% for(let i=0; i < errors.length; i++) { %>
+        <li>
+          <%= errors[i].msg %>
+        </li>
+      <% } %>
+    </ul>
+  <% } %>
+
   <main>
     <h1 class="login-title">Inicia sesión</h1>
     <figure>

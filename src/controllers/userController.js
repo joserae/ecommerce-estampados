@@ -2,6 +2,7 @@ const path = require('path');
 const fs = require('fs');
 const users = require('../database/userData.json');
 const bcrypt = require('bcryptjs');
+const { check, validationResult } = require("express-validator");
 
 const userController = {
 
@@ -14,13 +15,17 @@ const userController = {
         let userToLogin = users.find( user => user['email'] == req.body.email)
     
         if(userToLogin){
+            let errors = validationResult(req)
             let isOkPassword = bcrypt.compareSync(req.body.password, userToLogin.password)
-            if(isOkPassword){
+            if(isOkPassword && errors.isEmpty()){
+                req.session.loggedUser = userToLogin;
+                console.log("El usuario logueado es " + req.session.loggedUser.email);
                 return res.render('users/userList', {users})
+            }else{
+                return res.render("users/login", {errors: errors.errors})
             }
             
         }
-
         return res.render('users/login')
 
         /*return res.render('users/login', {

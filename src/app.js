@@ -5,6 +5,7 @@ const path = require('path');
 const publicPath = path.resolve(__dirname, "../public");
 const mainRouter = require('./routers/mainRouter');
 const methodOverride = require("method-override");
+const session = require("express-session");
 
 //Middleware
 app.use(express.static(publicPath))
@@ -13,6 +14,12 @@ app.use(express.urlencoded({ extended: false}));
 app.use(express.json());
 //Middleware para editar información existente
 app.use(methodOverride("_method"));
+//Middleware para implementar session globalmente
+app.use(session({
+	secret: "la clave es secreta",
+	resave: true,
+    saveUninitialized: true
+}));
 
 //Template EJS
 app.set('views', path.resolve(__dirname, 'views'));
