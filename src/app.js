@@ -6,7 +6,8 @@ const publicPath = path.resolve(__dirname, "../public");
 const mainRouter = require('./routers/mainRouter');
 const methodOverride = require("method-override");
 const session = require("express-session");
-
+const cookieParser = require('cookie-parser');
+const recordarmeUser = require ("./middlewares/recordarme.js");
 //Middleware
 app.use(express.static(publicPath))
 //Middleware para capturar la información por POST y convertirlo a JSON
@@ -20,7 +21,9 @@ app.use(session({
 	resave: true,
     saveUninitialized: true
 }));
-
+app.use(recordarmeUser);
+//Middleware para implementar cookie
+app.use(cookieParser());
 //Template EJS
 app.set('views', path.resolve(__dirname, 'views'));
 app.set('view engine', 'ejs');
