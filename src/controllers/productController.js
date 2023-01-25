@@ -4,10 +4,27 @@ const products = require('../database/productDataBase.json')
 const productsFilePath = path.join(__dirname, '../database/productDataBase.json')
 const fs = require('fs');
 
+//declarando la base de datos
+const db = require("../database/models/index.js")
+const dbBrands = db.Brand;
+const dbCategories = db.Category;
+const dbGenres = db.Genre;
+const dbProducts = db.Product;
+const dbSizes = db.Size; //not working, must update
+const dbProductCharacteristics = db.Productcharacteristics;
+
 const productController = {
 
     products: (req, res) =>{
         res.render('products/products', {products})
+    },
+
+    //route to check databases
+    list:(req, res) =>{
+        dbSizes.findAll().then(function(data){
+            res.json(data)
+        })
+        
     },
 
     productDetails: (req, res) =>{

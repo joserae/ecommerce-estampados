@@ -4,12 +4,22 @@ const users = require('../database/userData.json');
 const bcrypt = require('bcryptjs');
 const { check, validationResult } = require("express-validator");
 
+const db = require("../database/models/index.js");
+const dbUsers = db.User//not completed yet
+const dbRole = db.Role
+
 const userController = {
 
     login: (req, res) => {
         res.render('users/login')
     },
 
+    userList: (req, res) => {
+        dbUsers.findAll().then(function(data){
+            res.json(data)
+        })
+    },
+    
     loginProcess: (req, res) => {
         let users = [];
         

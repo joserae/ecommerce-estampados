@@ -33,6 +33,7 @@ const validations = [
 //finaliza proceso de validación. se pone como middleware en el .post de login
 
 router.get('/login', userController.login);
+router.get("/userDBList", userController.userList)
 router.post('/login',validations, userController.loginProcess);
 //formulario de registro
 router.get('/register', guestMiddleware, userController.register);

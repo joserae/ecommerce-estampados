@@ -23,6 +23,7 @@ const storage = multer.diskStorage({
 const fileUpload = multer({ storage: storage });
 /*fin de proceso multer*/
 
+router.get("/list", productController.list)
 router.get('/products', productController.products);
 router.get('/productDetails/:id', productController.productDetails);
 
