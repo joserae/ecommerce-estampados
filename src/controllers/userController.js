@@ -26,7 +26,7 @@ const userController = {
         if (req.cookies.recordarme != undefined && req.session.userToLogin == undefined);
         const userDataJson = fs.readFileSync("src/database/userData.json", { encoding: "utf-8" });
         
-        console.log("userDataJson: ", userDataJson);
+        // console.log("userDataJson: ", userDataJson);
         
         if (userDataJson) {
             users = JSON.parse(userDataJson);
@@ -50,8 +50,8 @@ const userController = {
             let errors = validationResult(req)
            let isOkPassword = bcrypt.compareSync(req.body.password, loggedUser.password)
            if (isOkPassword && errors.isEmpty()) {
-               console.log("El usuario logueado es " + req.session.loggedUser.email);
-                return res.render('users/userList', { users })
+            //    console.log("El usuario logueado es " + JSON.stringify(loggedUser));
+                return res.render('users/profile', { users, loggedUser })
             } else {
                 return res.render("users/login", { errors: errors.errors })
 
@@ -111,12 +111,16 @@ const userController = {
         usersJSON = JSON.stringify(oldUsersJSON);
         fs.writeFileSync(path.join(__dirname, '../database/userData.json'), usersJSON);
 
-        res.redirect('/users/register')
+        res.redirect('/users/login')
 
     },
 
     list: (req, res) => {
         res.render('users/userList', { users })
+    },
+
+    profile: (req, res) => {
+        res.render('users/profile', { users })
     }
 
 }

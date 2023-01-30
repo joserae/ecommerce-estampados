@@ -66,7 +66,7 @@ main summary p, main label{
     margin-left: 5%;
 }
 
-.available-stock{
+/* .available-stock{
     color: rgb(215, 215, 5);
     margin-left: 5%;
 }
@@ -74,7 +74,7 @@ main summary p, main label{
 .unavailable-stock{
     color: var(--rojo);
     margin-left: 5%;
-}
+} */
 
 .button-div{
     display: flex;

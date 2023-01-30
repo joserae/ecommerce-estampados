@@ -15,21 +15,37 @@
                 <input type="text" name="name" id="name" placeholder="Nombre del producto" required>
                 <label for="description">Descripción:</label>
                 <input type="text" name="description" id="description" placeholder="Descripción del producto" required>
+                <label for="brand">Marca:</label>
+                <select name="brand" id="brand">
+                    <% brands.forEach(brand => { %>
+                        <option value="<%=brand.id%>"><%=brand.name%></option>
+                    <% }) %>
+                </select>
+                <label for="genre">Género:</label>
+                <select name="genre" id="genre">
+                    <% genres.forEach(genre => { %>
+                        <option value="<%=genre.id%>"><%=genre.name%></option>
+                    <% }) %>
+                </select>
                 <label for="size">Talla:</label>
-                <input type="text" name="size" placeholder="Talla" id="size" required>
-                <label for="category">Estilo:</label>
+                <select name="size" id="size">
+                    <% sizes.forEach(size => { %>
+                        <option value="<%=size.id%>"><%=size.size%></option>
+                    <% }) %>
+                </select>
+                <label for="category">Categoría:</label>
                 <select name="category" id="category">
-                    <option value="tenis">Tenis</option>
-                    <option value="runners">Runners</option>
-                    <option value="lifestyle">lifestyle</option>
+                    <% categories.forEach(category => { %>
+                        <option value="<%=category.id%>"><%=category.name%></option>
+                    <% }) %>
                 </select>
                 <label for="price">Precio:</label>
-                <input type="text" name="price" placeholder="Precio" id="price" required>
+                <input type="number" name="price" placeholder="Precio" id="price" required>
                 <label for="productImage">Imagen del producto:</label>
                 <input type="file" name="productImage" id="productImage" required>
                 <section class="form-btns">
                     <button type="submit" class="form-btns-btn">Guardar</button>
-                    <a href="./products" class="form-btns-btn">Volver</a>
+                    <a href="./list" class="form-btns-btn">Volver</a>
                 </section>
             </form>
         </main>

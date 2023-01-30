@@ -1,5 +1,5 @@
 module.exports = (sequelize, dataTypes) => {
-    let alias = "Size";
+    let alias = "Stock";
     let columns = {
         id: {
             type: dataTypes.INTEGER(11),
@@ -8,7 +8,7 @@ module.exports = (sequelize, dataTypes) => {
             autoIncrement: true
 
         },
-        size: {
+        available_quantity: {
             type: dataTypes.INTEGER(11),
             allowNull: false,
         },
@@ -22,15 +22,19 @@ module.exports = (sequelize, dataTypes) => {
         }
     };
     let config = {
+        tableName: "stock",
         timestamps: false,
-        underscore: true
+        underscored: true
     };
 
-    const Size = sequelize.define(alias, columns, config);
-    Size.associate = function(models){
-        Size.hasMany(models.Stock, {
+    const Stock = sequelize.define(alias, columns, config);
+    Stock.associate = function(models){
+        Stock.belongsTo(models.Product, {
+            foreingKey: "product_id"
+        }),
+        Stock.belongsTo(models.Size, {
             foreingKey: "size_id"
         })
     }
-    return Size;
+    return Stock;
 }

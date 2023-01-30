@@ -5,7 +5,7 @@
 </head>
 <body>
     <%- include("../partials/header.ejs") %>
-
+    <title>Productos | One Step</title>
     <main>
         <h1>Productos</h1>
         <h3>Filtrar</h3>
@@ -13,31 +13,32 @@
             <label for="">Por género:</label>
             <select name="gender">
                 <option value="all" selected>Todos</option>
-                <option value="male">Masculino</option>
-                <option value="female">Femenino</option>
+                <% genres.forEach(genre => { %>
+                    <option value="<%=genre.name%>"><%=genre.name%></option>
+                  <% }) %>
             </select><br>
             <label for="">Por estilo:</label>
             <select name="style">
                 <option value="select" selected>Seleccione</option>
-                <option value="tenis">Tenis</option>
-                <option value="runners">Runners</option>
-                <option value="lifestyle">lifestyle</option>
+                <% categories.forEach(category => { %>
+                    <option value="<%=category.name%>"><%=category.name%></option>
+                  <% }) %>
             </select><br>
             <label for="">Por marca:</label>
             <select name="brand">
                 <option value="select" selected>Seleccione</option>
-                <option value="adidas">Adidas</option>
-                <option value="nike">Nike</option>
-                <option value="new balance">New Balance</option>
+                <% brands.forEach(brand => { %>
+                    <option value="<%=brand.name%>"><%=brand.name%></option>
+                  <% }) %>
             </select>
         </form>
             <section class="product-section-laptop-view">
             <% products.forEach(product => { %>
                 <article>
-                    <a href="/products/productDetails/<%= product.id %>"><img class="product-images" src="/img/<%=product.image%>" alt="<%=products.name%>"></a>
+                    <a href="/products/productDetails/<%= product.id %>"><img class="product-images" src="/img/<%=product.img%>" alt="<%=products.name%>"></a>
                     <summary class="description">
-                        <h3><a href="/products/productDetails/<%= product.id %>"><%= product.name %></a></h3>
-                        <p>Estilo: <%= product.category %> </p>
+                        <h3><a href="/products/productDetails/<%= product.id %>"><%= product.Brand.name %> - <%= product.name%></a></h3>
+                        <p>Estilo: <%= product.Category.name %> </p>
                         <p><strong>$COP <%= product.price %></strong></p>
                     </summary>
                 </article>

@@ -1,39 +1,124 @@
 const { join } = require('path');
+const sequelize = require('sequelize');
 const path = require('path');
-const products = require('../database/productDataBase.json')
-const productsFilePath = path.join(__dirname, '../database/productDataBase.json')
+// const products = require('../database/productDataBase.json')
+// const productsFilePath = path.join(__dirname, '../database/productDataBase.json')
 const fs = require('fs');
 
 //declarando la base de datos
-const db = require("../database/models/index.js")
+const db = require('../database/models/index.js')
 const dbBrands = db.Brand;
 const dbCategories = db.Category;
 const dbGenres = db.Genre;
 const dbProducts = db.Product;
-const dbSizes = db.Size; //not working, must update
-const dbProductCharacteristics = db.Productcharacteristics;
+const dbSizes = db.Size;
+const dbStock = db.Stock;
 
 const productController = {
 
-    products: (req, res) =>{
-        res.render('products/products', {products})
-    },
-
-    //route to check databases
-    list:(req, res) =>{
-        dbSizes.findAll().then(function(data){
-            res.json(data)
-        })
+    list: (req, res) =>{
         
+        let promesaProductos = dbProducts.findAll({
+            include: [
+                {model: dbCategories,
+                    required: true,
+                    attributes: ['name'],
+                    where: {is_active: 1}
+                },
+                {model: dbGenres,
+                    required: true,
+                    attributes: ['name']
+                },
+                {model: dbBrands,
+                    required: true,
+                    attributes: ['name']
+                }
+            ]
+        });
+
+        let promesaStock = dbStock.findAll({
+            attributes: ['available_quantity'],
+            include: [
+                {model: dbProducts,
+                    required: true,
+                    attributes: ['name', 'description','img','price'],
+                    where: {is_active: 1}
+                },
+                {model: dbSizes,
+                    required: true,
+                    attributes: ['size']
+                }
+            ]
+        });
+
+        let promesaGeneros = dbGenres.findAll();
+        let promesaCategorias = dbCategories.findAll();
+        let promesaMarca = dbBrands.findAll();
+        let promesaTallas = dbSizes.findAll();
+
+        Promise.all([promesaProductos,promesaStock, promesaGeneros, promesaCategorias, promesaMarca,promesaTallas]).then(function([products,stock,genres,categories,brands,sizes]){
+                res.render('products/list', {products,stock,genres,categories,brands,sizes})
+            })
     },
 
     productDetails: (req, res) =>{
-        id = req.params['id'] - 1
-        res.render('products/productDetails', {products,id})
+
+        let detail = dbProducts.findByPk(req.params.id,{
+            include: [
+                {model: dbCategories,
+                    required: true,
+                    attributes: ['name'],
+                    where: {is_active: 1}
+                },
+                {model: dbGenres,
+                    required: true,
+                    attributes: ['name']
+                },
+                {model: dbBrands,
+                    required: true,
+                    attributes: ['name']
+                }
+            ]
+        });
+
+        let stock = dbStock.findAll({
+            attributes: ['available_quantity'],
+            include: [
+                {model: dbProducts,
+                    required: true,
+                    attributes: ['name', 'description','img','price'],
+                    where: {
+                        id: req.params.id
+                    }
+                },
+                {model: dbSizes,
+                    required: true,
+                    attributes: ['size']
+                }
+            ]
+        });
+
+        Promise.all([detail, stock]).then(function([product,stock]){
+            res.render('products/productDetails', {product,stock})
+
+        })
     },
     
     createProduct: (req, res) => {
-        res.render('products/createProduct')
+
+        let categories = dbCategories.findAll({
+            where: {is_active: 1}
+        });
+        let brands = dbBrands.findAll({
+            where: {is_active: 1}
+        });
+        let genres = dbGenres.findAll();
+        let sizes = dbSizes.findAll();
+
+        Promise.all([categories,brands,genres,sizes]).then(function([categories,brands,genres,sizes]){
+            res.render('products/createProduct', {categories,brands,genres,sizes})
+
+        })
     },
 
     storeProduct: (req, res) =>{
@@ -45,104 +130,90 @@ const productController = {
             newImage=req.file.filename
         }
         //finaliza proceso de multer
+        // console.log(JSON.stringify(req.body))
 
-        const fs = require("fs");
-
-        let productDataBaseJSONImport = fs.readFileSync(productsFilePath, {encoding: "utf-8"});
-
-        let oldProductsJSON;
-        if(productDataBaseJSONImport == ""){
-	        oldProductsJSON = []
-        }else{
-	        oldProductsJSON = JSON.parse(productDataBaseJSONImport);
-        }
-
-        let newProduct = {
-            id: oldProductsJSON[oldProductsJSON.length - 1].id + 1,
+        dbProducts.create({
 			name: req.body.name,
-            size: req.body.size,
-            price: req.body.price,
-			category: req.body.category,
             description: req.body.description,
-            image: newImage,
-            stock: "available-stock"
-		}
+            price: req.body.price,
+            img: newImage,
+            is_active: 1,
+            brand_id: parseInt(req.body.brand),
+            category_id: parseInt(req.body.category),
+            genre_id: parseInt(req.body.genre)
+		})
+        .then(() => res.redirect('./list'))
 
-        //proceso de escritura a productDataBase.json:
+        .catch(error => console.log(error))
 
-        oldProductsJSON.push(newProduct);
+        // dbProducts.findAll()
+        // .then(() => res.redirect('products/list'))
 
-        let productDataUpdatedJSON = JSON.stringify(oldProductsJSON);
-
-        fs.writeFileSync(productsFilePath, productDataUpdatedJSON);
-        //fin del proceso de escritura
-
-        res.redirect("/products/createProduct")
     },
 
     editProduct: (req, res) => {
-        id = req.params['id'] - 1
-        res.render('products/editProduct', {products, id})
-    },
 
-    // Delete - Delete one product from DB
-	destroy : (req, res) => {
-        let products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+        let id = parseInt(req.params.id)
 
-        let id = req.params.id;
-        let productDelete = products.filter(product => product.id != id);
+        let product =  dbProducts.findByPk(id)
+        let categories = dbCategories.findAll({
+            where: {is_active: 1}
+        });
+        let brands = dbBrands.findAll({
+            where: {is_active: 1}
+        });
+        let genres = dbGenres.findAll();
+        let sizes = dbSizes.findAll();
 
-        fs.writeFileSync(productsFilePath, JSON.stringify(productDelete, null, '\t'));
-	
-		res.redirect('/products/products')
+        Promise.all([product,categories,brands,genres,sizes]).then(function([product,categories,brands,genres,sizes]){
+            res.render('products/editProduct', {product,categories,brands,genres,sizes})
+
+        })
+
     },
 
     update: (req, res)=>{
-        let product= products.find(product=>product.id == req.params.id);
-        let newImage,newCategory,newStock;
 
+        let id = req.params.id
+
+        let product =  dbProducts.findByPk(id)
+
+        let newImage;
         //validate if the user change the product image
         if(req.file){
             newImage = req.file.filename;
         } else{
-            newImage = product.image;
+            newImage = product.img;
         }
 
-        //validate if the user change the category
-        if(req.body.category != "select"){
-            newCategory = req.body.category;
-        } else{
-            newCategory = product.category;
-        }
+        dbProducts.update
+            ({
+                name: req.body.name,
+                description: req.body.description,
+                price: req.body.price,
+                img: newImage,
+                is_active: 1,
+                brand_id: parseInt(req.body.brand),
+                category_id: parseInt(req.body.category),
+                genre_id: parseInt(req.body.genre)
+            },
+            {where: {id:id}}
+            )
+            .then(() => res.redirect('../list'))
 
-        //validate if the user change the stock condition
-        if(req.body.stock != "select"){
-            newStock = req.body.stock;
-        } else{
-            newStock = product.stock;
-        }
+    },
 
-        let updatedProduct ={
-            id: product.id,
-            name: req.body.name,
-            size: req.body.size,
-            price: req.body.price,
-            category: newCategory,
-            description: req.body.description,
-            image: newImage,
-            stock: newStock
-        };
+    // Delete - Delete one product from DB
+    destroy : (req, res) => {
 
-        let updatedJSON = products.map(product =>{
-            if(updatedProduct.id == product.id){
-                return product = updatedProduct;
-            }
-            return product;
-        })
+        let id = parseInt(req.params.id)
 
-        fs.writeFileSync(productsFilePath, JSON.stringify(updatedJSON, null, '\t'));
+        dbProducts.destroy({
+            where: {id:id}
+        })	
+        .then(() => res.redirect('../list'))
 
-        res.redirect('/products/products')
+        .catch(error => console.log(error))
     }
 }
 

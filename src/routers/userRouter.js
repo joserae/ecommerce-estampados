@@ -41,5 +41,6 @@ router.get('/register', guestMiddleware, userController.register);
 router.post('/register', fileUpload.single('userAvatar'), userController.create);
 //interfaz del CRUD de usuarios
 router.get('/userList', userController.list);
+router.get('/profile', userController.profile);
 
 module.exports = router;

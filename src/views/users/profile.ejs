@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+ <%-include("../partials/head") %> 
+<title>Mi perfil | One Step</title>
+<link rel ="stylesheet" href="/css/profile-styles.css">   
+</head>
+<body>
+  <%-include("../partials/header") %> 
+
+  <main>
+    <h1 class="title">Mi Perfil</h1>
+    <figure>
+      <a href="/"><img src="../img/usersAvatars/<%=loggedUser.image%>" alt="back_home"></a>
+    </figure>
+
+    <h2 class="sectionTitle">Datos de la cuenta</h2>
+    <section class="account-data-section">
+      <h4>Nombre(s):</h4>
+      <h4><%= loggedUser.name %> </h4>
+      <h4>Apellidos:</h4>
+      <h4><%= loggedUser.lastName %></h4>
+      <h4>Email:</h4>
+      <h4><%= loggedUser.email %> </h4>
+    </section>
+
+    <section class="form-buttons">
+      <button type="button" class="change-password">Cambiar contraseña</button>
+      <button type="button" class="logout">Cerrar sesión</button>
+    </section>
+
+  </main>
+
+  <%- include("../partials/footer")%>
+
+</body>
+</html>

@@ -6,37 +6,59 @@
 </head>
 <body>
     <%- include('../partials/header') %> 
+    <title>Editar producto | One Step</title>
     <body>
         <main>
             <h1 class="title">Editar producto</h1>
-            <p class="form-description"><%= products[id].name %></p>
-            <form action="./<%= products[id].id%>?_method=PUT" method="POST" enctype="multipart/form-data">
+            <p class="form-description"><%= product.name %></p>
+            <form action="./<%= product.id%>?_method=PUT" method="POST" enctype="multipart/form-data">
                     <label for="name">Nombre:</label>
-                    <input type="text" name="name" id="name" value="<%= products[id].name %>" placeholder="Nombre del producto" >
+                    <input type="text" name="name" id="name" value="<%= product.name %>" placeholder="Nombre del producto" >
                     <label for="description">Descripción:</label>
-                    <input type="text" name="description" id="description" placeholder="Descripción" value="<%= products[id].description %>" id="descripcion">
+                    <input type="text" name="description" id="description" placeholder="Descripción" value="<%= product.description %>" id="descripcion">
+                    <label for="brand">Marca:</label>
+                    <select name="brand" id="brand">
+                        <% brands.forEach(brand => { %>
+                            <% if(brand.id == product.brand_id){ %> 
+                                <option value="<%=brand.id%>" selected><%=brand.name%></option>
+                                <%} else{ %> 
+                                <option value="<%=brand.id%>"><%=brand.name%></option>
+                                <% } %>
+                        <% }) %>
+                    </select>
+                    <label for="genre">Género:</label>
+                    <select name="genre" id="genre">
+                        <% genres.forEach(genre => { %>
+                            <% if(genre.id == product.genre_id){ %> 
+                                <option value="<%=genre.id%>" selected><%=genre.name%></option>
+                                <%} else{ %> 
+                                <option value="<%=genre.id%>"><%=genre.name%></option>
+                                <% } %>
+                        <% }) %>
+                    </select>
                     <label for="size">Talla:</label>
-                    <input type="text" name="size" placeholder="Talla" value="<%= products[id].size %>" id="size">
-                    <label for="category">Estilo:</label>
-                    <select name="category" id="category" value="<%= products[id].category %>">
-                        <option value="select">Seleccione</option>
-                        <option value="tenis">Tenis</option>
-                        <option value="runners">Runners</option>
-                        <option value="lifestyle">lifestyle</option>
+                    <select name="size" id="size">
+                        <% sizes.forEach(size => { %>
+                            <option value="<%=size.id%>"><%=size.size%></option>
+                        <% }) %>
+                    </select>
+                    <label for="category">Categoría:</label>
+                    <select name="category" id="category" value="<%= product.category_id %>">
+                        <% categories.forEach(category => { %>
+                            <% if(category.id == product.category_id){ %> 
+                                <option value="<%=category.id%>" selected><%=category.name%></option>
+                                <%} else{ %> 
+                                <option value="<%=category.id%>"><%=category.name%></option>
+                                <% } %>
+                        <% }) %>
                     </select>
                     <label for="price">Precio:</label>
-                    <input type="text" name="price" placeholder="Precio" value="<%= products[0].price %>" id="price">
+                    <input type="text" name="price" placeholder="Precio" value="<%= product.price %>" id="price">
                     <label for="productImage">Imagen del producto:</label>
                     <input type="file" name="productImage" id="productImage">
-                    <label class="label-stock" for="stock">Stock:</label>
-                    <select name="stock" id="stock">
-                        <option value="select">Seleccione</option>
-                        <option value="available-stock">Hay stock</option>
-                        <option value="unavailable-stock">Sin stock</option>
-                    </select>
                     <section class="form-btns">
                         <button type="submit" class="form-btns-btn">Guardar</button>
-                        <a href="../products" class="form-btns-btn">Volver</a>
+                        <a href="../list" class="form-btns-btn">Volver</a>
                     </section>
             </form>
         </main>

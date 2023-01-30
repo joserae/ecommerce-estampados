@@ -27,5 +27,10 @@ module.exports = (sequelize, dataTypes) => {
     };
 
     const Genre = sequelize.define(alias, columns, config);
+    Genre.associate = function(models){
+        Genre.hasMany(models.Product, {
+            foreingKey: "genre_id"
+        })
+    }
     return Genre;
 }
