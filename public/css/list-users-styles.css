@@ -14,6 +14,32 @@ main section article{
     display: none;
 }
 
+.adminFuntions{
+    width: 95%;
+    margin: auto;
+}
+
+.create{
+    display: flex;
+    width: 45%;
+    border: none;
+    background-color: #F2D609;
+    text-align:center;
+    border-radius:5px;
+    cursor:pointer;
+    color: var(--gris-oscuro);
+    font-size:15px;
+    padding:10px 20px;
+    text-decoration: none;
+    margin: 8px 5px;
+    justify-content: center;
+}
+
+.create:hover{
+	background: var(--azul);
+    color: var(--gris-oscuro);
+}
+
 .users-list figure {
     padding-top: 15px;
 }
@@ -27,9 +53,11 @@ main section article{
     padding: 3px 0px;
 }
 
-
 .users-list-actions {
     padding: 15px 0px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .users-list-actions a{
@@ -40,6 +68,11 @@ main section article{
 
 .users-list-actions a i{
     font-size: 1em;
+}
+
+.users-list-actions button{
+    border: none;
+    background-color: #F7F7F7;
 }
 
 .delete{
@@ -70,5 +103,14 @@ main section article{
 }
 
 @media(min-width: 769px){
+    .adminFunctions{
+        display: flex;
+        justify-content: right;
+        width: 95%;
+        margin: auto;
+    }
     
+    .create{
+        width: 20%;
+    }
 }

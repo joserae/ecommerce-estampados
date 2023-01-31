@@ -38,6 +38,15 @@ const userController = {
             if (wholeUser){
                 let passwordVerification = bcrypt.compareSync(req.body.password, wholeUser.password)
                 if (passwordVerification == true && errors.isEmpty()){
+
+                    //session action and cookie action (for remembering the account and storing it into a cookie.)
+                    req.session.loggedUser = wholeUser;
+                    if (req.body.remindMe != undefined) {
+                        res.cookie("remindMe", wholeUser.email,{
+                            maxAge: 30000000
+                        })
+                    }
+
                     res.render('users/profile', { wholeUser })
                 } else {
                     res.render("users/login", { errors })
@@ -45,13 +54,6 @@ const userController = {
             }
            
         })
-
-        //remember me action. Saving data into a cookie.
-        req.session.loggedUser = loggedUser;
-        if (req.body.recordarme != undefined) {//recordar usuario
-            res.cookie("recordarme", loggedUser.email,
-                { expires: new Date("2023-12-31") })      
-        }
     },
 
     register: (req, res) => {
@@ -100,20 +102,25 @@ const userController = {
     },
 
     edit: (req,res) => {
-        dbUsers.findByPk(req.params.id).then(function(User){
-            res.render('users/edit', {User})
+
+        let roles = dbRole.findAll()
+        let User = dbUsers.findByPk(req.params.id)
+
+        Promise.all([roles,User])
+        
+        .then(function([roles,User]){
+            res.render('users/edit', {roles,User})
+
         })
     },
 
     update: (req, res) => {
-        //image setup
-        let newImage
-        if (req.file == undefined) {
-            newImage = "user.png"
-        } else {
-            newImage = req.file.filename
-        }
 
+        let newImage;
+        if(req.file){
+            newImage = req.file.filename;
+        } 
+        
         dbUsers.update({
             first_name: req.body.name,
             last_name: req.body.lastName,
@@ -125,7 +132,10 @@ const userController = {
             where: {
                 id: req.params.id
             }
-        }).then(function(){
+        }).then(function(user){
+            if(!req.file){
+                newImage = user.img;
+            }
             res.redirect("../userList")
         })
     },
