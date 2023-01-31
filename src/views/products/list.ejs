@@ -8,27 +8,34 @@
     <title>Productos | One Step</title>
     <main>
         <h1>Productos</h1>
-        <h3>Filtrar</h3>
+        <!-- <h3>Filtrar</h3> -->
         <form action="" method="get">
-            <label for="">Por género:</label>
+            <label for="gender">Por género:</label>
             <select name="gender">
                 <option value="all" selected>Todos</option>
                 <% genres.forEach(genre => { %>
                     <option value="<%=genre.name%>"><%=genre.name%></option>
                   <% }) %>
             </select><br>
-            <label for="">Por estilo:</label>
-            <select name="style">
-                <option value="select" selected>Seleccione</option>
+            <label for="category">Por categoría:</label>
+            <select name="category">
+                <option value="select" selected>Todos</option>
                 <% categories.forEach(category => { %>
                     <option value="<%=category.name%>"><%=category.name%></option>
                   <% }) %>
             </select><br>
-            <label for="">Por marca:</label>
+            <label for="brand">Por marca:</label>
             <select name="brand">
-                <option value="select" selected>Seleccione</option>
+                <option value="select" selected>Todos</option>
                 <% brands.forEach(brand => { %>
                     <option value="<%=brand.name%>"><%=brand.name%></option>
+                  <% }) %>
+            </select><br>
+            <label for="size">Por talla:</label>
+            <select name="size">
+                <option value="select" selected>Todos</option>
+                <% sizes.forEach(size => { %>
+                    <option value="<%=size.size%>"><%=size.size%></option>
                   <% }) %>
             </select>
         </form>

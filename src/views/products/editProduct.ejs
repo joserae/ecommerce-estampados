@@ -36,12 +36,6 @@
                                 <% } %>
                         <% }) %>
                     </select>
-                    <label for="size">Talla:</label>
-                    <select name="size" id="size">
-                        <% sizes.forEach(size => { %>
-                            <option value="<%=size.id%>"><%=size.size%></option>
-                        <% }) %>
-                    </select>
                     <label for="category">Categoría:</label>
                     <select name="category" id="category" value="<%= product.category_id %>">
                         <% categories.forEach(category => { %>
@@ -53,9 +47,34 @@
                         <% }) %>
                     </select>
                     <label for="price">Precio:</label>
-                    <input type="text" name="price" placeholder="Precio" value="<%= product.price %>" id="price">
+                    <input type="number" name="price" placeholder="Precio" value="<%= product.price %>" id="price">
                     <label for="productImage">Imagen del producto:</label>
                     <input type="file" name="productImage" id="productImage">
+               <label for="sizes">Talla(s) y disponibilidad: (* En construcción) </label>
+                <section class="sizes">
+                    <p>Talla</p>
+                    <p>Cant. disponible</p>
+                    <% sizes.forEach(size => { %>
+                        <% let indexStock = stock.findIndex(object => {return object.size_id === size.id}) %>
+                        <% if(indexStock != -1){ %> 
+                            <article class="sizes-table-info">
+                                <input type="checkbox" name="size_<%=size.id%>" id="size_<%=size.id%>" value="<%=size.id%>" checked>
+                                <label for="size_<%=size.id%>"><%=size.size%></label><br>  
+                            </article>
+                            <article class="sizes-table-info">
+                                <input type="number" name="size_<%=size.id%>_quantity" id="size_<%=size.id%>_quantity" value="<%=stock[indexStock].available_quantity%>">
+                            </article>
+                        <%} else{ %> 
+                            <article class="sizes-table-info">
+                                <input type="checkbox" name="size_<%=size.id%>" id="size_<%=size.id%>" value="<%=size.id%>">
+                                <label for="size_<%=size.id%>"><%=size.size%></label><br>  
+                            </article>
+                            <article class="sizes-table-info">
+                                <input type="number" name="size_<%=size.id%>_quantity" id="size_<%=size.id%>_quantity">
+                            </article>
+                        <% } %>
+                    <% }) %>      
+                </section>
                     <section class="form-btns">
                         <button type="submit" class="form-btns-btn">Guardar</button>
                         <a href="../list" class="form-btns-btn">Volver</a>
