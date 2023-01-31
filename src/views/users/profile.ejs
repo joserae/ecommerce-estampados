@@ -11,17 +11,17 @@
   <main>
     <h1 class="title">Mi Perfil</h1>
     <figure>
-      <a href="/"><img src="../img/usersAvatars/<%=loggedUser.image%>" alt="back_home"></a>
+      <a href="/"><img src="../img/usersAvatars/<%=wholeUser.avatar_img%>" alt="back_home"></a>
     </figure>
 
     <h2 class="sectionTitle">Datos de la cuenta</h2>
     <section class="account-data-section">
       <h4>Nombre(s):</h4>
-      <h4><%= loggedUser.name %> </h4>
+      <h4><%= wholeUser.first_name %> </h4>
       <h4>Apellidos:</h4>
-      <h4><%= loggedUser.lastName %></h4>
+      <h4><%= wholeUser.last_name %></h4>
       <h4>Email:</h4>
-      <h4><%= loggedUser.email %> </h4>
+      <h4><%= wholeUser.email %> </h4>
     </section>
 
     <section class="form-buttons">

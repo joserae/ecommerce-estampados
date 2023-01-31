@@ -4,8 +4,10 @@ const users = require('../database/userData.json');
 const bcrypt = require('bcryptjs');
 const { check, validationResult } = require("express-validator");
 
+const Sequelize = require('sequelize');
 const db = require("../database/models/index.js");
-const dbUsers = db.User//not completed yet
+const Op = Sequelize.Op
+const dbUsers = db.User
 const dbRole = db.Role
 
 const userController = {
@@ -14,62 +16,42 @@ const userController = {
         res.render('users/login')
     },
 
+    //testing out the databases
     userList: (req, res) => {
-        dbUsers.findAll().then(function(data){
+        dbRole.findAll().then(function(data){
             res.json(data)
         })
     },
     
     loginProcess: (req, res) => {
-        let users = [];
-        
-        if (req.cookies.recordarme != undefined && req.session.userToLogin == undefined);
-        const userDataJson = fs.readFileSync("src/database/userData.json", { encoding: "utf-8" });
-        
-        // console.log("userDataJson: ", userDataJson);
-        
-        if (userDataJson) {
-            users = JSON.parse(userDataJson);
-           
-        } 
 
-        let loggedUser = users.find( user => user['email'] == req.body.email)
-        
-        if (loggedUser == undefined) {//usuario logueado//
+        //1. finding the existing user
+        let loggedUser = dbUsers.findOne({
+            where: {
+                email: { [Op.like]: `%${req.body.email}%` }
+            }
+        })
 
+        //2. compare passwords from the existing user. If the password is fine, let me in. If it isn't, show me the errors.
+        loggedUser.then(function(wholeUser){
+            let errors = validationResult(req)
+            if (wholeUser){
+                let passwordVerification = bcrypt.compareSync(req.body.password, wholeUser.password)
+                if (passwordVerification == true && errors.isEmpty()){
+                    res.render('users/profile', { wholeUser })
+                } else {
+                    res.render("users/login", { errors })
+                }
+            }
            
-        }
-        
+        })
+
+        //remember me action. Saving data into a cookie.
         req.session.loggedUser = loggedUser;
         if (req.body.recordarme != undefined) {//recordar usuario
             res.cookie("recordarme", loggedUser.email,
-                { expires: new Date("2023-12-31") })
-                
+                { expires: new Date("2023-12-31") })      
         }
-        if (loggedUser) {
-            let errors = validationResult(req)
-           let isOkPassword = bcrypt.compareSync(req.body.password, loggedUser.password)
-           if (isOkPassword && errors.isEmpty()) {
-            //    console.log("El usuario logueado es " + JSON.stringify(loggedUser));
-                return res.render('users/profile', { users, loggedUser })
-            } else {
-                return res.render("users/login", { errors: errors.errors })
-
-            }
-        }
-       return res.render('users/login')
-
-
-
-        /*return res.render('users/login', {
-            errors:{
-                email: {
-                    msg: 'Email o contraseña incorrecta'
-                }
-            }
-        })*/
-
-
     },
 
     register: (req, res) => {
@@ -78,6 +60,7 @@ const userController = {
 
     create: (req, res) => {
 
+        //image setup
         let newImage
         if (req.file == undefined) {
             newImage = "user.png"
@@ -85,42 +68,40 @@ const userController = {
             newImage = req.file.filename
         }
 
-        //save the new user
-        let usersDataFile = fs.readFileSync(path.join(__dirname, '../database/userData.json'), { encoding: 'utf-8' });
-        let oldUsersJSON, id;
-        let passEncriptada = bcrypt.hashSync(req.body.password, 10);
+        let encryptedPassword = bcrypt.hashSync(req.body.password, 10);
 
-        if (usersDataFile == "" || usersDataFile == "[]") {
-            oldUsersJSON = [];
-            id = 1;
-        } else {
-            oldUsersJSON = JSON.parse(usersDataFile);
-            id = oldUsersJSON[oldUsersJSON.length - 1].id + 1
-        }
-
-        let newUser = {
-            id: id,
-            name: req.body.name,
-            lastName: req.body.lastName,
+        dbUsers.create({
+            first_name: req.body.name,
+            last_name: req.body.lastName,
             email: req.body.email,
-            password: passEncriptada,
-            image: newImage
-        }
-
-        oldUsersJSON.push(newUser);
-        usersJSON = JSON.stringify(oldUsersJSON);
-        fs.writeFileSync(path.join(__dirname, '../database/userData.json'), usersJSON);
+            password: encryptedPassword,
+            avatar_img: newImage,
+            role_id: 2,
+            is_active: 1
+        })
 
         res.redirect('/users/login')
 
     },
 
     list: (req, res) => {
-        res.render('users/userList', { users })
+
+        dbUsers.findAll().then(function(Users){
+            res.render('users/userList', { Users })
+        })
+        
     },
 
     profile: (req, res) => {
-        res.render('users/profile', { users })
+        dbUsers.findAll().then(function(Users){
+            res.render('users/profile', { Users })
+        })
+
+    },
+
+    edit: (req,res) => {
+        let id = req.params.id - 1
+        res.render('users/edit', {users,id})
     }
 
 }

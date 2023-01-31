@@ -15,15 +15,15 @@
                 <h2>Datos</h2>
                 <h2>Editar / Eliminar</h2>
             </article>
-        <% users.forEach(user => { %>
+        <% Users.forEach(User => { %>
             <article class="users-list">
                 <figure class="users-list-avatar">
-                    <img src="/img/usersAvatars/<%=user.image%>" alt="<%=user.name%>">
+                    <img src="/img/usersAvatars/<%=User.avatar_img%>" alt="<%=User.first_name%>">
                 </figure>
                 <section class="users-list-description">
-                    <h4><%= user.name %></h4>
-                    <h4><%= user.lastName %></h4>
-                    <h5><%= user.email %></h5>
+                    <h4><%= User.first_name %></h4>
+                    <h4><%= User.last_name %></h4>
+                    <h5><%= User.email %></h5>
                 </section>
                 <section class="users-list-actions">
                     <a href="#" class="edit"><i class="fas fa-user-edit" alt="delete"></i></a>

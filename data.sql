@@ -60,22 +60,22 @@ VALUES
 (4,'Luis','Canales','enrique_canoli@gmail.com','$2a$10$OGHyDtCiriUynb.5MDVnDOyQVpC01k.wPGPzDh/Nd3gOMm1rY7bhK','1671036261585.png',2,1),
 (5,'Yeidy','Aguirre','yeidyaguirre@gmail.com','$2a$10$RYlLaZaQudxlsI.dp4js6unXwRWoFUtCT.R1HwArLlU5nLoLQRlW6','1671036305780.png',2,1);
 
-INSERT INTO `products` (`id`,`name`,`description`,`price`,`img`,`is_active`)
+INSERT INTO `products` (`id`,`name`,`description`,`price`,`category_id`,`brand_id`,`genre_id`,`img`,`is_active`)
 VALUES
-(1,'Air Max 90','Comodidad y estilo',450000,'nike-air-max90.jpeg',1),
-(2,'Yeezy','Estilo urbano con el mejor soporte',760000,'adidas-yeezy.jpeg',1),
-(3,'Old Skool','Atrévete a usar ese zapato que tanto te gusta',280000,'vans-old-skool.jpeg',1),
-(4,'RS-X','Sin prisa pero sin pausa',510000,'puma-rsx.jpeg',1);
+(1,'Air Max 90','Comodidad y estilo',450000,2,2,1,'nike-air-max90.jpeg',1),
+(2,'Yeezy','Estilo urbano con el mejor soporte',760000,2,1,1,'adidas-yeezy.jpeg',1),
+(3,'Old Skool','Atrévete a usar ese zapato que tanto te gusta',280000,2,3,2,'vans-old-skool.jpeg',1),
+(4,'RS-X','Sin prisa pero sin pausa',510000,1,4,1,'puma-rsx.jpeg',1);
 
-INSERT INTO `productCharacteristics` (`id`,`product_id`,`category_id`,`brand_id`,`genre_id`,`size_id`,`available_quantity`)
+INSERT INTO `stock` (`id`,`product_id`,`size_id`,`available_quantity`)
 VALUES
-(1,1,2,2,2,9,15),
-(2,1,2,2,1,5,10),
-(3,2,2,1,1,3,5),
-(4,2,2,1,1,4,20),
-(5,3,2,3,1,8,30),
-(6,3,2,3,2,7,2),
-(7,3,2,3,2,2,25),
-(8,4,1,4,1,10,4),
-(9,4,1,4,1,11,12),
-(10,4,1,4,1,13,2);
+(1,1,9,15),
+(2,1,5,10),
+(3,2,3,5),
+(4,2,4,20),
+(5,3,8,30),
+(6,3,7,2),
+(7,3,2,25),
+(8,4,10,4),
+(9,4,11,12),
+(10,4,13,2);

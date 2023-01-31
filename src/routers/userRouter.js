@@ -42,5 +42,6 @@ router.post('/register', fileUpload.single('userAvatar'), userController.create)
 //interfaz del CRUD de usuarios
 router.get('/userList', userController.list);
 router.get('/profile', userController.profile);
+router.get('/edit/:id',userController.edit);
 
 module.exports = router;
