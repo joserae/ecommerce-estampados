@@ -43,5 +43,7 @@ router.post('/register', fileUpload.single('userAvatar'), userController.create)
 router.get('/userList', userController.list);
 router.get('/profile', userController.profile);
 router.get('/edit/:id',userController.edit);
+router.put('/edit/:id', fileUpload.single("avatarImage"), userController.update);
+router.post('/delete/:id', userController.destroy); 
 
 module.exports = router;

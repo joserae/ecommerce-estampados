@@ -100,8 +100,44 @@ const userController = {
     },
 
     edit: (req,res) => {
-        let id = req.params.id - 1
-        res.render('users/edit', {users,id})
+        dbUsers.findByPk(req.params.id).then(function(User){
+            res.render('users/edit', {User})
+        })
+    },
+
+    update: (req, res) => {
+        //image setup
+        let newImage
+        if (req.file == undefined) {
+            newImage = "user.png"
+        } else {
+            newImage = req.file.filename
+        }
+
+        dbUsers.update({
+            first_name: req.body.name,
+            last_name: req.body.lastName,
+            email: req.body.email,
+            avatar_img: newImage,
+            role_id: 2,
+            is_active: 1
+        }, {
+            where: {
+                id: req.params.id
+            }
+        }).then(function(){
+            res.redirect("../userList")
+        })
+    },
+
+    destroy: (req, res) => {
+        dbUsers.destroy({
+            where: {
+                id: req.params.id
+            }
+        }).then(function(){
+            res.redirect("../userList")
+        })
     }
 
 }

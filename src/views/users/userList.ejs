@@ -16,19 +16,21 @@
                 <h2>Datos</h2>
                 <h2>Editar / Eliminar</h2>
             </article>
-        <% Users.forEach(User => { %>
+        <% Users.forEach(Users => { %>
             <article class="users-list">
                 <figure class="users-list-avatar">
-                    <img src="/img/usersAvatars/<%=User.avatar_img%>" alt="<%=User.first_name%>">
+                    <img src="/img/usersAvatars/<%=Users.avatar_img%>" alt="<%=Users.first_name%>">
                 </figure>
                 <section class="users-list-description">
-                    <h4><%= User.first_name %></h4>
-                    <h4><%= User.last_name %></h4>
-                    <h5><%= User.email %></h5>
+                    <h4><%= Users.first_name %></h4>
+                    <h4><%= Users.last_name %></h4>
+                    <h5><%= Users.email %></h5>
                 </section>
                 <section class="users-list-actions">
-                    <a href="./edit/<%= user.id %>" class="edit"><i class="fas fa-user-edit" alt="delete"></i></a>
-                    <a href="#" class="delete"><i class="fas fa-user-times"></i></a>
+                    <a href="./edit/<%= Users.id %>" class="edit"><i class="fas fa-user-edit" alt="delete"></i></a>
+                    <form action="/users/delete/<%= Users.id %>" method="POST" >
+                        <button class="delete"><i class="fas fa-user-times"></i></button>
+                    </form>
                 </section>
             </article>
             <% }) %>
