@@ -51,6 +51,7 @@ const productController = {
             ]
         });
 
+        //para los filtros (en un futuro)
         let promesaGeneros = dbGenres.findAll();
         let promesaCategorias = dbCategories.findAll();
         let promesaMarca = dbBrands.findAll();
@@ -132,6 +133,27 @@ const productController = {
         //finaliza proceso de multer
         // console.log(JSON.stringify(req.body))
 
+        //revisar lo que proviene del formulario
+        let formBody = req.body
+
+        //[idSize,cantDisp]
+        let arrSizes = []
+
+        //buscar checked checkbox
+        let arrChecked = Object.keys(formBody).filter((key) => key.startsWith('size') && !key.endsWith('quantity'))
+        
+        arrChecked.forEach(key => {
+            let idSize = key.split('_')[1]
+            let property = 'size_'
+            property = property.concat(idSize,'_quantity')
+            //validar que la cantidad disponible no esté vacía
+            if(formBody[property] != ''){
+                //armar el array de tallas
+                arrSizes.push([idSize,formBody[property]])
+            }
+        })
+
+        //crear el producto
         dbProducts.create({
 			name: req.body.name,
             description: req.body.description,
@@ -142,12 +164,26 @@ const productController = {
             category_id: parseInt(req.body.category),
             genre_id: parseInt(req.body.genre)
 		})
+        //obtener el id del nuevo producto
+        .then(function(producto){
+            // console.log(producto)
+            return producto.id
+        })
+        .then(function(idProducto){
+            // console.log(idProducto)
+            let arrObjSizes = []
+
+            //armar el array para bulkCreate
+            arrSizes.forEach(element => {
+                let size_id = element[0]
+                let available_quantity = element[1]
+                arrObjSizes.push({'product_id':idProducto,'size_id':size_id,'available_quantity':available_quantity})
+            })
+
+            dbStock.bulkCreate(arrObjSizes)
+        })
         .then(() => res.redirect('./list'))
-
         .catch(error => console.log(error))
-
-        // dbProducts.findAll()
-        // .then(() => res.redirect('products/list'))
 
     },
 
@@ -164,9 +200,12 @@ const productController = {
         });
         let genres = dbGenres.findAll();
         let sizes = dbSizes.findAll();
+        let stock = dbStock.findAll({
+            where: {product_id:id}
+        })
 
-        Promise.all([product,categories,brands,genres,sizes]).then(function([product,categories,brands,genres,sizes]){
-            res.render('products/editProduct', {product,categories,brands,genres,sizes})
+        Promise.all([product,categories,brands,genres,sizes,stock]).then(function([product,categories,brands,genres,sizes,stock]){
+            res.render('products/editProduct', {product,categories,brands,genres,sizes,stock})
 
         })
 
@@ -186,7 +225,39 @@ const productController = {
             newImage = product.img;
         }
 
-        dbProducts.update
+        // console.log(JSON.stringify(req.body))
+
+        //EDICIÓN DEL STOCK
+        // //revisar lo que proviene del formulario
+        // let formBody = req.body
+
+        // //[idSize,cantDisp]
+        // let arrSizes = []
+
+        // //buscar checked checkbox
+        // let arrChecked = Object.keys(formBody).filter((key) => key.startsWith('size') && !key.endsWith('quantity'))
+        
+        // arrChecked.forEach(key => {
+        //     let idSize = key.split('_')[1]
+        //     let property = 'size_'
+        //     property = property.concat(idSize,'_quantity')
+        //     //validar que la cantidad disponible no esté vacía
+        //     if(formBody[property] != ''){
+        //         //armar el array de tallas
+        //         arrSizes.push([idSize,formBody[property]])
+        //     }
+        // })
+
+        // let arrObjSizes = []
+
+        // //armar el array para bulkCreate
+        // arrSizes.forEach(element => {
+        //     let size_id = element[0]
+        //     let available_quantity = element[1]
+        //     arrObjSizes.push({'product_id':id,'size_id':size_id,'available_quantity':available_quantity})
+        // })
+
+        let updateProduct = dbProducts.update
             ({
                 name: req.body.name,
                 description: req.body.description,
@@ -195,15 +266,27 @@ const productController = {
                 is_active: 1,
                 brand_id: parseInt(req.body.brand),
                 category_id: parseInt(req.body.category),
-                genre_id: parseInt(req.body.genre)
+                genre_id: parseInt(req.body.genre),
+                modified_date: sequelize.fn('NOW')
             },
-            {where: {id:id}}
-            )
-            .then(() => res.redirect('../list'))
+            {where: 
+                {id:id}
+            })
+        
+        // let createStock = dbStock.bulkCreate(arrObjSizes,
+        //     {
+        //         fields:['product_id', 'size_id', 'available_quantity'],
+        //         updateOnDuplicate: ['available_quantity']
+        //     })
+
+        // Promise.all([updateProduct,createStock])
+        .then(() => res.redirect('../list'))
+        
+        .catch(error => console.log(error))
 
     },
 
-    // Delete - Delete one product from DB
+    //Delete one product from DB
     destroy : (req, res) => {
 
         let id = parseInt(req.params.id)

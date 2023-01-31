@@ -8,6 +8,14 @@ module.exports = (sequelize, dataTypes) => {
             autoIncrement: true
 
         },
+        product_id:{
+            type: dataTypes.INTEGER(11),
+            allowNull: true
+        },
+        size_id:{
+            type: dataTypes.INTEGER(11),
+            allowNull: true
+        },
         available_quantity: {
             type: dataTypes.INTEGER(11),
             allowNull: false,

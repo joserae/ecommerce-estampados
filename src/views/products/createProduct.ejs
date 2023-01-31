@@ -3,6 +3,7 @@
 <head>
     <%- include('../partials/head') %> 
     <link rel="stylesheet" href="/css/crear-producto.css">
+    <title>Crear Producto | One Step </title>
 </head>
 <body>
     <%- include('../partials/header') %> 
@@ -27,12 +28,6 @@
                         <option value="<%=genre.id%>"><%=genre.name%></option>
                     <% }) %>
                 </select>
-                <label for="size">Talla:</label>
-                <select name="size" id="size">
-                    <% sizes.forEach(size => { %>
-                        <option value="<%=size.id%>"><%=size.size%></option>
-                    <% }) %>
-                </select>
                 <label for="category">Categoría:</label>
                 <select name="category" id="category">
                     <% categories.forEach(category => { %>
@@ -43,6 +38,20 @@
                 <input type="number" name="price" placeholder="Precio" id="price" required>
                 <label for="productImage">Imagen del producto:</label>
                 <input type="file" name="productImage" id="productImage" required>
+                <label for="sizes">Talla(s) y disponibilidad:</label>
+                <section class="sizes">
+                    <p>Talla</p>
+                    <p>Cant. disponible</p>
+                    <% sizes.forEach(size => { %>
+                        <article class="sizes-table-info">
+                            <input type="checkbox" name="size_<%=size.id%>" id="size_<%=size.id%>" value="<%=size.id%>">
+                            <label for="size_<%=size.id%>"><%=size.size%></label><br>  
+                        </article>
+                        <article class="sizes-table-info">
+                            <input type="number" name="size_<%=size.id%>_quantity" id="size_<%=size.id%>_quantity">
+                        </article>
+                    <% }) %>
+                </section>
                 <section class="form-btns">
                     <button type="submit" class="form-btns-btn">Guardar</button>
                     <a href="./list" class="form-btns-btn">Volver</a>

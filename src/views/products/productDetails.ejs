@@ -5,7 +5,7 @@
 </head>
 <body>
     <%- include("../partials/header.ejs") %>
-
+    <title>Detalle del producto | One Step</title>
     <main>
         <h1> <%= product.Brand.name %> - <%= product.name%> </h1>
         <h3> <%= product.description %></h3>
@@ -19,7 +19,7 @@
                 <label for="size">Talla:</label>
                 <select name="size">
                     <% stock.forEach(stock => { %>
-                        <option value="<%=stock.Size.size%>"><%=stock.Size.size%></option>
+                        <option value="<%=stock.Size.size%>"><%=stock.Size.size%> - <%=stock.available_quantity%> disponibles</option>
                       <% }) %>
                 </select><br>
                 <p><strong><%= product.price %></strong> + envío</p><br>
