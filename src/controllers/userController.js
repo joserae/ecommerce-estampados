@@ -38,20 +38,25 @@ const userController = {
             if (wholeUser){
                 let passwordVerification = bcrypt.compareSync(req.body.password, wholeUser.password)
                 if (passwordVerification == true && errors.isEmpty()){
+
+                    //session action and cookie action (for remembering the account and storing it into a cookie.)
+                    req.session.loggedUser = wholeUser;
+                    if (req.body.remindMe != undefined) {
+                        res.cookie("remindMe", wholeUser.email,{
+                            maxAge: 30000000
+                        })
+                    }
+
                     res.render('users/profile', { wholeUser })
                 } else {
                     res.render("users/login", { errors })
                 }
-            }
-           
+            } 
         })
+        
+        loggedUser.then(function(result){
 
-        //remember me action. Saving data into a cookie.
-        req.session.loggedUser = loggedUser;
-        if (req.body.recordarme != undefined) {//recordar usuario
-            res.cookie("recordarme", loggedUser.email,
-                { expires: new Date("2023-12-31") })      
-        }
+        })
     },
 
     register: (req, res) => {
