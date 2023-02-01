@@ -37,7 +37,7 @@ input[type=text], input[type=password], input[type=email] {
    justify-content: center;
 }
 
-button {
+.form-buttons a {
    border: none;
    text-align:center;
    background-color: var(--gris-oscuro);
@@ -51,9 +51,9 @@ button {
    margin: 8px 10px;
 }
 
-button:hover {
-background:var(--azul);
-color: var(--gris-oscuro);
+.form-buttons a:hover {
+   background:var(--azul);
+   color: var(--gris-oscuro);
 }
 
 @media(min-width: 426px){

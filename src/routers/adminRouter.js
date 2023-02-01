@@ -5,7 +5,7 @@ const path = require('path');
 const adminController = require('../controllers/adminController')
 const { check, validationResult } = require("express-validator");
 
-let guestMiddleware = require("../middlewares/guestMiddleware");
+let adminMiddleware = require("../middlewares/adminMiddleware");
 
 const storage = multer.diskStorage({
 	destination: (req, file, callback) =>{
@@ -32,9 +32,9 @@ const validations = [
 ];
 //finaliza proceso de validación. se pone como middleware en el .post de login
 
-router.get('/admin', adminController.admin);
+router.get('/admin', adminMiddleware, adminController.admin);
 //crear usuario desde administrador
-router.get('/createUser', adminController.createAdminUser);
+router.get('/createUser', adminMiddleware, adminController.createAdminUser);
 router.post('/createUser', fileUpload.single('userAvatar'), adminController.store);
 
 module.exports = router;

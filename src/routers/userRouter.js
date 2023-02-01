@@ -5,6 +5,7 @@ const path = require('path');
 const userController = require('../controllers/userController')
 const { check, validationResult } = require("express-validator");
 
+let authMiddleware = require("../middlewares/authMiddleware");
 let guestMiddleware = require("../middlewares/guestMiddleware");
 
 const storage = multer.diskStorage({
@@ -40,9 +41,9 @@ router.get('/register', guestMiddleware, userController.register);
 //guardar el nuevo usuario
 router.post('/register', fileUpload.single('userAvatar'), userController.create);
 //interfaz del CRUD de usuarios
-router.get('/userList', userController.list);
-router.get('/profile', userController.profile);
-router.get('/edit/:id',userController.edit);
+router.get('/userList', authMiddleware, userController.list);
+router.get('/profile', authMiddleware, userController.profile);
+router.get('/edit/:id',authMiddleware, userController.edit);
 router.put('/edit/:id', fileUpload.single("avatarImage"), userController.update);
 router.post('/delete/:id', userController.destroy); 
 router.get("/logout", userController.logout)
