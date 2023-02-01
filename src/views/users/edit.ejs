@@ -16,7 +16,17 @@
                     <label for="lastName">Apellido:</label>
                     <input type="text" name="lastName" id="lastName" placeholder="Apellido" value="<%= User.last_name %>">
                     <label for="email">Email:</label>
-                    <input type="email" name="email" id="email" placeholder="email" value="<%= User.email %>">
+                    <input type="email" name="email" id="email" placeholder="Email" value="<%= User.email %>">
+                    <label for="role">Rol:</label>
+                    <select name="role" id="role">
+                        <% roles.forEach(role => { %>
+                            <% if(role.id == User.role_id){ %> 
+                                <option value="<%=role.id%>" selected><%=role.name%></option>
+                                <%} else{ %> 
+                                <option value="<%=role.id%>"><%=role.name%></option>
+                                <% } %>
+                        <% }) %>
+                    </select>
                     <label for="avatarImage">Avatar del usuario:</label>
                     <input type="file" name="avatarImage" id="avatarImage">
                 </section>

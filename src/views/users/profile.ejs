@@ -11,22 +11,22 @@
   <main>
     <h1 class="title">Mi Perfil</h1>
     <figure>
-      <a href="/"><img src="../img/usersAvatars/<%=wholeUser.avatar_img%>" alt="back_home"></a>
+      <a href="/"><img src="../img/usersAvatars/<%=User.avatar_img%>" alt="back_home"></a>
     </figure>
 
     <h2 class="sectionTitle">Datos de la cuenta</h2>
     <section class="account-data-section">
       <h4>Nombre(s):</h4>
-      <h4><%= wholeUser.first_name %> </h4>
+      <h4><%= User.first_name %> </h4>
       <h4>Apellidos:</h4>
-      <h4><%= wholeUser.last_name %></h4>
+      <h4><%= User.last_name %></h4>
       <h4>Email:</h4>
-      <h4><%= wholeUser.email %> </h4>
+      <h4><%= User.email %> </h4>
     </section>
 
     <section class="form-buttons">
       <button type="button" class="change-password">Cambiar contraseña</button>
-      <button type="button" class="logout">Cerrar sesión</button>
+      <a href="/users/logout"><button type="button" class="logout">Cerrar sesión</button></a>
     </section>
 
   </main>

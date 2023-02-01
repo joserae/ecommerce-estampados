@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const path = require('path');
-const userController = require('../controllers/userController')
+const adminController = require('../controllers/adminController')
 const { check, validationResult } = require("express-validator");
 
 let guestMiddleware = require("../middlewares/guestMiddleware");
@@ -32,19 +32,9 @@ const validations = [
 ];
 //finaliza proceso de validación. se pone como middleware en el .post de login
 
-router.get('/login',guestMiddleware, userController.login);
-router.get("/userDBList", userController.userList)
-router.post('/login',validations, userController.loginProcess);
-//formulario de registro
-router.get('/register', guestMiddleware, userController.register);
-//guardar el nuevo usuario
-router.post('/register', fileUpload.single('userAvatar'), userController.create);
-//interfaz del CRUD de usuarios
-router.get('/userList', userController.list);
-router.get('/profile', userController.profile);
-router.get('/edit/:id',userController.edit);
-router.put('/edit/:id', fileUpload.single("avatarImage"), userController.update);
-router.post('/delete/:id', userController.destroy); 
-router.get("/logout", userController.logout)
+router.get('/admin', adminController.admin);
+//crear usuario desde administrador
+router.get('/createUser', adminController.createAdminUser);
+router.post('/createUser', fileUpload.single('userAvatar'), adminController.store);
 
 module.exports = router;
