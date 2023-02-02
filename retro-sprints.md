@@ -1,5 +1,19 @@
 # Retrospectiva de sprints
 
+# Sprint 6
+
+- Que dejar de hacer: <br>
+La complejidad del proyecto se tradujo en la deserción de dos de los integrantes. Debemos mejorar en la repartición de tiempos y asignaciones.
+
+- Que hacer menos: <br>
+El hecho de perder la confianza en nosotros mismos. Al final aprendimos que somos capaces si aplicamos lógica y lo aprendido al proyecto.
+
+- Que seguir haciendo: <br>
+Investigar, aprender y aplicar. El análisis y el autoaprendizaje fue vital para poder avanzar en situaciones complejas.
+
+-Que hacer más: <br>
+El trabajo en equipo fue un factor importante para poder sacar adelante el proyecto.
+
 # Sprint 5
 
 - Que dejar de hacer: <br>
