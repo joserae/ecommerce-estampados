@@ -11,7 +11,7 @@ El hecho de perder la confianza en nosotros mismos. Al final aprendimos que somo
 - Que seguir haciendo: <br>
 Investigar, aprender y aplicar. El análisis y el autoaprendizaje fue vital para poder avanzar en situaciones complejas.
 
--Que hacer más: <br>
+- Que hacer más: <br>
 El trabajo en equipo fue un factor importante para poder sacar adelante el proyecto.
 
 # Sprint 5
