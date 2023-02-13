@@ -1,9 +1,8 @@
 const { join } = require('path');
 const sequelize = require('sequelize');
 const path = require('path');
-// const products = require('../database/productDataBase.json')
-// const productsFilePath = path.join(__dirname, '../database/productDataBase.json')
 const fs = require('fs');
+const { check, validationResult } = require("express-validator");
 
 //declarando la base de datos
 const db = require('../database/models/index.js')
@@ -16,9 +15,9 @@ const dbStock = db.Stock;
 
 const productController = {
 
-    list: (req, res) =>{
+    list: async (req, res) =>{
         
-        let promesaProductos = dbProducts.findAll({
+        let products = await dbProducts.findAll({
             include: [
                 {model: dbCategories,
                     required: true,
@@ -33,10 +32,11 @@ const productController = {
                     required: true,
                     attributes: ['name']
                 }
-            ]
+            ],
+            where: {is_active: 1}
         });
 
-        let promesaStock = dbStock.findAll({
+        let stock = await dbStock.findAll({
             attributes: ['available_quantity'],
             include: [
                 {model: dbProducts,
@@ -52,19 +52,18 @@ const productController = {
         });
 
         //para los filtros (en un futuro)
-        let promesaGeneros = dbGenres.findAll();
-        let promesaCategorias = dbCategories.findAll();
-        let promesaMarca = dbBrands.findAll();
-        let promesaTallas = dbSizes.findAll();
+        let genres = await dbGenres.findAll();
+        let categories = await dbCategories.findAll();
+        let brands = await dbBrands.findAll();
+        let sizes = await dbSizes.findAll();
 
-        Promise.all([promesaProductos,promesaStock, promesaGeneros, promesaCategorias, promesaMarca,promesaTallas]).then(function([products,stock,genres,categories,brands,sizes]){
-                res.render('products/list', {products,stock,genres,categories,brands,sizes})
-            })
+        res.render('products/list', {products,stock,genres,categories,brands,sizes})
+
     },
 
-    productDetails: (req, res) =>{
+    productDetails: async (req, res) =>{
 
-        let detail = dbProducts.findByPk(req.params.id,{
+        let product = await dbProducts.findByPk(req.params.id,{
             include: [
                 {model: dbCategories,
                     required: true,
@@ -82,7 +81,7 @@ const productController = {
             ]
         });
 
-        let stock = dbStock.findAll({
+        let stock = await dbStock.findAll({
             attributes: ['available_quantity'],
             include: [
                 {model: dbProducts,
@@ -98,205 +97,294 @@ const productController = {
                 }
             ]
         });
+        
+        let loggedUser = req.session.loggedUser
+        res.render('products/productDetails', {product,stock,loggedUser})
 
-        Promise.all([detail, stock]).then(function([product,stock]){
-            res.render('products/productDetails', {product,stock})
-
-        })
     },
     
-    createProduct: (req, res) => {
+    createProduct: async (req, res) => {
 
-        let categories = dbCategories.findAll({
+        let categories = await dbCategories.findAll({
             where: {is_active: 1}
         });
-        let brands = dbBrands.findAll({
+        let brands = await dbBrands.findAll({
             where: {is_active: 1}
         });
-        let genres = dbGenres.findAll();
-        let sizes = dbSizes.findAll();
+        let genres = await dbGenres.findAll();
+        let sizes = await dbSizes.findAll();
 
-        Promise.all([categories,brands,genres,sizes]).then(function([categories,brands,genres,sizes]){
-            res.render('products/createProduct', {categories,brands,genres,sizes})
+        res.render('products/createProduct', {categories,brands,genres,sizes})
 
-        })
     },
 
-    storeProduct: (req, res) =>{
-        //proceso de multer
-        let newImage
-        if(req.file == undefined){
-            newImage="default-shoes.jpg"
-        }else{
-            newImage=req.file.filename
-        }
-        //finaliza proceso de multer
-        // console.log(JSON.stringify(req.body))
+    storeProduct: async (req, res) =>{
 
-        //revisar lo que proviene del formulario
-        let formBody = req.body
+        let errors = validationResult(req)
 
-        //[idSize,cantDisp]
-        let arrSizes = []
-
-        //buscar checked checkbox
-        let arrChecked = Object.keys(formBody).filter((key) => key.startsWith('size') && !key.endsWith('quantity'))
-        
-        arrChecked.forEach(key => {
-            let idSize = key.split('_')[1]
-            let property = 'size_'
-            property = property.concat(idSize,'_quantity')
-            //validar que la cantidad disponible no esté vacía
-            if(formBody[property] != ''){
-                //armar el array de tallas
-                arrSizes.push([idSize,formBody[property]])
+        if(errors.isEmpty()){
+            //proceso de multer
+            let newImage
+            if(req.file == undefined){
+                newImage="default-shoes.jpg"
+            }else{
+                newImage=req.file.filename
             }
-        })
+            // console.log(JSON.stringify(req.body))
 
-        //crear el producto
-        dbProducts.create({
-			name: req.body.name,
-            description: req.body.description,
-            price: req.body.price,
-            img: newImage,
-            is_active: 1,
-            brand_id: parseInt(req.body.brand),
-            category_id: parseInt(req.body.category),
-            genre_id: parseInt(req.body.genre)
-		})
-        //obtener el id del nuevo producto
-        .then(function(producto){
-            // console.log(producto)
-            return producto.id
-        })
-        .then(function(idProducto){
-            // console.log(idProducto)
-            let arrObjSizes = []
+            //revisar lo que proviene del formulario
+            let formBody = req.body
 
-            //armar el array para bulkCreate
-            arrSizes.forEach(element => {
-                let size_id = element[0]
-                let available_quantity = element[1]
-                arrObjSizes.push({'product_id':idProducto,'size_id':size_id,'available_quantity':available_quantity})
+            //[idSize,cantDisp]
+            let arrSizes = []
+
+            //buscar checked checkbox
+            let arrChecked = Object.keys(formBody).filter((key) => key.startsWith('size') && !key.endsWith('quantity'))
+            let arrQuantity = Object.entries(formBody).filter(([key,value]) => key.startsWith('size') && key.endsWith('quantity') && value != '')
+            let bandError = false
+
+            //validar que se haya hecho selección o completado de la información de tallas
+            if(arrChecked.length != 0 && arrQuantity.length != 0){
+
+                arrQuantity.forEach(element => {
+                    let idSize = element[0].split('_')[1]
+                    let property = 'size_' + idSize
+                    //validar que la talla esté checked
+                    if(!formBody[property]){
+                         bandError = true
+                    }
+                })
+    
+                arrChecked.forEach(key => {
+                    let idSize = key.split('_')[1]
+                    let property = 'size_' + idSize + '_quantity'
+                    //validar que la cantidad disponible no esté vacía
+                    if(formBody[property] != ''){
+                        //armar el array de tallas
+                        arrSizes.push([idSize,formBody[property]])
+                    }
+                    else{
+                         bandError = true
+                    }
+                })
+            }
+            else{
+                bandError = true
+            }
+
+            if(!bandError){
+                //crear el producto
+                dbProducts.create({
+                    name: req.body.name,
+                    description: req.body.description,
+                    price: req.body.price,
+                    img: newImage,
+                    is_active: 1,
+                    brand_id: parseInt(req.body.brand),
+                    category_id: parseInt(req.body.category),
+                    genre_id: parseInt(req.body.genre)
+                })
+                //obtener el id del nuevo producto
+                .then(function(producto){
+
+                    let idProducto = producto.id
+                    // console.log(idProducto)
+                    let arrObjSizes = []
+
+                    //armar el array para bulkCreate
+                    arrSizes.forEach(element => {
+                        let size_id = element[0]
+                        let available_quantity = element[1]
+                        arrObjSizes.push({'product_id':idProducto,'size_id':size_id,'available_quantity':available_quantity})
+                    })
+
+                    dbStock.bulkCreate(arrObjSizes)
+                })
+                .then(() => res.redirect('./list'))
+                .catch(error => console.log(error))
+            }
+            else{
+
+                let categories = await dbCategories.findAll({
+                    where: {is_active: 1}
+                });
+                let brands = await dbBrands.findAll({
+                    where: {is_active: 1}
+                });
+                let genres = await dbGenres.findAll();
+                let sizes = await dbSizes.findAll();
+
+                res.render('products/createProduct', { 
+                    errors: errors.mapped(),
+                    oldData: formBody,
+                    brands: brands,
+                    categories: categories,
+                    genres: genres,
+                    sizes: sizes
+                })
+
+            }
+  
+        }
+        //Send validation errors in form to the view
+        else {
+
+            let categories = await dbCategories.findAll({
+                where: {is_active: 1}
+            });
+            let brands = await dbBrands.findAll({
+                where: {is_active: 1}
+            });
+            let genres = await dbGenres.findAll();
+            let sizes = await dbSizes.findAll();
+
+            res.render('products/createProduct', { 
+                errors: errors.mapped(),
+                oldData: req.body,
+                brands: brands,
+                categories: categories,
+                genres: genres,
+                sizes: sizes
             })
-
-            dbStock.bulkCreate(arrObjSizes)
-        })
-        .then(() => res.redirect('./list'))
-        .catch(error => console.log(error))
-
+        }
+       
     },
 
-    editProduct: (req, res) => {
+    editProduct: async (req, res) => {
 
         let id = parseInt(req.params.id)
 
-        let product =  dbProducts.findByPk(id)
-        let categories = dbCategories.findAll({
+        let product =  await dbProducts.findByPk(id)
+        let categories = await dbCategories.findAll({
             where: {is_active: 1}
         });
-        let brands = dbBrands.findAll({
+        let brands = await dbBrands.findAll({
             where: {is_active: 1}
         });
-        let genres = dbGenres.findAll();
-        let sizes = dbSizes.findAll();
-        let stock = dbStock.findAll({
+        let genres = await dbGenres.findAll();
+        let sizes = await dbSizes.findAll();
+        let stock = await dbStock.findAll({
             where: {product_id:id}
         })
 
-        Promise.all([product,categories,brands,genres,sizes,stock]).then(function([product,categories,brands,genres,sizes,stock]){
-            res.render('products/editProduct', {product,categories,brands,genres,sizes,stock})
-
-        })
+        res.render('products/editProduct', {product,categories,brands,genres,sizes,stock})
 
     },
 
-    update: (req, res)=>{
+    update: async (req, res)=>{
 
         let id = req.params.id
+        let errors = validationResult(req)
 
-        let product =  dbProducts.findByPk(id)
+        if(errors.isEmpty()){
 
-        let newImage;
-        //validate if the user change the product image
-        if(req.file){
-            newImage = req.file.filename;
-        } else{
-            newImage = product.img;
+            let product =  dbProducts.findByPk(id)
+            
+            let newImage;
+            //validate if the user change the product image
+            if(req.file){
+                newImage = req.file.filename;
+            } else{
+                newImage = product.img;
+            }
+    
+            dbProducts.update
+                ({
+                    name: req.body.name,
+                    description: req.body.description,
+                    price: req.body.price,
+                    img: newImage,
+                    is_active: req.body.status,
+                    brand_id: parseInt(req.body.brand),
+                    category_id: parseInt(req.body.category),
+                    genre_id: parseInt(req.body.genre),
+                    modified_date: sequelize.fn('NOW')
+                },
+                {where: 
+                    {id:id}
+                })
+            
+            .then(() => res.redirect('../list'))
+            
+            .catch(error => console.log(error))   
         }
+        //Send validation errors in form to the view
+        else {
 
-        // console.log(JSON.stringify(req.body))
-
-        //EDICIÓN DEL STOCK
-        // //revisar lo que proviene del formulario
-        // let formBody = req.body
-
-        // //[idSize,cantDisp]
-        // let arrSizes = []
-
-        // //buscar checked checkbox
-        // let arrChecked = Object.keys(formBody).filter((key) => key.startsWith('size') && !key.endsWith('quantity'))
-        
-        // arrChecked.forEach(key => {
-        //     let idSize = key.split('_')[1]
-        //     let property = 'size_'
-        //     property = property.concat(idSize,'_quantity')
-        //     //validar que la cantidad disponible no esté vacía
-        //     if(formBody[property] != ''){
-        //         //armar el array de tallas
-        //         arrSizes.push([idSize,formBody[property]])
-        //     }
-        // })
-
-        // let arrObjSizes = []
-
-        // //armar el array para bulkCreate
-        // arrSizes.forEach(element => {
-        //     let size_id = element[0]
-        //     let available_quantity = element[1]
-        //     arrObjSizes.push({'product_id':id,'size_id':size_id,'available_quantity':available_quantity})
-        // })
-
-        let updateProduct = dbProducts.update
-            ({
-                name: req.body.name,
-                description: req.body.description,
-                price: req.body.price,
-                img: newImage,
-                is_active: 1,
-                brand_id: parseInt(req.body.brand),
-                category_id: parseInt(req.body.category),
-                genre_id: parseInt(req.body.genre),
-                modified_date: sequelize.fn('NOW')
-            },
-            {where: 
-                {id:id}
+            let product =  await dbProducts.findByPk(id)
+            let categories = await dbCategories.findAll({
+                where: {is_active: 1}
+            });
+            let brands = await dbBrands.findAll({
+                where: {is_active: 1}
+            });
+            let genres = await dbGenres.findAll();
+            let sizes = await dbSizes.findAll();
+            let stock = await dbStock.findAll({
+                where: {product_id:id}
             })
-        
-        // let createStock = dbStock.bulkCreate(arrObjSizes,
-        //     {
-        //         fields:['product_id', 'size_id', 'available_quantity'],
-        //         updateOnDuplicate: ['available_quantity']
-        //     })
 
-        // Promise.all([updateProduct,createStock])
-        .then(() => res.redirect('../list'))
-        
-        .catch(error => console.log(error))
+            res.render('products/editProduct', { 
+                errors: errors.mapped(),
+                oldData: req.body,
+                product:product,
+                brands: brands,
+                categories: categories,
+                genres: genres,
+                sizes: sizes,
+                stock: stock
+            })
+        }
 
     },
 
-    //Delete one product from DB
+    //Inactive one product from DB
     destroy : (req, res) => {
 
         let id = parseInt(req.params.id)
 
-        dbProducts.destroy({
-            where: {id:id}
-        })	
+        // dbProducts.destroy({
+        //     where: {id:id}
+        // })
+
+        dbProducts.update({
+            is_active: 0
+        },
+        {where: 
+            {id:id}
+        })
+
         .then(() => res.redirect('../list'))
 
         .catch(error => console.log(error))
+    },
+
+    listInactiveProducts: async (req, res) => {
+        let products = await dbProducts.findAll({
+            include: [
+                {model: dbCategories,
+                    required: true,
+                    attributes: ['name']
+                },
+                {model: dbGenres,
+                    required: true,
+                    attributes: ['name']
+                },
+                {model: dbBrands,
+                    required: true,
+                    attributes: ['name']
+                }
+            ],
+        where: {is_active: 0}
+        });
+
+        //para los filtros (en un futuro)
+        let genres = await dbGenres.findAll();
+        let categories = await dbCategories.findAll();
+        let brands = await dbBrands.findAll();
+        let sizes = await dbSizes.findAll();
+
+        res.render('products/list', {products,genres,categories,brands,sizes})
     }
 }
 

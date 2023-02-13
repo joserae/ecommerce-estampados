@@ -43,8 +43,66 @@ const adminController = {
             role_id: req.body.role,
             is_active: 1
         })
-        .then(() => res.redirect('/users/userList'))
+        .then(() => res.redirect('/admin/userList'))
 
+    },
+    
+    list: (req, res) => {
+
+        dbUsers.findAll().then(function(Users){
+            res.render('admin/userList', { Users })
+        })
+        
+    },
+
+    edit: (req,res) => {
+
+        let roles = dbRole.findAll()
+        let User = dbUsers.findByPk(req.params.id)
+
+        Promise.all([roles,User])
+        
+        .then(function([roles,User]){
+            res.render('admin/editUser', {roles,User})
+
+        })
+    },
+
+    update: (req, res) => {
+
+        let newImage;
+        if(req.file){
+            newImage = req.file.filename;
+        } 
+        
+        dbUsers.update({
+            first_name: req.body.name,
+            last_name: req.body.lastName,
+            email: req.body.email,
+            avatar_img: newImage,
+            role_id: req.body.role,
+            is_active: 1,
+            modified_date: Sequelize.fn('NOW')
+        }, {
+            where: {
+                id: req.params.id
+            }
+        }).then(function(user){
+            if(!req.file){
+                newImage = user.img;
+            }
+            res.redirect("../userList")
+        })
+    },
+
+    destroy: (req, res) => {
+        dbUsers.destroy({
+            where: {
+                id: req.params.id
+            }
+        }).then(function(){
+            res.redirect("../userList")
+        })
     }
 
 }

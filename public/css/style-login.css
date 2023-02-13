@@ -65,6 +65,14 @@ form a{
    color: var(--azul-medio);
 }
 
+.showErrors{
+   width: 80%;
+   text-align: left;
+   margin: auto;
+   color: var(--rojo-medio);
+   padding: 5px;
+}
+
 @media(min-width: 426px){
     
 
@@ -96,5 +104,9 @@ form a{
   main h1{
    padding-top: 15px;
   }
+
+  form p.showErrors{
+   width: 100%;
+}
   
 }

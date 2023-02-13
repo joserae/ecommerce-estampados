@@ -26,13 +26,17 @@
                 <div class="button-div">
                     <button class="myButton">COMPRAR AHORA</button>
                 </div>
-                <form action="/products/editProduct/<%= product.id %>" method="GET" >
-                    <button type="submit" class="action-button">EDITAR</button>
-                </form>
-                <form action="/products/delete/<%= product.id %>" method="POST" >
-                    <button type="submit" class="action-button delete">ELIMINAR</button>
-                </form>
-                    
+                <% if(loggedUser != undefined){ %>
+                    <% if(loggedUser.role_id == 1){ %>
+                        <form action="/products/editProduct/<%= product.id %>" method="GET" >
+                            <button type="submit" class="action-button">EDITAR</button>
+                        </form>
+                        <form action="/products/delete/<%= product.id %>" method="POST" >
+                            <button type="submit" class="action-button delete">ELIMINAR</button>
+                        </form>   
+                    <% } %>
+                <% } %>
+
             </summary>
         </article>
         

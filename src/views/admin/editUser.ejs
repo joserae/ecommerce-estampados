@@ -10,19 +10,29 @@
     <body>
         <main>
             <h1 class="title">Editar usuario</h1>
-            <form action="./edit/<%= User.id%>?_method=PUT" method="POST" enctype="multipart/form-data">
+            <form action="./<%= User.id%>?_method=PUT" method="POST" enctype="multipart/form-data">
                     <label for="name">Nombre:</label>
                     <input type="text" name="name" id="name" value="<%= User.first_name %>" placeholder="Nombre del usuario" >
                     <label for="lastName">Apellido:</label>
                     <input type="text" name="lastName" id="lastName" placeholder="Apellido" value="<%= User.last_name %>">
                     <label for="email">Email:</label>
                     <input type="email" name="email" id="email" placeholder="Email" value="<%= User.email %>">
-                    <label for="avatarImage">Avatar:</label>
+                    <label for="role">Rol:</label>
+                    <select name="role" id="role">
+                        <% roles.forEach(role => { %>
+                            <% if(role.id == User.role_id){ %> 
+                                <option value="<%=role.id%>" selected><%=role.name%></option>
+                                <%} else{ %> 
+                                <option value="<%=role.id%>"><%=role.name%></option>
+                                <% } %>
+                        <% }) %>
+                    </select>
+                    <label for="avatarImage">Avatar del usuario:</label>
                     <input type="file" name="avatarImage" id="avatarImage">
                 </section>
                     <section class="form-btns">
                         <button type="submit" class="form-btns-btn">Guardar</button>
-                        <a href="./profile" class="form-btns-btn">Volver</a>
+                        <a href="../userList" class="form-btns-btn">Volver</a>
                     </section>
             </form>
         </main>

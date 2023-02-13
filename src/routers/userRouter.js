@@ -3,14 +3,14 @@ const router = express.Router();
 const multer = require('multer');
 const path = require('path');
 const userController = require('../controllers/userController')
-const { check, validationResult } = require("express-validator");
+const { check, validationResult} = require('express-validator');
 
-let authMiddleware = require("../middlewares/authMiddleware");
-let guestMiddleware = require("../middlewares/guestMiddleware");
+let authMiddleware = require('../middlewares/authMiddleware');
+let guestMiddleware = require('../middlewares/guestMiddleware');
 
 const storage = multer.diskStorage({
 	destination: (req, file, callback) =>{
-		let folder = path.join(__dirname, "../../public/img/usersAvatars");
+		let folder = path.join(__dirname, '../../public/img/usersAvatars');
 
 		callback(null, folder)
 	},
@@ -24,28 +24,55 @@ const storage = multer.diskStorage({
 const fileUpload = multer({ storage: storage });
 
 //proceso de validación con express validator
-const validations = [
-	check("email")
-		.notEmpty().withMessage("Ingresa tu correo electrónico").bail()
-		.isEmail().withMessage("Email inválido"),
-	check("password")
-		.notEmpty().withMessage("Debes completar la contraseña").bail()
+const validateLoginForm = [
+	check('email')
+	.notEmpty().withMessage('Debes ingresar un correo electrónico').bail()
+	.isEmail().withMessage('Debes ingresar un correo electrónico válido'),
+	check('password').notEmpty().withMessage('Debes ingresar una contraseña')
 ];
-//finaliza proceso de validación. se pone como middleware en el .post de login
+
+const validateRegisterForm = [
+	check('name')
+		.notEmpty().withMessage('Debes ingresar un nombre').bail()
+		.isLength( { min: 2 }).withMessage('El nombre debe tener mínimo 2 caracteres'),
+	check('lastName')
+		.notEmpty().withMessage('Debes ingresar un apellido').bail()
+		.isLength( { min: 2 }).withMessage('El apellido debe tener mínimo 2 caracteres'),
+	check('email')
+		.notEmpty().withMessage('Debes ingresar un correo electrónico').bail()
+		.isEmail().withMessage('Debes ingresar un correo electrónico válido'),
+	check('password')
+		.notEmpty().withMessage('Debes ingresar una contraseña').bail()
+		.isLength( { min: 8 }).withMessage('La contraseña debe tener mínimo 8 caracteres'),
+	check('userAvatar').custom((value, { req }) => {
+		let file = req.file;
+		let acceptedExtensions = ['.jpg', '.jpeg', '.png', '.gif']
+		
+		if (file){
+			let fileExtension = path.extname(file.originalname).toLowerCase()
+			if(!acceptedExtensions.includes(fileExtension)){
+				throw new Error(`Las extensiones del archivo permitidas son ${acceptedExtensions.join(', ')}`)
+			}
+		}
+
+		return true
+
+	})
+];
+//finaliza proceso de validación. se pone como middleware
 
 router.get('/login',guestMiddleware, userController.login);
-router.get("/userDBList", userController.userList)
-router.post('/login',validations, userController.loginProcess);
+router.post('/login',validateLoginForm, userController.loginProcess);
 //formulario de registro
 router.get('/register', guestMiddleware, userController.register);
 //guardar el nuevo usuario
-router.post('/register', fileUpload.single('userAvatar'), userController.create);
-//interfaz del CRUD de usuarios
-router.get('/userList', authMiddleware, userController.list);
+router.post('/register', fileUpload.single('userAvatar'),validateRegisterForm, userController.create);
 router.get('/profile', authMiddleware, userController.profile);
-router.get('/edit/:id',authMiddleware, userController.edit);
-router.put('/edit/:id', fileUpload.single("avatarImage"), userController.update);
-router.post('/delete/:id', userController.destroy); 
-router.get("/logout", userController.logout)
+//editar datos de usuario
+router.get('/edit',authMiddleware, userController.edit);
+router.put('/edit/:id', fileUpload.single('avatarImage'), userController.update);
+//eliminar (inactivar) la cuenta
+router.post('/deleteAccount/:id', userController.deleteAccount);
+router.get('/logout', userController.logout)
 
 module.exports = router;
