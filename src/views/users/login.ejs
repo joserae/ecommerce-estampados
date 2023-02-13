@@ -8,35 +8,34 @@
 <body>
   <%-include("../partials/header") %> 
 
-  <% if (typeof errors != "undefined") { %>
-    <p style="color: red">Error</p>
-    <ul>
-      <% for(let i=0; i < errors.length; i++) { %>
-        <li>
-          <%= errors[i].msg %>
-        </li>
-      <% } %>
-    </ul>
-  <% } %>
-
   <main>
     <h1 class="login-title">Inicia sesión</h1>
     <figure>
       <a href="/"><img src="../img/loginUser.png" alt="back_home"></a>
     </figure>
+    
+    <% if (locals.errors && errors.msg){ %>
+      <p class="showErrors"> <%= errors['msg'] %></p>
+    <% } %>
+
     <div>
       <ul id="error-list">
           
       </ul>
     </div>
     <form action="/users/login" method="POST" >
-      <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
+      <input type="email" id="email" name="email" placeholder="Correo electrónico" value="<%=locals.oldData && oldData.email ? oldData.email : ''%>" required>
+      <% if (locals.errors && errors.email){ %>
+          <p class="showErrors"> <%= errors['email'].msg %></p>
+      <% } %>
       <input type="password" id="password" name="password" placeholder="Contraseña" required>
+      <% if (locals.errors && errors.password){ %>
+        <p class="showErrors"> <%= errors['password'].msg %></p>
+    <% } %>
       <input type="submit" class="login-button" value="Ingresar">
       <section class="remember-user">
-        <!-- <input type="checkbox" id="check-remember-user" name="check-remember-user"> -->
-        <input type="checkbox" id="recordarme" name="remindMe">
-        <label>Recordarme</label>
+        <input type="checkbox" id="remindMe" name="remindMe">
+        <label for="remindMe">Recordarme</label>
       </section>
       <p>¿No tienes cuenta? <a href="/users/register">Regístrate</a> </p>
       <p><a href="#">Olvidé mi Contraseña</a></p>

@@ -1,6 +1,5 @@
 const path = require('path');
 const fs = require('fs');
-const users = require('../database/userData.json');
 const bcrypt = require('bcryptjs');
 const { check, validationResult } = require("express-validator");
 
@@ -15,30 +14,25 @@ const userController = {
     login: (req, res) => {
         res.render('users/login')
     },
-
-    //testing out the databases
-    userList: (req, res) => {
-        dbRole.findAll().then(function(data){
-            res.json(data)
-        })
-    },
     
     loginProcess: async (req, res) => {
 
-        //1. finding the existing user
-        let loggedUser = await dbUsers.findOne({
-            where: {
-                email: { [Op.like]: `%${req.body.email}%` }
-            }
-        })
+        let errors = validationResult(req)
 
-        //2. compare passwords from the existing user. If the password is fine, let me in. If it isn't, show me the errors.
-        
-            let errors = validationResult(req)
+        if(errors.isEmpty()){
+            //1. finding the existing user
+            let loggedUser = await dbUsers.findOne({
+                where: {
+                    email: { [Op.like]: `%${req.body.email}%` },
+                    is_active: 1
+                }
+            })
+
+            //2. compare passwords from the existing user. If the password is fine, let me in. If it isn't, show me the errors.
             if(loggedUser){
                 let passwordVerification = bcrypt.compareSync(req.body.password, loggedUser.password)
-                if (passwordVerification == true && errors.isEmpty()){
-
+                
+                if (passwordVerification){
                     //session action and cookie action (for remembering the account and storing it into a cookie.)
                     delete loggedUser.dataValues.password;
                     req.session.loggedUser = loggedUser;
@@ -47,53 +41,103 @@ const userController = {
                             maxAge: 30000000
                         })
                     }
-                    // res.json("console.log")
                     res.redirect("./profile")
-                    // res.render('users/profile', { wholeUser })
-                } else {
-                    res.render("users/login", { errors })
+                }
+                //Send validation of user in db to the view
+                else{
+                    errors['msg'] = 'Correo electrónico y/o contraseña incorrectos'
+                    res.render('users/login',  {
+                        errors: errors,
+                        oldData: req.body
+                    })
                 }
             }
-           
-    
+            //Send validation of user in db to the view
+            else{
+                errors['msg'] = 'Correo electrónico y/o contraseña incorrectos'
+                res.render('users/login',  {
+                    errors: errors,
+                    oldData: req.body
+                })
+            }
+        }
+        //Send validation errors in form to the view
+        else {
+            res.render('users/login', { 
+                errors: errors.mapped(),
+                oldData: req.body
+            })
+        }
+
     },
 
     register: (req, res) => {
         res.render('users/register')
     },
 
-    create: (req, res) => {
+    create: async (req, res) => {
 
-        //image setup
-        let newImage
-        if (req.file == undefined) {
-            newImage = "user.png"
-        } else {
-            newImage = req.file.filename
+        let errors = validationResult(req)
+
+        if(errors.isEmpty()){
+
+             //validate if the user email already exists
+             let registerUser = await dbUsers.findOne({
+                where: {
+                    email: { [Op.like]: `%${req.body.email}%` }
+                }
+            })
+
+            //if the email doesnt exists, then register the user
+            if(!registerUser){
+
+                //image setup
+                let newImage
+                if (req.file == undefined) {
+                    newImage = "user.png"
+                } else {
+                    newImage = req.file.filename
+                }
+
+                let encryptedPassword = bcrypt.hashSync(req.body.password, 10);
+
+                dbUsers.create({
+                    first_name: req.body.name,
+                    last_name: req.body.lastName,
+                    email: req.body.email,
+                    password: encryptedPassword,
+                    avatar_img: newImage,
+                    role_id: 2,
+                    is_active: 1
+                })
+        
+                res.redirect('/users/login')    
+            
+            }
+            //Send validation of user in db to the view
+            else{
+                errors.errors[0] = {
+                    value: req.body.email,
+                    msg: 'El correo ingresado ya existe',
+                    param: 'email',
+                    location: 'body'
+                  }
+
+                res.render('users/register',  {
+                    errors: errors.mapped(),
+                    oldData: req.body
+                })
+            }
+
+        }
+        //Send validation errors in form to the view
+        else {
+            res.render('users/register', { 
+                errors: errors.mapped(),
+                oldData: req.body
+            })
         }
 
-        let encryptedPassword = bcrypt.hashSync(req.body.password, 10);
-
-        dbUsers.create({
-            first_name: req.body.name,
-            last_name: req.body.lastName,
-            email: req.body.email,
-            password: encryptedPassword,
-            avatar_img: newImage,
-            role_id: 2,
-            is_active: 1
-        })
-
-        res.redirect('/users/login')
-
-    },
-
-    list: (req, res) => {
-
-        dbUsers.findAll().then(function(Users){
-            res.render('users/userList', { Users })
-        })
-        
     },
 
     profile: (req, res) => {
@@ -103,17 +147,14 @@ const userController = {
 
     },
 
-    edit: (req,res) => {
+    //edición de usuario desde el profile
+    edit: async (req,res) => {
 
-        let roles = dbRole.findAll()
-        let User = dbUsers.findByPk(req.params.id)
+        let loggedUser = req.session.loggedUser
+        let User = await dbUsers.findByPk(loggedUser.id)
 
-        Promise.all([roles,User])
-        
-        .then(function([roles,User]){
-            res.render('users/edit', {roles,User})
+        res.render('users/edit', {User})
 
-        })
     },
 
     update: (req, res) => {
@@ -128,8 +169,8 @@ const userController = {
             last_name: req.body.lastName,
             email: req.body.email,
             avatar_img: newImage,
-            role_id: 2,
-            is_active: 1
+            is_active: 1,
+            modified_date: Sequelize.fn('NOW')
         }, {
             where: {
                 id: req.params.id
@@ -138,18 +179,24 @@ const userController = {
             if(!req.file){
                 newImage = user.img;
             }
-            res.redirect("../userList")
+            res.redirect("../profile")
         })
     },
 
-    destroy: (req, res) => {
-        dbUsers.destroy({
-            where: {
-                id: req.params.id
-            }
-        }).then(function(){
-            res.redirect("../userList")
+    //Inactive a user from DB
+    deleteAccount : async (req, res) => {
+
+        let id = parseInt(req.params.id)
+
+        await dbUsers.update({
+            is_active: 0
+        },
+        {where: 
+            {id:id}
         })
+
+        userController.logout(req,res)
+
     },
 
     logout: (req, res) => {

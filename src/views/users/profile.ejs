@@ -25,8 +25,11 @@
     </section>
 
     <section class="form-buttons">
-      <button type="button" class="change-password">Cambiar contraseña</button>
-      <a href="/users/logout"><button type="button" class="logout">Cerrar sesión</button></a>
+      <a href="/users/edit">Editar mis datos</button>
+      <a href="/users/logout">Cerrar sesión</a>
+      <form action="./deleteAccount/<%= User.id %>" method="POST" onsubmit="return confirm('Está seguro que quiere eliminar su cuenta?');">
+        <button type="submit" class="delete">Eliminar mi cuenta</button>
+      </form>   
     </section>
 
   </main>

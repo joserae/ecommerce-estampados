@@ -1,22 +1,63 @@
 # Retrospectiva de sprints
-# Sprint 1
 
-## Que hicimos bien:
-- Buena comunicación para la primera entrega.
-- entendimiento agil de las consignas.
-- buen aporte de ideas para crear un proyecto.
-- Entrega del proyecto a tiempo.
+# Sprint 6
 
-## Aspectos a mejorar:
-Al ser una tarea relativamente sencilla, no hubo mayores aspectos a mejorar, sin embargo:
-- Debe haber un mayor compromiso para reuniones, pues los horarios no estuvieron tan definidos.
+- Que dejar de hacer: <br>
+La complejidad del proyecto se tradujo en la deserción de dos de los integrantes. Debemos mejorar en la repartición de tiempos y asignaciones.
 
-Para mejorar esto, deberíamos delegarnos las tareas a principio de semana, y reunirnos por lo menos una vez en la semana, por un corto tiempo, para ver como vamos, 
-que problema tenemos, y como nos ayudamos.
+- Que hacer menos: <br>
+El hecho de perder la confianza en nosotros mismos. Al final aprendimos que somos capaces si aplicamos lógica y lo aprendido al proyecto.
 
-### ¿qué dejar de hacer?
-- debemos ser más organizados con las reuniones, y no planearlas de un momento a otro.
+- Que seguir haciendo: <br>
+Investigar, aprender y aplicar. El análisis y el autoaprendizaje fue vital para poder avanzar en situaciones complejas.
 
+- Que hacer más: <br>
+El trabajo en equipo fue un factor importante para poder sacar adelante el proyecto.
+
+# Sprint 5
+
+- Que dejar de hacer: <br>
+Se dejaron funciones vacías y líneas de código que no hacían nada. Debemos ser más conscientes con lo que dejamos escrito para una mayor claridad en el futuro.
+
+- Que hacer menos: <br>
+Nuevamente el spanglish estuvo presente, y las cookies no funcionan del todo bien. Debemos probar más las cosas que hacemos para entregarlas de la mejor forma.
+
+- Que seguir haciendo: <br>
+Hubo una buena distribución de trabajo y las cargas no se sintieron pesadas.
+
+-Que hacer más: <br>
+Más trabajo en equipo para corregirnos y ayudarnos entre nosotros.
+
+
+# Sprint 4
+
+- Que dejar de hacer: <br>
+Se distribuyeron las consignas de una forma, y en el proceso de cumplirlas nos dimos cuenta de que necesitabamos una mejor redistribución, la cual fue mucho más desordenada y creó momentos de confusión en el equipo.
+
+- Que hacer menos: <br>
+Ser conscientes de nuestro propio código. Está bien referenciarnos de otros ejercicios, pero debemos adaptarlo con lo que se tiene en el proyecto para no generar conflictos ni confusión en el futuro.
+
+- Que seguir haciendo: <br>
+Mantener la buena comunicación cada vez que tenemos un problema, planeamos avanzar, y antes de subir cambios al repositorio. 
+
+- Que hacer más: <br>
+Una distribución más acertada frente a lo que piden las consignas, para tener cargas acordes a nuestras disponibilidades, y que cumplan con lo pedido en el documento.
+
+
+# Sprint 3
+
+- Que dejar de hacer: <br>
+los archivos no pueden estar en spanglish. Debemos definir el idioma para no confundirnos a futuro.
+Usar menos divs, para un mejor orden y con menos código hacer más.
+
+- Que hacer menos: <br>
+Estresarnos en momentos tensos. Sacar el tiempo para encontrar las diferencias, aclarar las dudas y seguir adelante.
+
+- Que seguir haciendo: <br>
+hubo un avance a como estabamos antes. Aprendimos mejor comunicación y nos guiamos mejor.
+
+- Que hacer más: <br>
+Más reuniones con los profesores (Gian en nuestro caso) para ver como vamos, resolver dudas y corregir errores.
 
 # Sprint 2
 
@@ -37,31 +78,20 @@ Seguir realizando las weekly meetings.
 - Que empezar a hacer: <br>
 Mayor intensidad al proyecto, para obtener mejores resultados.
 
-# Sprint 3
+# Sprint 1
 
-- Que dejar de hacer: <br>
-los archivos no pueden estar en spanglish. Debemos definir el idioma para no confundirnos a futuro.
-Usar menos divs, para un mejor orden y con menos código hacer más.
+## Que hicimos bien:
+- Buena comunicación para la primera entrega.
+- entendimiento agil de las consignas.
+- buen aporte de ideas para crear un proyecto.
+- Entrega del proyecto a tiempo.
 
-- Que hacer menos: <br>
-Estresarnos en momentos tensos. Sacar el tiempo para encontrar las diferencias, aclarar las dudas y seguir adelante.
+## Aspectos a mejorar:
+Al ser una tarea relativamente sencilla, no hubo mayores aspectos a mejorar, sin embargo:
+- Debe haber un mayor compromiso para reuniones, pues los horarios no estuvieron tan definidos.
 
-- Que seguir haciendo: <br>
-hubo un avance a como estabamos antes. Aprendimos mejor comunicación y nos guiamos mejor.
+Para mejorar esto, deberíamos delegarnos las tareas a principio de semana, y reunirnos por lo menos una vez en la semana, por un corto tiempo, para ver como vamos, 
+que problema tenemos, y como nos ayudamos.
 
-- Que hacer más: <br>
-Más reuniones con los profesores (Gian en nuestro caso) para ver como vamos, resolver dudas y corregir errores.
-
-# Sprint 4
-
-- Que dejar de hacer: <br>
-Se distribuyeron las consignas de una forma, y en el proceso de cumplirlas nos dimos cuenta de que necesitabamos una mejor redistribución, la cual fue mucho más desordenada y creó momentos de confusión en el equipo.
-
-- Que hacer menos: <br>
-Ser conscientes de nuestro propio código. Está bien referenciarnos de otros ejercicios, pero debemos adaptarlo con lo que se tiene en el proyecto para no generar conflictos ni confusión en el futuro.
-
-- Que seguir haciendo: <br>
-Mantener la buena comunicación cada vez que tenemos un problema, planeamos avanzar, y antes de subir cambios al repositorio. 
-
-- Que hacer más: <br>
-Una distribución más acertada frente a lo que piden las consignas, para tener cargas acordes a nuestras disponibilidades, y que cumplan con lo pedido en el documento.
+### ¿qué dejar de hacer?
+- debemos ser más organizados con las reuniones, y no planearlas de un momento a otro.

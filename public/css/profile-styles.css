@@ -37,7 +37,12 @@ input[type=text], input[type=password], input[type=email] {
    justify-content: center;
 }
 
-button {
+.form-buttons form {
+   display: flex;
+   flex-wrap: wrap;
+}
+
+.form-buttons a, .delete {
    border: none;
    text-align:center;
    background-color: var(--gris-oscuro);
@@ -47,13 +52,21 @@ button {
    font-size:15px;
    padding:14px 37px;
    text-decoration: none;
-   width: 40%;
+   width: 25%;
    margin: 8px 10px;
 }
 
-button:hover {
-background:var(--azul);
-color: var(--gris-oscuro);
+.delete{
+   width: 100%;
+}
+
+.form-buttons a:hover {
+   background:var(--azul);
+   color: var(--gris-oscuro);
+}
+
+.form-buttons .delete:hover {
+   background:var(--rojo);
 }
 
 @media(min-width: 426px){

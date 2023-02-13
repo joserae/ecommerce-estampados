@@ -76,6 +76,14 @@ form p {
     padding: 5px;
 }
 
+.showErrors{
+    width: 80%;
+    text-align: left;
+    margin: auto;
+    color: var(--rojo-medio);
+    padding: 5px;
+ }
+
 @media(min-width: 426px){
      
 
@@ -111,5 +119,9 @@ form p {
     .sizes{
         width: 100%;
     }
+
+    form p.showErrors{
+        width: 100%;
+     }
 
 }
