@@ -11,11 +11,17 @@
         <h1 class="reg-title">Registro</h1>
         <p class="reg-description">Regístrate para ordenar tu calzado, ver tus ordenes y ajustar tus datos.</p>
 
+        <div>
+            <ul id="error-list">
+                
+            </ul>
+        </div>
+
         <form action="/users/register" method="POST" enctype="multipart/form-data">
-            <input type="text" name="name" id="name" placeholder="Nombre" required>
-            <input type="text" name="lastName" id="lastName" placeholder="Apellido" required>
-            <input type="email" name="email" id="email" placeholder="Correo electrónico" required>
-            <input type="password" name="password" id="password" minlength="5" placeholder="Contraseña" required>
+            <input type="text" name="name" id="name" placeholder="Nombre">
+            <input type="text" name="lastName" id="lastName" placeholder="Apellido">
+            <input type="email" name="email" id="email" placeholder="Correo electrónico">
+            <input type="password" name="password" id="password" placeholder="Contraseña">
             <label for="userAvatar">Selecciona tu avatar (Opcional)</label>
             <input type="file" name="userAvatar" id="userAvatar">
             <input type="submit" value="Registrarme" class="reg-button">
@@ -26,5 +32,6 @@
     </main>
     
     <%- include("../partials/footer.ejs") %>
+    <script src="/js/regError.js"></script>
 </body>
 </html>

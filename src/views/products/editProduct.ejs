@@ -10,10 +10,15 @@
     <body>
         <main>
             <h1 class="title">Editar producto</h1>
+            <div>
+                <ul id="error-list">
+                    
+                </ul>
+            </div>
             <p class="form-description"><%= product.name %></p>
             <form action="./<%= product.id%>?_method=PUT" method="POST" enctype="multipart/form-data">
                     <label for="name">Nombre:</label>
-                    <input type="text" name="name" id="name" value="<%= product.name %>" placeholder="Nombre del producto" >
+                    <input type="text" name="name" id="name" value="<%= product.name %>" placeholder="Nombre del producto" required>
                     <label for="description">Descripción:</label>
                     <input type="text" name="description" id="description" placeholder="Descripción" value="<%= product.description %>" id="descripcion">
                     <label for="brand">Marca:</label>
@@ -83,6 +88,8 @@
         </main>
 
         <%- include("../partials/footer")%>
+
+        <script src="/js/productEditError.js"></script>
 
     </body>
     

@@ -11,6 +11,11 @@
         <main>
             <h1 class="title">Crear producto</h1>
             <p class="form-description">Registra un nuevo producto.</p>
+            <div>
+                <ul id="error-list">
+                    
+                </ul>
+            </div>
             <form method="POST" action="../products/createProduct" class="form" enctype="multipart/form-data">
                 <label for="name">Nombre:</label>
                 <input type="text" name="name" id="name" placeholder="Nombre del producto" required>
@@ -60,6 +65,7 @@
         </main>
 
         <%- include('../partials/footer') %> 
-    
+
+        <script src="/js/productError.js"></script>
     </body>
     </html>

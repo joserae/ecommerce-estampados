@@ -24,6 +24,11 @@
     <figure>
       <a href="/"><img src="../img/loginUser.png" alt="back_home"></a>
     </figure>
+    <div>
+      <ul id="error-list">
+          
+      </ul>
+    </div>
     <form action="/users/login" method="POST" >
       <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
       <input type="password" id="password" name="password" placeholder="Contraseña" required>
@@ -40,5 +45,6 @@
 
   <%- include("../partials/footer")%>
 
+  <script src="/js/loginError.js"></script>
 </body>
 </html>
