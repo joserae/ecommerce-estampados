@@ -80,6 +80,8 @@ window.addEventListener("load", function(){
             }
 
             event.preventDefault()
+        }else{
+            alert("Producto actualizado exitosamente.")
         }
     })
 })

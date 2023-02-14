@@ -81,5 +81,8 @@ window.addEventListener("load", function(){
 
             event.preventDefault()
         }
+        else{
+            alert("Producto creado exitosamente.")
+        }
     })
 })
