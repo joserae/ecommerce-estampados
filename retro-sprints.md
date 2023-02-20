@@ -1,5 +1,18 @@
 # Retrospectiva de sprints
 
+# Sprint 7
+
+Este sprint fue relativamente corto y no hubo contratiempos ni problemas.
+
+- Que hacer menos: <br>
+El sprint no está entregado hasta que se entregue el PDF explicando el resultado del sprint. Fue un desliz, sin embargo es importante.
+
+- Que seguir haciendo: <br>
+El trabajo el equipo y la comunicación ha dado muchos frutos a lo largo de la cursada, lo que permitió poder hacer todo a tiempo y sin problema.
+
+- Que hacer más: <br>
+La distribución de tareas fue buena en este sprint.
+
 # Sprint 6
 
 - Que dejar de hacer: <br>
