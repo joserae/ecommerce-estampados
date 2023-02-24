@@ -34,7 +34,7 @@ const usersApiController = {
                 let offset = page * limit - limit
 
                 let allUsers = await dbUsers.findAll({
-                    attributes: ['id','first_name','last_name','email'],
+                    attributes: ['id','first_name','last_name','email', 'created_date'],
                     limit: limit,
                     offset: offset
                 });

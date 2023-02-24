@@ -1,0 +1,20 @@
+div.product-list {
+    margin: 10px auto;
+    width: 95%;
+    background-color: #F7F7F7;
+    text-align: center;
+    border-radius: 5px;
+  }
+
+@media(min-width: 426px){
+    .product_div{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media(min-width: 769px){
+    .product_div{
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}

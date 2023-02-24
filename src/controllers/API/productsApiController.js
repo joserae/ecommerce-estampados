@@ -37,7 +37,7 @@ const producstApiController = {
                 let offset = page * limit - limit
 
                 let allProducts = await dbProducts.findAll({
-                    attributes: ['id','name','description'],
+                    attributes: ['id','name','img','price', 'created_date'],
                     limit: limit,
                     offset: offset
                 });

@@ -1,0 +1,44 @@
+* {
+  font-family: 'Exo', sans-serif;
+  text-align: center;
+}
+
+/* img {
+  width: 90%;
+}
+
+nav {
+  background-color: #3C4048;
+  height: 50px;
+}
+
+ul li a {
+  text-decoration: none;
+}
+ul li a:hover {
+  background-color: #B2B2B2;
+}
+ul li a:visited {
+  color: black;
+} */
+
+header {
+  background-color: #F7F7F7;
+  font-family: 'Exo', sans-serif;
+  box-sizing: border-box;
+  
+};
+
+@media (min-width: 426px) {
+  
+  header {
+    display: flex;
+    flex-direction: row;
+    border: 3px dashed red;
+  }
+
+
+  nav.nav ul  {
+    display: inline-block;
+  }
+}

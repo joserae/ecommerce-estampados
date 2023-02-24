@@ -8,6 +8,8 @@ const methodOverride = require("method-override");
 const session = require("express-session");
 const cookieParser = require('cookie-parser');
 const remindMeCookie = require ("./middlewares/remindMeCookie.js");
+const cors = require('cors')
+
 //Middleware
 app.use(express.static(publicPath))
 //Middleware para capturar la información por POST y convertirlo a JSON
@@ -25,6 +27,12 @@ app.use(session({
 
 app.use(cookieParser());
 app.use(remindMeCookie);
+//Desbloquear protección CORS del navegador (interacción con React)
+app.use(cors())
+app.listen(1025, function () {
+	console.log('CORS-enabled web server listening on port 80')
+  })
+
 //Template EJS
 app.set('views', path.resolve(__dirname, 'views'));
 app.set('view engine', 'ejs');
