@@ -1,13 +1,15 @@
 import React from 'react';
 import Totals from '../components/Totals/Totals'
-import LastProductAndUser from '../components/LastProductAndUser/LastProductAndUser';
+import LastUser from '../components/LastUser/LastUser';
+import LastProduct from '../components/LastProduct/LastProduct';
 import ProductList from '../components/ProductList/ProductList';
 
 
 function Home(){
   return (
     <>
-        <LastProductAndUser/>
+        <LastUser/>
+        <LastProduct/>
         <Totals/>
         <ProductList/>
     </>

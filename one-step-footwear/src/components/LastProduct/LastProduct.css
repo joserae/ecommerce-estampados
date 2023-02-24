@@ -3,13 +3,6 @@
     margin-top: 5px;
 }
 
-.last_user {
-    margin: 10px auto;
-    width: 95%;
-    background-color: #F7F7F7;
-    text-align: center;
-    border-radius: 5px;
-  }
 .last_product_container{
     display: flex;
     flex-direction: column;
@@ -33,7 +26,8 @@
     font-size: 20px;
   }
 
-@media(min-width: 426px) {
+
+  @media(min-width: 426px) {
     .last_product_container {
         display: flex;
         align-items: flex-start;
@@ -50,9 +44,4 @@
     margin: 5px;
     border-radius: 5px;
     }
-
-    .last_user {
-        width: 400px;
-    }
-
 }
