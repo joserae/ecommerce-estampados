@@ -24,7 +24,16 @@
 .last-product-text-container h1 {
     margin: 13px 0 5px 0;
     font-size: 20px;
-  }
+}
+
+.last-product-text-container a {
+    text-decoration: none;
+    color:black;
+}
+
+.last-product-text-container a:visited {
+    color:black;
+}
 
 
   @media(min-width: 426px) {

@@ -73,14 +73,18 @@ function Totals() {
         <section className="totals">
 		    <div className="total-products">
                 <h2>Total de productos:</h2>
+                { productsTotal === '' && <p>Cargando...</p> }
                 <p>{productsTotal}</p>
             </div>
             <div className="total-products">
                 <h2>Total de usuarios:</h2>
+                { users.length === '' && <p>Cargando...</p> }
                 <p>{users.length}</p>
             </div>
             <div className="total-products">
                 <h2>Total de categorías:</h2>
+                { countByCategory.Running === '' && <p>Cargando...</p> }
+                { countByCategory.Lifestyle === '' && <p>Cargando...</p> }
                 <p>Running: {countByCategory.Running}</p>
                 <p>Lifestyle: {countByCategory.Lifestyle}</p>
             </div>

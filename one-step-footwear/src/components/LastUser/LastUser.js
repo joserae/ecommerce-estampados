@@ -49,14 +49,6 @@ function LastUser() {
                 { LastUser === '' && <p>Cargando...</p> }
                 <p>Ultimo usuario registrado: {lastUser.first_name} {lastUser.last_name}.</p>
             </div>
-		         {/* <div className="last_product_container">
-                <img className="last-product-img" src={`http://localhost:3000/img/${mostRecentProduct.img}`} />
-                <div className="last-product-text-container">
-                    <h1>Ultimo producto:</h1>
-                    { mostRecentProduct == '' && <p>Cargando...</p> }
-                    <h2>{mostRecentProduct.name}</h2>
-                </div>
-            </div>  */}
         </>
 	);
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import './LastProduct.css'
 import { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom'
 
 
 function LastProduct() {
@@ -48,11 +49,11 @@ function LastProduct() {
           return(
           <>
                <div className="last_product_container">
-                    <img className="last-product-img" src={`http://localhost:3000/img/${lastProduct.img}`} alt="last-product-img" />
+               <img className="last-product-img" src={`http://localhost:3000/img/${lastProduct.img}`} alt="last-product-img" />
                     <div className="last-product-text-container">
                          <h1>Ultimo producto:</h1>
                          { lastProduct === '' && <p>Cargando...</p> }
-                         <h2>{lastProduct.name}</h2>
+                         <NavLink to={`product-details/${lastProduct.id}`}><h2>{lastProduct.name}</h2></NavLink>
                     </div>
                </div> 
           </>
