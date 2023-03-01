@@ -27,6 +27,11 @@
                                 <% } %>
                         <% }) %>
                     </select>
+                    <label for="role">Estado:</label>
+                    <select name="status" id="status">
+                        <option value="0" <%= User.is_active == 0 ? 'selected' : null %>>Inactivo</option>
+                        <option value="1" <%= User.is_active == 1 ? 'selected' : null %>>Activo</option>
+                    </select>
                     <label for="avatarImage">Avatar del usuario:</label>
                     <input type="file" name="avatarImage" id="avatarImage">
                 </section>

@@ -24,6 +24,16 @@ const dbUsers = db.User
 
 
 function remindMeCookie(req, res, next){
+
+  //validaciones de autenticación
+  if (req.session.loggedUser != undefined && req.session.loggedUser.role_id == 1){
+    res.locals.userAdmin = true
+    res.locals.userLogged = true
+  }
+  else if (req.session.loggedUser != undefined){
+    res.locals.userLogged = true
+  }
+
   //si hay cookie, pero no hay nada en sesión, poner los datos del usuario guardado en la cookie en esa sesión.
   if(req.cookies.remindMe != undefined && req.session.loggedUser == undefined){
     dbUsers.findOne({
