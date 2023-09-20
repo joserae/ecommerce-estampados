@@ -1,28 +1,39 @@
-const urlDB = `mysql://root:GkIrQXRmUacMkEPdBZI3@containers-us-west-108.railway.app:7662/railway`;
+const PORT = process.env.PORT || 3000;
 
-module.exports = {
+let MYSQLUSER = "root";
+let MYSQLPORT = "7662";
+let MYSQLPASSWORD = "GkIrQXRmUacMkEPdBZI3";
+let MYSQLHOST = "containers-us-west-108.railway.app"
+let MYSQLDATABASE = "railway";
+let MYSQLURL = "mysql://root:GkIrQXRmUacMkEPdBZI3@containers-us-west-108.railway.app:7662/railway";
+
+const CONFIG = {
   "development": {
-    "username": "root",
-    "password": null,
-    "database": "one_step",
-    "host": "127.0.0.1",
+    "username": MYSQLUSER,
+    "password": MYSQLPASSWORD || null,
+    "database": MYSQLDATABASE || "one_step",
+    "host": MYSQLHOST || "127.0.0.1",
     "dialect": "mysql",
-    "port": "3307",
+    "port": MYSQLPORT || "3307",
+    "url": MYSQLURL
   },
   "test": {
-    "username": "root",
-    "password": null,
-    "database": "database_test",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "username": MYSQLUSER,
+    "password": MYSQLPASSWORD || null,
+    "database": MYSQLDATABASE || "one_step",
+    "host": MYSQLHOST || "127.0.0.1",
+    "dialect": "mysql",
+    "url": MYSQLURL
   },
   "production": {
-    "username": "root",
-    "port": "7662",
-    "password": "GkIrQXRmUacMkEPdBZI3",
-    "database": "railway",
-    "host": "containers-us-west-108.railway.app",
+    "username": MYSQLUSER,
+    "port": MYSQLPORT,
+    "password": MYSQLPASSWORD,
+    "database": MYSQLDATABASE,
+    "host": MYSQLHOST,
     "dialect": "mysql",
     "url": "mysql://root:GkIrQXRmUacMkEPdBZI3@containers-us-west-108.railway.app:7662/railway"
   }
 }
+
+module.exports = CONFIG, PORT;
